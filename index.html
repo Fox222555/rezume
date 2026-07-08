@@ -210,7 +210,7 @@
     <!-- ===== РЕЗЮМЕ ===== -->
     <div id="resumeOnly">
         <div class="top-row">
-            <div class="photo">
+            <div class="photo" id="photoContainer">
                 <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
             </div>
             <div class="contacts">
@@ -450,57 +450,115 @@
         document.head.appendChild(script);
     }
 
+    function loadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = url;
+        });
+    }
+
     loadHtml2Canvas(function() {
         const resumeEl = document.getElementById('resumeOnly');
         const page1 = document.getElementById('portfolioPage1');
         const page2 = document.getElementById('portfolioPage2');
         const photoImg = document.getElementById('profilePhoto');
+        const photoContainer = document.getElementById('photoContainer');
 
-        function downloadElement(el, name) {
+        async function downloadElement(el, name) {
             if (typeof html2canvas === 'undefined') {
                 alert('Ошибка загрузки библиотеки. Проверьте интернет.');
                 return;
             }
 
-            // Сохраняем оригинальные стили фото
-            const originalStyles = {
-                objectFit: photoImg.style.objectFit,
-                width: photoImg.style.width,
-                height: photoImg.style.height
-            };
-
-            // Временно меняем стили для правильного отображения при сохранении
-            photoImg.style.objectFit = 'cover';
-            photoImg.style.width = '100%';
-            photoImg.style.height = '100%';
-
-            html2canvas(el, {
-                scale: 2.0,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: '#ffffff',
-                logging: false,
-                width: el.scrollWidth,
-                height: el.scrollHeight,
-                windowWidth: el.scrollWidth,
-                windowHeight: el.scrollHeight
-            }).then(canvas => {
-                // Возвращаем оригинальные стили
-                photoImg.style.objectFit = originalStyles.objectFit || 'cover';
-                photoImg.style.width = originalStyles.width || '100%';
-                photoImg.style.height = originalStyles.height || '100%';
-
+            try {
+                // Загружаем фото для корректной отрисовки
+                const img = await loadImage(photoImg.src);
+                
+                // Создаем временный canvas для фото с правильными пропорциями
+                const tempCanvas = document.createElement('canvas');
+                const ctx = tempCanvas.getContext('2d');
+                const size = 150;
+                tempCanvas.width = size;
+                tempCanvas.height = size;
+                
+                // Рисуем круг и вставляем фото с обрезкой по центру
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip();
+                
+                // Определяем как обрезать фото чтобы оно влезло в круг
+                const aspectRatio = img.width / img.height;
+                let drawWidth, drawHeight, offsetX, offsetY;
+                
+                if (aspectRatio > 1) {
+                    // Фото шире - обрезаем по бокам
+                    drawHeight = size;
+                    drawWidth = size * aspectRatio;
+                    offsetX = (size - drawWidth) / 2;
+                    offsetY = 0;
+                } else {
+                    // Фото выше - обрезаем сверху/снизу
+                    drawWidth = size;
+                    drawHeight = size / aspectRatio;
+                    offsetX = 0;
+                    offsetY = (size - drawHeight) / 2;
+                }
+                
+                ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+                
+                // Рисуем границу круга поверх
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2 - 1.5, 0, Math.PI * 2);
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Заменяем фото на canvas
+                const tempImg = document.createElement('img');
+                tempImg.src = tempCanvas.toDataURL('image/png');
+                tempImg.style.width = '100%';
+                tempImg.style.height = '100%';
+                tempImg.style.objectFit = 'contain';
+                tempImg.style.display = 'block';
+                
+                // Сохраняем оригинальное фото
+                const originalSrc = photoImg.src;
+                const originalDisplay = photoImg.style.display;
+                
+                // Временно заменяем
+                photoImg.style.display = 'none';
+                photoContainer.appendChild(tempImg);
+                
+                // Делаем скриншот
+                const canvas = await html2canvas(el, {
+                    scale: 2.0,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    width: el.scrollWidth,
+                    height: el.scrollHeight,
+                    windowWidth: el.scrollWidth,
+                    windowHeight: el.scrollHeight
+                });
+                
+                // Удаляем временное фото и возвращаем оригинал
+                tempImg.remove();
+                photoImg.style.display = originalDisplay || 'block';
+                
                 const link = document.createElement('a');
                 link.download = name;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-            }).catch(err => {
-                // Возвращаем стили даже в случае ошибки
-                photoImg.style.objectFit = originalStyles.objectFit || 'cover';
-                photoImg.style.width = originalStyles.width || '100%';
-                photoImg.style.height = originalStyles.height || '100%';
-                alert('Ошибка: ' + err.message);
-            });
+                
+            } catch (err) {
+                console.error(err);
+                alert('Ошибка при сохранении: ' + err.message);
+            }
         }
 
         document.getElementById('downloadResumeBtn').onclick = function() {
