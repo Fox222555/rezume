@@ -211,7 +211,7 @@
     <div id="resumeOnly">
         <div class="top-row">
             <div class="photo">
-                <img src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
+                <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
             </div>
             <div class="contacts">
                 <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
@@ -454,24 +454,51 @@
         const resumeEl = document.getElementById('resumeOnly');
         const page1 = document.getElementById('portfolioPage1');
         const page2 = document.getElementById('portfolioPage2');
+        const photoImg = document.getElementById('profilePhoto');
 
         function downloadElement(el, name) {
             if (typeof html2canvas === 'undefined') {
                 alert('Ошибка загрузки библиотеки. Проверьте интернет.');
                 return;
             }
+
+            // Сохраняем оригинальные стили фото
+            const originalStyles = {
+                objectFit: photoImg.style.objectFit,
+                width: photoImg.style.width,
+                height: photoImg.style.height
+            };
+
+            // Временно меняем стили для правильного отображения при сохранении
+            photoImg.style.objectFit = 'cover';
+            photoImg.style.width = '100%';
+            photoImg.style.height = '100%';
+
             html2canvas(el, {
-                scale: 1.8,
+                scale: 2.0,
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: '#ffffff',
-                logging: false
+                logging: false,
+                width: el.scrollWidth,
+                height: el.scrollHeight,
+                windowWidth: el.scrollWidth,
+                windowHeight: el.scrollHeight
             }).then(canvas => {
+                // Возвращаем оригинальные стили
+                photoImg.style.objectFit = originalStyles.objectFit || 'cover';
+                photoImg.style.width = originalStyles.width || '100%';
+                photoImg.style.height = originalStyles.height || '100%';
+
                 const link = document.createElement('a');
                 link.download = name;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
+                // Возвращаем стили даже в случае ошибки
+                photoImg.style.objectFit = originalStyles.objectFit || 'cover';
+                photoImg.style.width = originalStyles.width || '100%';
+                photoImg.style.height = originalStyles.height || '100%';
                 alert('Ошибка: ' + err.message);
             });
         }
