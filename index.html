@@ -46,18 +46,13 @@
             border: 3px solid #2c3e50;
             flex-shrink: 0;
             position: relative;
+            background: #f0f2f5;
         }
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-        /* Специальные стили для сохранения пропорций фото при скачивании */
-        .photo img[src*="postimg"] {
-            object-fit: contain;
-            background: #ffffff;
-            padding: 5px;
         }
         .contacts { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
         .contacts .title { font-size: 22px; font-weight: 700; color: #2c3e50; }
@@ -194,15 +189,6 @@
         .footer-note { text-align: center; margin-top: 25px; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 18px; }
 
         #resumeOnly { padding: 20px 25px; background: #ffffff; }
-
-        /* Стили для корректного отображения фото при сохранении */
-        @media print {
-            .photo img {
-                object-fit: contain !important;
-                padding: 5px !important;
-                background: #ffffff !important;
-            }
-        }
 
         @media (max-width: 800px) {
             .two-col { flex-direction: column; }
@@ -479,16 +465,7 @@
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: '#ffffff',
-                logging: false,
-                onclone: function(clonedDoc) {
-                    // Исправляем отображение фото в клонированном документе
-                    const clonedImg = clonedDoc.querySelector('.photo img');
-                    if (clonedImg) {
-                        clonedImg.style.objectFit = 'contain';
-                        clonedImg.style.padding = '5px';
-                        clonedImg.style.background = '#ffffff';
-                    }
-                }
+                logging: false
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = name;
