@@ -450,58 +450,32 @@
         document.head.appendChild(script);
     }
 
-    function loadImage(url) {
-        return new Promise((resolve, reject) => {
+    function createCircularPhoto(imgSrc, size) {
+        return new Promise((resolve) => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = url;
-        });
-    }
-
-    loadHtml2Canvas(function() {
-        const resumeEl = document.getElementById('resumeOnly');
-        const page1 = document.getElementById('portfolioPage1');
-        const page2 = document.getElementById('portfolioPage2');
-        const photoImg = document.getElementById('profilePhoto');
-        const photoContainer = document.getElementById('photoContainer');
-
-        async function downloadElement(el, name) {
-            if (typeof html2canvas === 'undefined') {
-                alert('Ошибка загрузки библиотеки. Проверьте интернет.');
-                return;
-            }
-
-            try {
-                // Загружаем фото для корректной отрисовки
-                const img = await loadImage(photoImg.src);
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
                 
-                // Создаем временный canvas для фото с правильными пропорциями
-                const tempCanvas = document.createElement('canvas');
-                const ctx = tempCanvas.getContext('2d');
-                const size = 150;
-                tempCanvas.width = size;
-                tempCanvas.height = size;
-                
-                // Рисуем круг и вставляем фото с обрезкой по центру
+                // Рисуем круг
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.clip();
                 
-                // Определяем как обрезать фото чтобы оно влезло в круг
+                // Вставляем фото с обрезкой по центру
                 const aspectRatio = img.width / img.height;
                 let drawWidth, drawHeight, offsetX, offsetY;
                 
                 if (aspectRatio > 1) {
-                    // Фото шире - обрезаем по бокам
                     drawHeight = size;
                     drawWidth = size * aspectRatio;
                     offsetX = (size - drawWidth) / 2;
                     offsetY = 0;
                 } else {
-                    // Фото выше - обрезаем сверху/снизу
                     drawWidth = size;
                     drawHeight = size / aspectRatio;
                     offsetX = 0;
@@ -510,40 +484,78 @@
                 
                 ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
                 
-                // Рисуем границу круга поверх
+                // Рисуем границу
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2 - 1.5, 0, Math.PI * 2);
                 ctx.strokeStyle = '#2c3e50';
                 ctx.lineWidth = 3;
                 ctx.stroke();
                 
-                // Заменяем фото на canvas
+                resolve(canvas.toDataURL('image/png'));
+            };
+            img.onerror = function() {
+                // Если фото не загрузилось, создаём заглушку
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#f0f2f5';
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                resolve(canvas.toDataURL('image/png'));
+            };
+            img.src = imgSrc;
+        });
+    }
+
+    loadHtml2Canvas(function() {
+        const resumeEl = document.getElementById('resumeOnly');
+        const page1 = document.getElementById('portfolioPage1');
+        const page2 = document.getElementById('portfolioPage2');
+        const photoImg = document.getElementById('profilePhoto');
+
+        async function downloadResume() {
+            if (typeof html2canvas === 'undefined') {
+                alert('Ошибка загрузки библиотеки. Проверьте интернет.');
+                return;
+            }
+
+            try {
+                // Создаём правильную круглую аватарку
+                const photoDataUrl = await createCircularPhoto(photoImg.src, 150);
+                
+                // Создаём временный img с правильной аватаркой
                 const tempImg = document.createElement('img');
-                tempImg.src = tempCanvas.toDataURL('image/png');
+                tempImg.src = photoDataUrl;
                 tempImg.style.width = '100%';
                 tempImg.style.height = '100%';
-                tempImg.style.objectFit = 'contain';
+                tempImg.style.objectFit = 'cover';
                 tempImg.style.display = 'block';
+                tempImg.style.borderRadius = '50%';
                 
                 // Сохраняем оригинальное фото
-                const originalSrc = photoImg.src;
+                const parent = photoImg.parentNode;
                 const originalDisplay = photoImg.style.display;
                 
-                // Временно заменяем
+                // Заменяем фото на временное
                 photoImg.style.display = 'none';
-                photoContainer.appendChild(tempImg);
+                parent.appendChild(tempImg);
                 
                 // Делаем скриншот
-                const canvas = await html2canvas(el, {
-                    scale: 2.0,
+                const canvas = await html2canvas(resumeEl, {
+                    scale: 2.5,
                     useCORS: true,
                     allowTaint: true,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    width: el.scrollWidth,
-                    height: el.scrollHeight,
-                    windowWidth: el.scrollWidth,
-                    windowHeight: el.scrollHeight
+                    width: resumeEl.scrollWidth,
+                    height: resumeEl.scrollHeight,
+                    windowWidth: resumeEl.scrollWidth,
+                    windowHeight: resumeEl.scrollHeight
                 });
                 
                 // Удаляем временное фото и возвращаем оригинал
@@ -551,7 +563,7 @@
                 photoImg.style.display = originalDisplay || 'block';
                 
                 const link = document.createElement('a');
-                link.download = name;
+                link.download = 'резюме_Анастасия_Дубовицких.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
                 
@@ -561,9 +573,33 @@
             }
         }
 
-        document.getElementById('downloadResumeBtn').onclick = function() {
-            downloadElement(resumeEl, 'резюме_Анастасия_Дубовицких.png');
-        };
+        function downloadElement(el, name) {
+            if (typeof html2canvas === 'undefined') {
+                alert('Ошибка загрузки библиотеки. Проверьте интернет.');
+                return;
+            }
+            
+            html2canvas(el, {
+                scale: 2.0,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                width: el.scrollWidth,
+                height: el.scrollHeight,
+                windowWidth: el.scrollWidth,
+                windowHeight: el.scrollHeight
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = name;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                alert('Ошибка: ' + err.message);
+            });
+        }
+
+        document.getElementById('downloadResumeBtn').onclick = downloadResume;
 
         document.getElementById('downloadPortfolioPage1').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
