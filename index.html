@@ -545,17 +545,31 @@
                 photoImg.style.display = 'none';
                 parent.appendChild(tempImg);
                 
-                // Делаем скриншот
+                // Получаем реальные размеры элемента
+                const rect = resumeEl.getBoundingClientRect();
+                const width = rect.width;
+                const height = rect.height;
+                
+                // Делаем скриншот с фиксированными размерами
                 const canvas = await html2canvas(resumeEl, {
                     scale: 2.5,
                     useCORS: true,
                     allowTaint: true,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    width: resumeEl.scrollWidth,
-                    height: resumeEl.scrollHeight,
-                    windowWidth: resumeEl.scrollWidth,
-                    windowHeight: resumeEl.scrollHeight
+                    width: width,
+                    height: height,
+                    windowWidth: width,
+                    windowHeight: height,
+                    onclone: function(doc) {
+                        // В клоне фиксируем размеры
+                        const clonedEl = doc.getElementById('resumeOnly');
+                        if (clonedEl) {
+                            clonedEl.style.width = width + 'px';
+                            clonedEl.style.maxWidth = width + 'px';
+                            clonedEl.style.minWidth = width + 'px';
+                        }
+                    }
                 });
                 
                 // Удаляем временное фото и возвращаем оригинал
@@ -579,16 +593,30 @@
                 return;
             }
             
+            // Получаем реальные размеры элемента
+            const rect = el.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            
             html2canvas(el, {
                 scale: 2.0,
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: '#ffffff',
                 logging: false,
-                width: el.scrollWidth,
-                height: el.scrollHeight,
-                windowWidth: el.scrollWidth,
-                windowHeight: el.scrollHeight
+                width: width,
+                height: height,
+                windowWidth: width,
+                windowHeight: height,
+                onclone: function(doc) {
+                    // В клоне фиксируем размеры
+                    const clonedEl = doc.getElementById(el.id);
+                    if (clonedEl) {
+                        clonedEl.style.width = width + 'px';
+                        clonedEl.style.maxWidth = width + 'px';
+                        clonedEl.style.minWidth = width + 'px';
+                    }
+                }
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = name;
