@@ -44,8 +44,21 @@
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid #2c3e50;
+            flex-shrink: 0;
+            position: relative;
         }
-        .photo img { width: 100%; height: 100%; object-fit: cover; }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Специальные стили для сохранения пропорций фото при скачивании */
+        .photo img[src*="postimg"] {
+            object-fit: contain;
+            background: #ffffff;
+            padding: 5px;
+        }
         .contacts { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
         .contacts .title { font-size: 22px; font-weight: 700; color: #2c3e50; }
         .contact-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: #333; padding: 4px 0; }
@@ -182,6 +195,15 @@
 
         #resumeOnly { padding: 20px 25px; background: #ffffff; }
 
+        /* Стили для корректного отображения фото при сохранении */
+        @media print {
+            .photo img {
+                object-fit: contain !important;
+                padding: 5px !important;
+                background: #ffffff !important;
+            }
+        }
+
         @media (max-width: 800px) {
             .two-col { flex-direction: column; }
             .top-row { flex-direction: column; align-items: center; text-align: center; }
@@ -203,7 +225,7 @@
     <div id="resumeOnly">
         <div class="top-row">
             <div class="photo">
-                <img src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото">
+                <img src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
             </div>
             <div class="contacts">
                 <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
@@ -360,7 +382,7 @@
         <!-- ВЫДЕЛЕННАЯ ССЫЛКА НА РАБОТАЮЩИЙ САЙТ -->
         <div class="site-link">
             <a href="https://vitrix-qngz.vercel.app/" target="_blank">
-                <span class="icon">🌐</span> Посмотреть мой рабочий сайт VITRIX https://vitrix-qngz.vercel.app/
+                <span class="icon">🌐</span> Посмотреть мой рабочий сайт VITRIX
             </a>
         </div>
 
@@ -408,7 +430,7 @@
                     <div class="caption">Страница к 9 мая</div>
                 </div>
                 <div class="portfolio-item">
-                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect width=%22300%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%3Cbr/%3E%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B9%3C/text%3E%3C/svg%3E'">
+                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий">
                     <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
                 </div>
             </div>
@@ -457,7 +479,16 @@
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: '#ffffff',
-                logging: false
+                logging: false,
+                onclone: function(clonedDoc) {
+                    // Исправляем отображение фото в клонированном документе
+                    const clonedImg = clonedDoc.querySelector('.photo img');
+                    if (clonedImg) {
+                        clonedImg.style.objectFit = 'contain';
+                        clonedImg.style.padding = '5px';
+                        clonedImg.style.background = '#ffffff';
+                    }
+                }
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = name;
