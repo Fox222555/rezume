@@ -97,6 +97,7 @@
             white-space: nowrap;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         .vitrix-btn::before {
             content: '';
@@ -108,6 +109,7 @@
             background: radial-gradient(circle, rgba(255, 107, 157, 0.15) 0%, transparent 70%);
             transition: all 0.5s;
             opacity: 0;
+            z-index: 0;
         }
         .vitrix-btn:hover::before {
             opacity: 1;
@@ -124,6 +126,8 @@
             height: 28px;
             object-fit: contain;
             transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
         }
         .vitrix-btn:hover .icon-left {
             transform: rotate(-8deg) scale(1.1);
@@ -133,6 +137,8 @@
         }
         .vitrix-btn .btn-text {
             line-height: 1.2;
+            position: relative;
+            z-index: 1;
         }
         .vitrix-btn .btn-text small {
             font-weight: 400;
@@ -140,6 +146,30 @@
             font-size: 10px;
             display: block;
             margin-top: -2px;
+        }
+
+        /* Анимация для кнопки VITRIX при клике */
+        @keyframes vitrixPulse {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25); }
+            30% { transform: scale(1.15); box-shadow: 0 0 40px rgba(255, 107, 157, 0.6), 0 0 80px rgba(255, 107, 157, 0.3); border-color: #ff6b9d; }
+            60% { transform: scale(1.15); box-shadow: 0 0 40px rgba(255, 107, 157, 0.6), 0 0 80px rgba(255, 107, 157, 0.3); border-color: #ff6b9d; }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25); }
+        }
+        .vitrix-btn.pulse {
+            animation: vitrixPulse 1.2s ease;
+        }
+
+        /* Звездочки */
+        @keyframes starBurst {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+        .star-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            z-index: 9999;
+            animation: starBurst 1s ease forwards;
         }
 
         /* ===== ВЫДВИЖНАЯ КНОПКА ===== */
@@ -468,6 +498,8 @@
             border: 2px solid #ff6b9d;
             box-shadow: 0 8px 30px rgba(255, 107, 157, 0.15);
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         .featured-vitrix::before {
             content: '';
@@ -489,7 +521,6 @@
             box-shadow: 0 12px 40px rgba(255, 107, 157, 0.25);
             border-color: #ff8fb3;
             transform: translateY(-2px);
-            transition: all 0.3s ease;
         }
         @media (max-width: 768px) {
             .featured-vitrix { grid-template-columns: 1fr; }
@@ -671,6 +702,9 @@
         .download-section-bottom .download-btn.secondary:hover {
             background: #f0f2f5;
         }
+        .download-section-bottom .download-btn.hidden {
+            display: none;
+        }
 
         /* ===== КОНТЕЙНЕР ДЛЯ СКАЧИВАНИЯ ПОРТФОЛИО (БЕЗ КНОПОК) ===== */
         #portfolioToDownload {
@@ -715,7 +749,7 @@
         </div>
 
         <div class="header-actions">
-            <a href="https://vitrix-qngz.vercel.app/" target="_blank" class="vitrix-btn">
+            <a href="#" class="vitrix-btn" id="vitrixHeaderBtn">
                 <img src="https://i.postimg.cc/KvQDYj5j/bolicon.jpg" alt="🌐" class="icon-left">
                 <span class="btn-text">
                     VITRIX
@@ -731,9 +765,9 @@
                     <span class="arrow">▾</span>
                 </button>
                 <div class="download-dropdown">
-                    <button data-download="resume"><span>📄</span> Резюме</button>
-                    <button data-download="portfolio1"><span>📄</span> Портфолио стр.1</button>
-                    <button data-download="portfolio2"><span>📄</span> Портфолио стр.2</button>
+                    <button data-download="resume" id="downloadResumeOption"><span>📄</span> Резюме</button>
+                    <button data-download="portfolio1" id="downloadPortfolio1Option"><span>📄</span> Портфолио стр.1</button>
+                    <button data-download="portfolio2" id="downloadPortfolio2Option"><span>📄</span> Портфолио стр.2</button>
                 </div>
             </div>
         </div>
@@ -758,7 +792,7 @@
 
             <div class="header-name">
                 <h1>Дубовицких Анастасия Алексеевна</h1>
-                <div class="sub">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
+                <div class="sub">Специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
             </div>
 
             <div class="two-col">
@@ -805,7 +839,7 @@
                             </div>
                             <div class="row" style="flex-direction:column; gap:2px;">
                                 <span style="font-weight:600; color:#2c3e50;">О себе:</span>
-                                <span style="font-size:14px; color:#222; line-height:1.5;">Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</span>
+                                <span style="font-size:14px; color:#222; line-height:1.5;">Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю позиции: техподдержка, стажёр-разработчик, менеджер проектов.</span>
                             </div>
                         </div>
                     </div>
@@ -896,7 +930,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО (КОНТЕЙНЕР ДЛЯ СКАЧИВАНИЯ) ===== -->
+    <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО ===== -->
     <!-- ============================================================ -->
     <div class="tab-content" id="tabPortfolio">
         <div id="portfolioToDownload">
@@ -969,8 +1003,8 @@
                     <div class="comp-item"><span class="marker">✦</span> Клиентский сервис и коммуникация</div>
                 </div>
 
-                <!-- ИЗБРАННЫЙ ПРОЕКТ VITRIX -->
-                <div class="featured-vitrix">
+                <!-- ИЗБРАННЫЙ ПРОЕКТ VITRIX (кликабельный) -->
+                <div class="featured-vitrix" id="featuredVitrix">
                     <div class="img-wrap">
                         <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="VITRIX" loading="lazy">
                     </div>
@@ -1069,6 +1103,35 @@
     // ============================================================
     const tabBtns = document.querySelectorAll('.tab-switch .tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
+    const downloadLabel = document.getElementById('downloadLabel');
+
+    // Элементы кнопок скачивания
+    const downloadResumeOption = document.getElementById('downloadResumeOption');
+    const downloadPortfolio1Option = document.getElementById('downloadPortfolio1Option');
+    const downloadPortfolio2Option = document.getElementById('downloadPortfolio2Option');
+    const downloadResumeBtn = document.getElementById('downloadResumeBtn');
+    const downloadPortfolioBtn1 = document.getElementById('downloadPortfolioBtn1');
+    const downloadPortfolioBtn2 = document.getElementById('downloadPortfolioBtn2');
+
+    function updateDownloadButtons(activeTab) {
+        const isResume = activeTab === 'tabResume';
+        const isPortfolio = activeTab === 'tabPortfolio';
+
+        // Обновляем выпадающее меню в шапке
+        if (downloadResumeOption) downloadResumeOption.style.display = isResume ? 'flex' : 'none';
+        if (downloadPortfolio1Option) downloadPortfolio1Option.style.display = isPortfolio ? 'flex' : 'none';
+        if (downloadPortfolio2Option) downloadPortfolio2Option.style.display = isPortfolio ? 'flex' : 'none';
+
+        // Обновляем кнопки внизу
+        if (downloadResumeBtn) downloadResumeBtn.style.display = isResume ? 'inline-block' : 'none';
+        if (downloadPortfolioBtn1) downloadPortfolioBtn1.style.display = isPortfolio ? 'inline-block' : 'none';
+        if (downloadPortfolioBtn2) downloadPortfolioBtn2.style.display = isPortfolio ? 'inline-block' : 'none';
+
+        // Обновляем текст на главной кнопке
+        if (downloadLabel) {
+            downloadLabel.textContent = isResume ? 'Скачать Резюме' : 'Скачать Портфолио';
+        }
+    }
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -1077,7 +1140,55 @@
             const tabId = this.dataset.tab;
             tabContents.forEach(c => c.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
+            updateDownloadButtons(tabId);
         });
+    });
+
+    // Инициализация при загрузке
+    updateDownloadButtons('tabResume');
+
+    // ============================================================
+    // ===== АНИМАЦИЯ VITRIX =====
+    // ============================================================
+    const featuredVitrix = document.getElementById('featuredVitrix');
+    const vitrixHeaderBtn = document.getElementById('vitrixHeaderBtn');
+
+    featuredVitrix.addEventListener('click', function() {
+        // Прокручиваем к кнопке в шапке
+        vitrixHeaderBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Запускаем анимацию пульсации
+        vitrixHeaderBtn.classList.remove('pulse');
+        void vitrixHeaderBtn.offsetWidth; // перезапуск анимации
+        vitrixHeaderBtn.classList.add('pulse');
+
+        // Создаем звездочки
+        const stars = ['✦', '✧', '⭐', '✨', '★'];
+        const colors = ['#ff6b9d', '#ff8fb3', '#ffb3c6', '#ffd9e3', '#ff4d7a'];
+        const btnRect = vitrixHeaderBtn.getBoundingClientRect();
+        const centerX = btnRect.left + btnRect.width / 2;
+        const centerY = btnRect.top + btnRect.height / 2;
+
+        for (let i = 0; i < 20; i++) {
+            const star = document.createElement('div');
+            star.className = 'star-particle';
+            star.textContent = stars[Math.floor(Math.random() * stars.length)];
+            star.style.color = colors[Math.floor(Math.random() * colors.length)];
+            star.style.left = centerX + 'px';
+            star.style.top = centerY + 'px';
+            star.style.fontSize = (12 + Math.random() * 20) + 'px';
+
+            const angle = Math.random() * 2 * Math.PI;
+            const distance = 80 + Math.random() * 150;
+            star.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+            star.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 1200);
+        }
     });
 
     // ============================================================
@@ -1209,14 +1320,12 @@
                 return;
             }
 
-            // Находим элемент внутри portfolioToDownload
             const el = portfolioEl.querySelector(selector);
             if (!el) {
                 alert('Элемент не найден');
                 return;
             }
 
-            // Временно показываем элемент и скрываем остальные страницы
             const allPages = portfolioEl.querySelectorAll('.portfolio-page');
             allPages.forEach(page => {
                 if (page !== el) {
@@ -1226,7 +1335,6 @@
                 }
             });
 
-            // Скрываем угол и разделитель для первой страницы (они дублируются)
             const corner = portfolioEl.querySelector('.portfolio-corner');
             const wave = portfolioEl.querySelector('.divider-wave');
             const hero = portfolioEl.querySelector('.portfolio-hero');
@@ -1234,7 +1342,6 @@
             const competencies = portfolioEl.querySelector('.competencies');
             const featured = portfolioEl.querySelector('.featured-vitrix');
 
-            // Для страницы 1 показываем все, для страницы 2 скрываем лишнее
             if (selector === '#portfolioPage2') {
                 if (corner) corner.style.display = 'none';
                 if (wave) wave.style.display = 'none';
@@ -1262,7 +1369,6 @@
                     width: rect.width,
                     height: rect.height,
                 }).then(canvas => {
-                    // Возвращаем все элементы обратно
                     allPages.forEach(page => page.style.display = 'block');
                     if (corner) corner.style.display = 'block';
                     if (wave) wave.style.display = 'block';
@@ -1277,7 +1383,6 @@
                     link.click();
                 }).catch(err => {
                     alert('Ошибка: ' + err.message);
-                    // Возвращаем все элементы обратно
                     allPages.forEach(page => page.style.display = 'block');
                     if (corner) corner.style.display = 'block';
                     if (wave) wave.style.display = 'block';
@@ -1294,6 +1399,13 @@
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const type = this.dataset.download;
+                const activeTab = document.querySelector('.tab-content.active');
+                const isResume = activeTab.id === 'tabResume';
+
+                // Проверяем, что кнопка соответствует активной вкладке
+                if (type === 'resume' && !isResume) return;
+                if ((type === 'portfolio1' || type === 'portfolio2') && isResume) return;
+
                 if (type === 'resume') {
                     downloadResume();
                 } else if (type === 'portfolio1') {
@@ -1305,8 +1417,8 @@
         });
 
         document.getElementById('mainDownloadBtn').addEventListener('click', function() {
-            const active = document.querySelector('.tab-content.active');
-            if (active.id === 'tabResume') {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab.id === 'tabResume') {
                 downloadResume();
             } else {
                 downloadPortfolioPage('#portfolioPage1', 'портфолио_Анастасия_Дубовицких_стр1.png');
@@ -1314,12 +1426,25 @@
         });
 
         // ===== КНОПКИ ВНИЗУ =====
-        document.getElementById('downloadResumeBtn').onclick = downloadResume;
-        document.getElementById('downloadPortfolioBtn1').onclick = function() {
-            downloadPortfolioPage('#portfolioPage1', 'портфолио_Анастасия_Дубовицких_стр1.png');
+        document.getElementById('downloadResumeBtn').onclick = function() {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab.id === 'tabResume') {
+                downloadResume();
+            }
         };
+
+        document.getElementById('downloadPortfolioBtn1').onclick = function() {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab.id === 'tabPortfolio') {
+                downloadPortfolioPage('#portfolioPage1', 'портфолио_Анастасия_Дубовицких_стр1.png');
+            }
+        };
+
         document.getElementById('downloadPortfolioBtn2').onclick = function() {
-            downloadPortfolioPage('#portfolioPage2', 'портфолио_Анастасия_Дубовицких_стр2.png');
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab.id === 'tabPortfolio') {
+                downloadPortfolioPage('#portfolioPage2', 'портфолио_Анастасия_Дубовицких_стр2.png');
+            }
         };
     });
 </script>
