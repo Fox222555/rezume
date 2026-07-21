@@ -30,7 +30,9 @@
             overflow: hidden;
         }
 
+        /* ============================================================ */
         /* ===== ШАПКА С ВКЛАДКАМИ (НОВЫЙ КОД) ===== */
+        /* ============================================================ */
         .header-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -103,7 +105,9 @@
             display: block;
         }
 
-        /* ===== РЕЗЮМЕ (СТАРЫЙ КОД, но без зарплаты и с измененной занятостью) ===== */
+        /* ============================================================ */
+        /* ===== РЕЗЮМЕ (СТАРЫЙ КОД) ===== */
+        /* ============================================================ */
         .top-row {
             display: flex;
             gap: 25px;
@@ -179,7 +183,9 @@
         .lang-item { font-size: 15px; padding: 3px 0; color: #222; }
         .lang-item .lbl { font-weight: 600; color: #2c3e50; }
 
+        /* ============================================================ */
         /* ===== ПОРТФОЛИО (ВЕСЬ БЛОК ИЗ СТАРОГО КОДА) ===== */
+        /* ============================================================ */
         .portfolio-section { margin-top: 10px; padding-top: 10px; }
         .portfolio-section .section-title {
             font-size: 18px; font-weight: 700; color: #fff;
@@ -261,7 +267,9 @@
             letter-spacing: 1px;
         }
 
+        /* ============================================================ */
         /* ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ (СТАРЫЙ КОД) ===== */
+        /* ============================================================ */
         .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
         .download-btn {
             background: #2c3e50; color: white; border: none;
@@ -295,7 +303,9 @@
 
 <div class="container">
 
+    <!-- ============================================================ -->
     <!-- ===== ШАПКА С ВКЛАДКАМИ (НОВЫЙ КОД) ===== -->
+    <!-- ============================================================ -->
     <div class="header-tabs">
         <div class="tab-buttons">
             <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
@@ -309,7 +319,9 @@
         </div>
     </div>
 
-    <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ (СТАРЫЙ КОД, но без зарплаты и с измененной занятостью) ===== -->
+    <!-- ============================================================ -->
+    <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ (СТАРЫЙ КОД) ===== -->
+    <!-- ============================================================ -->
     <div class="tab-content active" id="tabResume">
         <div id="resumeOnly">
             <div class="top-row">
@@ -463,7 +475,9 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
     <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО (ВЕСЬ БЛОК ИЗ СТАРОГО КОДА) ===== -->
+    <!-- ============================================================ -->
     <div class="tab-content" id="tabPortfolio">
         <div class="portfolio-section">
 
@@ -531,7 +545,9 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
     <!-- ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ (СТАРЫЙ КОД) ===== -->
+    <!-- ============================================================ -->
     <div class="download-section">
         <button class="download-btn" id="downloadResumeBtn">⬇️ Скачать резюме (PNG)</button>
         <button class="download-btn secondary" id="downloadPortfolioPage1">📄 Скачать портфолио — стр.1</button>
@@ -542,7 +558,9 @@
 </div>
 
 <script>
+    // ============================================================
     // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК (НОВЫЙ КОД) =====
+    // ============================================================
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -556,7 +574,9 @@
         });
     });
 
+    // ============================================================
     // ===== ЗАГРУЗКА HTML2CANVAS =====
+    // ============================================================
     function loadHtml2Canvas(callback) {
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
@@ -731,7 +751,7 @@
             });
         }
 
-        // Кнопки внизу
+        // ===== КНОПКИ ВНИЗУ =====
         document.getElementById('downloadResumeBtn').onclick = downloadResume;
         document.getElementById('downloadPortfolioPage1').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
@@ -746,7 +766,7 @@
             }, 1000);
         };
 
-        // Кнопки в шапке
+        // ===== КНОПКИ В ШАПКЕ =====
         document.getElementById('headerDownloadResume').onclick = downloadResume;
         document.getElementById('headerDownloadPortfolio1').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
