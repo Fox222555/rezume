@@ -30,7 +30,7 @@
             overflow: hidden;
         }
 
-        /* ===== ШАПКА С ВКЛАДКАМИ ===== */
+        /* ===== ШАПКА С ВКЛАДКАМИ (НОВЫЙ КОД) ===== */
         .header-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -103,7 +103,7 @@
             display: block;
         }
 
-        /* ===== РЕЗЮМЕ ===== */
+        /* ===== РЕЗЮМЕ (СТАРЫЙ КОД, но без зарплаты и с измененной занятостью) ===== */
         .top-row {
             display: flex;
             gap: 25px;
@@ -166,8 +166,12 @@
         .comp-list li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; color: #222; }
         .comp-list li::before { content: "—"; position: absolute; left: 2px; color: #2c3e50; font-weight: 700; }
         .bottom-row {
-            display: flex; flex-wrap: wrap; gap: 40px;
-            margin-top: 25px; padding-top: 18px; border-top: 2px solid #2c3e50;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 2px solid #2c3e50;
         }
         .bottom-row .item { display: flex; flex-direction: column; }
         .bottom-row .item .label { font-size: 14px; font-weight: 600; color: #2c3e50; text-transform: uppercase; }
@@ -175,7 +179,7 @@
         .lang-item { font-size: 15px; padding: 3px 0; color: #222; }
         .lang-item .lbl { font-weight: 600; color: #2c3e50; }
 
-        /* ===== ПОРТФОЛИО ===== */
+        /* ===== ПОРТФОЛИО (ВЕСЬ БЛОК ИЗ СТАРОГО КОДА) ===== */
         .portfolio-section { margin-top: 10px; padding-top: 10px; }
         .portfolio-section .section-title {
             font-size: 18px; font-weight: 700; color: #fff;
@@ -257,6 +261,7 @@
             letter-spacing: 1px;
         }
 
+        /* ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ (СТАРЫЙ КОД) ===== */
         .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
         .download-btn {
             background: #2c3e50; color: white; border: none;
@@ -290,7 +295,7 @@
 
 <div class="container">
 
-    <!-- ===== ШАПКА С ВКЛАДКАМИ ===== -->
+    <!-- ===== ШАПКА С ВКЛАДКАМИ (НОВЫЙ КОД) ===== -->
     <div class="header-tabs">
         <div class="tab-buttons">
             <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
@@ -304,7 +309,7 @@
         </div>
     </div>
 
-    <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ ===== -->
+    <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ (СТАРЫЙ КОД, но без зарплаты и с измененной занятостью) ===== -->
     <div class="tab-content active" id="tabResume">
         <div id="resumeOnly">
             <div class="top-row">
@@ -453,13 +458,12 @@
             </div>
 
             <div class="bottom-row">
-                <div class="item"><span class="label">Желаемая зарплата</span><span class="value">45 000 – 55 000 ₽</span></div>
-                <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
+                <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график, удалённо (по договорённости)</span></div>
             </div>
         </div>
     </div>
 
-    <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО ===== -->
+    <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО (ВЕСЬ БЛОК ИЗ СТАРОГО КОДА) ===== -->
     <div class="tab-content" id="tabPortfolio">
         <div class="portfolio-section">
 
@@ -527,7 +531,7 @@
         </div>
     </div>
 
-    <!-- ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ ===== -->
+    <!-- ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ (СТАРЫЙ КОД) ===== -->
     <div class="download-section">
         <button class="download-btn" id="downloadResumeBtn">⬇️ Скачать резюме (PNG)</button>
         <button class="download-btn secondary" id="downloadPortfolioPage1">📄 Скачать портфолио — стр.1</button>
@@ -538,7 +542,7 @@
 </div>
 
 <script>
-    // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
+    // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК (НОВЫЙ КОД) =====
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
