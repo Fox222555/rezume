@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Резюме и портфолио — Анастасия Дубовицких</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +15,7 @@
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             background: #e6e9ef;
             display: flex;
             flex-direction: column;
@@ -48,25 +49,25 @@
         .tab-switch {
             display: flex;
             background: #f0f2f8;
-            border-radius: 12px;
-            padding: 4px;
-            gap: 4px;
+            border-radius: 10px;
+            padding: 3px;
+            gap: 3px;
         }
         .tab-switch .tab-btn {
-            padding: 10px 28px;
+            padding: 8px 22px;
             border: none;
-            border-radius: 10px;
-            font-size: 15px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: transparent;
             color: #7a7a8a;
         }
         .tab-switch .tab-btn.active {
             background: #ffffff;
             color: #1a1a2e;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
         .tab-switch .tab-btn:hover:not(.active) {
             color: #1a1a2e;
@@ -74,7 +75,7 @@
 
         .header-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -83,16 +84,16 @@
         .vitrix-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #1a1a2e, #2d2d44);
             color: #fff;
-            padding: 8px 18px 8px 14px;
-            border-radius: 50px;
+            padding: 6px 14px 6px 12px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25);
+            box-shadow: 0 4px 12px rgba(26, 26, 46, 0.2);
             border: 2px solid #4ade80;
             white-space: nowrap;
             position: relative;
@@ -114,14 +115,14 @@
             transform: scale(1.2);
         }
         .vitrix-btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.35);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.3);
             border-color: #6ee7a0;
         }
         .vitrix-btn .icon-left,
         .vitrix-btn .icon-right {
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             object-fit: contain;
             transition: transform 0.3s;
         }
@@ -132,64 +133,62 @@
             transform: rotate(8deg) scale(1.1);
         }
         .vitrix-btn .btn-text {
-            line-height: 1.2;
+            line-height: 1.1;
         }
         .vitrix-btn .btn-text small {
             font-weight: 400;
             opacity: 0.7;
-            font-size: 10px;
+            font-size: 9px;
             display: block;
             margin-top: -2px;
         }
 
-        /* ===== ВЫДВИЖНАЯ КНОПКА ===== */
+        /* ===== ВЫДВИЖНАЯ КНОПКА (компактная) ===== */
         .download-wrapper {
             position: relative;
             display: inline-block;
         }
         .download-main-btn {
-            padding: 10px 22px;
+            padding: 7px 16px;
             border: none;
-            border-radius: 12px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             background: #2c3e50;
             color: #fff;
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 160px;
-            justify-content: center;
+            gap: 6px;
         }
         .download-main-btn:hover {
             background: #1a2a3a;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.25);
         }
         .download-main-btn .arrow {
             transition: transform 0.3s;
-            font-size: 12px;
+            font-size: 10px;
         }
         .download-wrapper:hover .download-main-btn .arrow {
             transform: rotate(180deg);
         }
         .download-dropdown {
             position: absolute;
-            top: calc(100% + 6px);
+            top: calc(100% + 4px);
             left: 0;
             right: 0;
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            padding: 6px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 4px;
             display: none;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
             z-index: 100;
-            min-width: 180px;
+            min-width: 160px;
             border: 1px solid #eef0f5;
             animation: slideDown 0.25s ease;
         }
@@ -197,27 +196,27 @@
             display: flex;
         }
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
+            from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .download-dropdown button {
-            padding: 8px 14px;
+            padding: 6px 12px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             background: transparent;
             color: #2c3e50;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .download-dropdown button:hover {
             background: #f5f6fa;
-            transform: translateX(4px);
+            transform: translateX(3px);
         }
 
         .tab-content {
@@ -232,7 +231,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== РЕЗЮМЕ (классический стиль) ===== */
+        /* ===== РЕЗЮМЕ ===== */
         #resumeOnly { padding: 0; background: transparent; }
 
         .profile-row {
@@ -245,9 +244,9 @@
             align-items: center;
         }
         .photo {
-            width: 130px;
-            min-width: 130px;
-            height: 130px;
+            width: 120px;
+            min-width: 120px;
+            height: 120px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid #2c3e50;
@@ -269,24 +268,24 @@
             margin-bottom: 4px;
         }
         .profile-info .subtitle {
-            font-size: 16px;
+            font-size: 15px;
             color: #666;
             font-weight: 400;
         }
         .contacts-mini {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px 28px;
-            margin-top: 10px;
+            gap: 14px 24px;
+            margin-top: 8px;
         }
         .contacts-mini .item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 6px;
+            font-size: 13px;
             color: #444;
         }
-        .contacts-mini .item .icon { font-size: 16px; }
+        .contacts-mini .item .icon { font-size: 14px; }
         .contacts-mini .item a { color: #1a5276; text-decoration: none; }
 
         .two-col {
@@ -299,69 +298,69 @@
         .right-col { flex: 2; min-width: 280px; }
 
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .section-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #2c3e50;
-            padding: 4px 0 8px;
+            padding: 3px 0 6px;
             border-bottom: 2px solid #eef0f5;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .section-title .badge {
-            font-size: 12px;
+            font-size: 11px;
             background: #f0f2f8;
             padding: 0 10px;
             border-radius: 20px;
             color: #888;
         }
-        .info-grid { display: flex; flex-direction: column; gap: 3px; }
+        .info-grid { display: flex; flex-direction: column; gap: 2px; }
         .info-grid .row {
             display: flex;
-            font-size: 14px;
-            padding: 3px 0;
+            font-size: 13px;
+            padding: 2px 0;
             flex-wrap: wrap;
             gap: 4px 8px;
         }
-        .info-grid .row .label { font-weight: 600; color: #2c3e50; min-width: 120px; }
+        .info-grid .row .label { font-weight: 600; color: #2c3e50; min-width: 110px; }
         .info-grid .row .value { color: #444; }
 
         .exp-item {
-            margin-bottom: 14px;
-            padding-left: 12px;
+            margin-bottom: 12px;
+            padding-left: 10px;
             border-left: 3px solid #eef0f5;
             transition: all 0.3s;
         }
         .exp-item:hover { border-left-color: #4ade80; }
         .exp-item .head {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #1a2a3a;
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        .exp-item .meta { font-size: 13px; color: #777; margin: 2px 0 4px; }
+        .exp-item .meta { font-size: 12px; color: #777; margin: 2px 0 3px; }
         .exp-item .desc { font-size: 13px; color: #444; line-height: 1.5; }
         .exp-item .desc ul { list-style: none; padding-left: 4px; }
-        .exp-item .desc ul li { padding: 2px 0 2px 18px; position: relative; }
+        .exp-item .desc ul li { padding: 1px 0 1px 16px; position: relative; }
         .exp-item .desc ul li::before { content: "•"; position: absolute; left: 0; color: #4ade80; font-weight: 700; }
 
         .skills-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
             margin-top: 4px;
         }
         .skills-tags .tag {
             background: #f0f2f8;
-            padding: 3px 14px;
+            padding: 2px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             color: #1a2a3a;
             border: 1px solid #e0e2ea;
             transition: all 0.25s;
@@ -375,7 +374,7 @@
         }
         .comp-list { list-style: none; padding: 0; }
         .comp-list li {
-            padding: 3px 0 3px 18px;
+            padding: 2px 0 2px 16px;
             position: relative;
             font-size: 13px;
             color: #444;
@@ -387,26 +386,26 @@
         .bottom-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
-            margin-top: 20px;
-            padding-top: 16px;
+            gap: 28px;
+            margin-top: 16px;
+            padding-top: 14px;
             border-top: 2px solid #eef0f5;
         }
         .bottom-row .item .label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .bottom-row .item .value {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
             color: #1a2a3a;
             margin-top: 2px;
         }
 
-        /* ===== ПОРТФОЛИО (зеленый угол) ===== */
+        /* ===== ПОРТФОЛИО ===== */
         .portfolio-wrapper {
             position: relative;
             overflow: hidden;
@@ -414,13 +413,12 @@
             margin-top: 10px;
         }
 
-        /* Зеленый волнообразный угол */
         .portfolio-corner {
             position: absolute;
             top: 0;
             right: 0;
-            width: 280px;
-            height: 280px;
+            width: 220px;
+            height: 220px;
             z-index: 1;
             pointer-events: none;
             overflow: hidden;
@@ -432,21 +430,11 @@
             top: 0;
             right: 0;
         }
-        .portfolio-corner .corner-img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            clip-path: path('M280,0 C280,0 280,280 280,280 C280,280 0,280 0,280 C80,200 60,80 200,0 Z');
-        }
 
-        /* Декоративный разделитель */
         .divider-wave {
             width: 100%;
-            height: 40px;
-            margin: 10px 0 20px;
+            height: 30px;
+            margin: 8px 0 16px;
             overflow: hidden;
         }
         .divider-wave img {
@@ -457,46 +445,90 @@
         }
 
         .portfolio-hero {
-            padding: 30px 0 20px;
+            padding: 20px 0 16px;
             position: relative;
             z-index: 2;
         }
         .portfolio-hero .big-title {
-            font-size: 52px;
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
             font-weight: 900;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             color: #1a2a3a;
             position: relative;
             display: inline-block;
         }
         .portfolio-hero .big-title .highlight {
             color: #4ade80;
+            font-style: italic;
         }
         .portfolio-hero .big-sub {
-            font-size: 18px;
-            color: #888;
+            font-size: 16px;
+            color: #aaa;
             margin-top: 4px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-weight: 300;
+            font-family: 'Inter', sans-serif;
         }
 
+        /* ===== ИКОНКИ НАВЫКОВ ===== */
+        .skills-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .skills-icons .skill-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 8px 10px;
+            background: #f8f9fc;
+            border-radius: 10px;
+            border: 1px solid #eef0f5;
+            transition: all 0.3s;
+            min-width: 56px;
+        }
+        .skills-icons .skill-icon:hover {
+            transform: translateY(-4px);
+            border-color: #4ade80;
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.1);
+        }
+        .skills-icons .skill-icon .icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .skills-icons .skill-icon .name {
+            font-size: 9px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== КАРТОЧКИ ПОРТФОЛИО ===== */
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 20px 0 30px;
+            gap: 20px;
+            margin: 16px 0 24px;
             position: relative;
             z-index: 2;
         }
         @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-corner { width: 160px; height: 160px; }
-            .portfolio-hero .big-title { font-size: 32px; }
+            .portfolio-corner { width: 140px; height: 140px; }
+            .portfolio-hero .big-title { font-size: 30px; }
+            .skills-icons .skill-icon { padding: 6px 8px; min-width: 44px; }
+            .skills-icons .skill-icon .icon { font-size: 18px; }
         }
 
         .portfolio-card {
             background: #fafbfc;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
             transition: all 0.4s;
             border: 1px solid #eef0f5;
@@ -504,9 +536,9 @@
             z-index: 2;
         }
         .portfolio-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: #4ade80;
-            box-shadow: 0 12px 40px rgba(74, 222, 128, 0.1);
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.08);
         }
         .portfolio-card img {
             width: 100%;
@@ -514,96 +546,112 @@
             display: block;
         }
         .portfolio-card .card-info {
-            padding: 14px 18px 18px;
+            padding: 12px 16px 16px;
         }
         .portfolio-card .card-info .label {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            color: #999;
-            letter-spacing: 0.5px;
+            color: #bbb;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
         .portfolio-card .card-info h4 {
-            font-size: 17px;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
             color: #1a2a3a;
-            margin: 3px 0 2px;
+            margin: 2px 0;
         }
         .portfolio-card .card-info p {
-            font-size: 13px;
-            color: #888;
+            font-size: 12px;
+            color: #999;
+            line-height: 1.5;
         }
 
+        /* ===== ИЗБРАННЫЙ ПРОЕКТ (уменьшенная картинка) ===== */
         .portfolio-card.featured {
             grid-column: 1 / -1;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             background: #f8f9fc;
+            gap: 0;
         }
         @media (max-width: 768px) {
             .portfolio-card.featured { grid-template-columns: 1fr; }
         }
-        .portfolio-card.featured img {
+        .portfolio-card.featured .img-wrap {
+            padding: 16px 12px 16px 16px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-card.featured .img-wrap img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-height: 280px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #fafbfc;
         }
         .portfolio-card.featured .card-info {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 28px 34px;
+            padding: 24px 30px 24px 20px;
         }
         .portfolio-card.featured .card-info .big-label {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             color: #4ade80;
             letter-spacing: 2px;
             font-weight: 700;
         }
         .portfolio-card.featured .card-info h4 {
+            font-family: 'Playfair Display', serif;
             font-size: 28px;
-            margin: 6px 0;
+            margin: 4px 0 2px;
         }
         .portfolio-card.featured .card-info p {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             max-width: 400px;
+            line-height: 1.6;
         }
-
         .portfolio-card .tags {
             display: flex;
-            gap: 6px;
+            gap: 5px;
             flex-wrap: wrap;
             margin-top: 8px;
         }
         .portfolio-card .tags span {
             background: #f0f2f8;
-            padding: 2px 12px;
+            padding: 2px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             color: #666;
+            font-weight: 600;
         }
 
         /* ===== ФУТЕР ===== */
         .footer {
-            margin-top: 32px;
-            padding-top: 20px;
+            margin-top: 28px;
+            padding-top: 16px;
             border-top: 2px solid #eef0f5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
         .footer .footer-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 6px;
         }
         .footer .footer-buttons button {
-            padding: 8px 18px;
+            padding: 6px 14px;
             border: none;
-            border-radius: 10px;
-            font-size: 13px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s;
@@ -611,13 +659,13 @@
             color: #2c3e50;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
         .footer .footer-buttons button:hover {
             background: #2c3e50;
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
         }
         .footer .footer-buttons button.primary {
             background: #2c3e50;
@@ -630,13 +678,13 @@
         .back-to-top {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 28px;
+            gap: 6px;
+            padding: 8px 22px;
             border: 2px solid #eef0f5;
-            border-radius: 12px;
+            border-radius: 10px;
             background: transparent;
             color: #2c3e50;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
@@ -644,32 +692,34 @@
         .back-to-top:hover {
             border-color: #4ade80;
             transform: translateY(-3px);
-            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.15);
+            box-shadow: 0 4px 16px rgba(74, 222, 128, 0.12);
         }
         .footer .footer-note {
-            font-size: 12px;
+            font-size: 11px;
             color: #ccc;
             text-align: center;
-            padding-top: 8px;
+            padding-top: 6px;
         }
 
         @media (max-width: 600px) {
             .container { padding: 16px; }
             .header { flex-direction: column; align-items: stretch; }
             .tab-switch { justify-content: center; }
-            .tab-switch .tab-btn { padding: 8px 16px; font-size: 13px; }
+            .tab-switch .tab-btn { padding: 6px 14px; font-size: 12px; }
             .header-actions { justify-content: center; }
-            .vitrix-btn { font-size: 12px; padding: 6px 12px; }
+            .vitrix-btn { font-size: 11px; padding: 5px 10px; }
             .vitrix-btn .icon-left,
-            .vitrix-btn .icon-right { width: 20px; height: 20px; }
-            .download-main-btn { min-width: 130px; font-size: 12px; padding: 8px 14px; }
+            .vitrix-btn .icon-right { width: 16px; height: 16px; }
+            .download-main-btn { font-size: 11px; padding: 5px 12px; }
             .profile-row { flex-direction: column; align-items: center; text-align: center; }
             .contacts-mini { justify-content: center; }
             .two-col { flex-direction: column; }
-            .portfolio-corner { width: 120px; height: 120px; }
-            .portfolio-hero .big-title { font-size: 28px; }
-            .portfolio-card.featured .card-info h4 { font-size: 22px; }
+            .portfolio-corner { width: 100px; height: 100px; }
+            .portfolio-hero .big-title { font-size: 24px; }
             .bottom-row { justify-content: center; text-align: center; }
+            .portfolio-card.featured .card-info h4 { font-size: 22px; }
+            .portfolio-card.featured .img-wrap { padding: 12px; }
+            .portfolio-card.featured .img-wrap img { max-height: 180px; }
         }
     </style>
 </head>
@@ -697,14 +747,12 @@
             <div class="download-wrapper">
                 <button class="download-main-btn" id="mainDownloadBtn">
                     <span>📥</span>
-                    <span id="downloadLabel">Скачать Резюме</span>
+                    <span id="downloadLabel">Скачать</span>
                     <span class="arrow">▾</span>
                 </button>
                 <div class="download-dropdown">
-                    <button data-download="resume"><span>📄</span> Резюме (PNG)</button>
-                    <button data-download="portfolio1"><span>🖼️</span> Портфолио — стр. 1</button>
-                    <button data-download="portfolio2"><span>🖼️</span> Портфолио — стр. 2</button>
-                    <button data-download="portfolioAll"><span>📚</span> Всё портфолио</button>
+                    <button data-download="resume"><span>📄</span> Резюме</button>
+                    <button data-download="portfolio1"><span>🖼️</span> Портфолио</button>
                 </div>
             </div>
         </div>
@@ -731,44 +779,32 @@
             <div class="two-col">
                 <div class="left-col">
                     <div class="section">
-                        <div class="section-title">Основная информация <span class="badge">личное</span></div>
+                        <div class="section-title">Основная информация</div>
                         <div class="info-grid">
-                            <div class="row"><span class="label">Гражданство:</span><span class="value">Российская Федерация</span></div>
-                            <div class="row"><span class="label">Образование:</span><span class="value">Среднее профессиональное (СПО)</span></div>
-                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19 января 2006 г.</span></div>
+                            <div class="row"><span class="label">Гражданство:</span><span class="value">РФ</span></div>
+                            <div class="row"><span class="label">Образование:</span><span class="value">СПО, ОКЭИ</span></div>
+                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19.01.2006</span></div>
                             <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
-                            <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
                         </div>
                     </div>
 
                     <div class="section">
-                        <div class="section-title">Знание языков</div>
-                        <div style="font-size:14px; color:#444;"><strong>Английский:</strong> Базовый</div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Компьютерные навыки</div>
+                        <div class="section-title">Навыки</div>
                         <ul class="comp-list">
-                            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-                            <li>Figma (разработка макетов интерфейсов)</li>
-                            <li>Git (система контроля версий)</li>
-                            <li>Битрикс24, CRM-системы</li>
-                            <li>1С: Предприятие (базовые навыки)</li>
                             <li>HTML5, CSS3, JavaScript (база)</li>
+                            <li>Figma — разработка макетов</li>
+                            <li>Git — контроль версий</li>
+                            <li>Битрикс24, CRM-системы</li>
                             <li>React (базовый уровень)</li>
                             <li>SQL (базовые запросы)</li>
-                            <li>PHP, C# (в рамках колледжа)</li>
-                            <li>Начальный уровень разработки десктопных приложений</li>
+                            <li>PHP, C# (в рамках обучения)</li>
+                            <li>Microsoft Office</li>
                         </ul>
                     </div>
 
                     <div class="section">
-                        <div class="section-title">Дополнительная информация</div>
-                        <div style="font-size:14px; color:#444; line-height:1.7;">
-                            <p><strong>Личные качества:</strong> Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</p>
-                            <p style="margin-top:4px;"><strong>Профессиональные навыки:</strong> Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</p>
-                            <p style="margin-top:4px;"><strong>О себе:</strong> Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</p>
-                        </div>
+                        <div class="section-title">Языки</div>
+                        <div style="font-size:13px; color:#444;"><strong>Английский:</strong> Базовый</div>
                     </div>
                 </div>
 
@@ -776,70 +812,51 @@
                     <div class="section">
                         <div class="section-title">Опыт работы</div>
                         <div class="exp-item">
-                            <div class="head">💼 Teleperformance (проект ПАО «Аэрофлот»)</div>
-                            <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
-                            <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
-                            <div class="desc">
-                                <ul>
-                                    <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
-                                    <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
-                                    <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
-                                    <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
-                                    <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
-                                </ul>
-                            </div>
+                            <div class="head">💼 Teleperformance (Аэрофлот)</div>
+                            <div class="meta">Июль 2025 — Август 2025</div>
+                            <div class="desc">Специалист контактного центра. Обработка звонков, консультирование, работа с CRM. Более 1000 обращений.</div>
                         </div>
                     </div>
 
                     <div class="section">
                         <div class="section-title">Образование</div>
                         <div class="exp-item">
-                            <div class="head">🎓 Оренбургский колледж экономики и информатики (ОКЭИ)</div>
-                            <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
-                            <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
-                            <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
-                            <div class="meta"><strong>Форма обучения:</strong> Очная</div>
-                            <div class="desc" style="margin-top:6px;">
-                                <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
-                                <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
+                            <div class="head">🎓 Оренбургский колледж экономики и информатики</div>
+                            <div class="meta">09.02.07 Информационные системы и программирование</div>
+                            <div class="meta">Квалификация: Разработчик веб и мультимедийных приложений</div>
+                            <div class="meta">Окончание: 2026</div>
+                            <div class="desc" style="margin-top:4px;">
+                                <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX»</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="section">
-                        <div class="section-title">Курсы и тренинги</div>
+                        <div class="section-title">Практика</div>
                         <div class="exp-item">
-                            <div class="head">📘 Производственная практика — ООО «Веб Строитель»</div>
-                            <div class="meta"><strong>Период:</strong> 2024 г.</div>
-                            <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
+                            <div class="head">📘 ООО «Веб Строитель»</div>
+                            <div class="meta">2024</div>
                         </div>
                         <div class="exp-item">
-                            <div class="head">📘 Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
-                            <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
-                            <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
+                            <div class="head">📘 Министерство цифрового развития</div>
+                            <div class="meta">2024–2025</div>
                         </div>
                         <div class="exp-item">
-                            <div class="head">📘 Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
-                            <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
-                            <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
+                            <div class="head">📘 Центр «Мой Бизнес»</div>
+                            <div class="meta">2025–2026</div>
                         </div>
                     </div>
 
                     <div class="section">
                         <div class="section-title">Ключевые компетенции</div>
                         <div class="skills-tags">
-                            <span class="tag">HTML / CSS</span>
+                            <span class="tag">HTML/CSS</span>
                             <span class="tag">JavaScript</span>
-                            <span class="tag">React (база)</span>
+                            <span class="tag">React</span>
                             <span class="tag">Figma</span>
                             <span class="tag">Git</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">PHP</span>
                             <span class="tag">Битрикс24</span>
-                            <span class="tag">1С</span>
-                            <span class="tag">Десктопные приложения (база)</span>
                             <span class="tag">Работа с клиентами</span>
-                            <span class="tag">Стрессоустойчивость</span>
                         </div>
                     </div>
                 </div>
@@ -857,10 +874,10 @@
         <div class="portfolio-wrapper">
             <!-- Зеленый волнообразный угол -->
             <div class="portfolio-corner">
-                <svg viewBox="0 0 280 280" preserveAspectRatio="xMaxYMin meet">
+                <svg viewBox="0 0 220 220" preserveAspectRatio="xMaxYMin meet">
                     <defs>
-                        <clipPath id="cornerClip">
-                            <path d="M280,0 C280,0 280,280 280,280 C280,280 0,280 0,280 C80,200 60,80 200,0 Z"/>
+                        <clipPath id="cornerClip2">
+                            <path d="M220,0 C220,0 220,220 220,220 C220,220 0,220 0,220 C60,160 50,60 160,0 Z"/>
                         </clipPath>
                     </defs>
                     <image 
@@ -868,7 +885,7 @@
                         x="0" y="0" 
                         width="100%" height="100%" 
                         preserveAspectRatio="xMidYMid slice"
-                        clip-path="url(#cornerClip)"
+                        clip-path="url(#cornerClip2)"
                     />
                 </svg>
             </div>
@@ -885,9 +902,47 @@
                 <div class="big-sub">WEB · DESIGN · 2026</div>
             </div>
 
-            <!-- Избранная работа -->
+            <!-- ===== ИКОНКИ НАВЫКОВ ===== -->
+            <div class="skills-icons">
+                <div class="skill-icon">
+                    <span class="icon">🎨</span>
+                    <span class="name">Figma</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">💻</span>
+                    <span class="name">HTML</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">🎭</span>
+                    <span class="name">CSS</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">⚡</span>
+                    <span class="name">JS</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">⚛️</span>
+                    <span class="name">React</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">🐙</span>
+                    <span class="name">Git</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">📱</span>
+                    <span class="name">Adaptive</span>
+                </div>
+                <div class="skill-icon">
+                    <span class="icon">🎯</span>
+                    <span class="name">UI/UX</span>
+                </div>
+            </div>
+
+            <!-- ===== ИЗБРАННЫЙ ПРОЕКТ (картинка уменьшена) ===== -->
             <div class="portfolio-card featured">
-                <img src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
+                <div class="img-wrap">
+                    <img src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
+                </div>
                 <div class="card-info">
                     <div class="big-label">✦ ГЛАВНЫЙ ПРОЕКТ</div>
                     <h4>VITRIX</h4>
@@ -900,14 +955,14 @@
                 </div>
             </div>
 
-            <!-- Сетка работ -->
+            <!-- ===== СЕТКА РАБОТ ===== -->
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Работа" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Эстетика</h4>
-                        <p>Магазин обуви — главная страница</p>
+                        <p>Магазин обуви — главная</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
@@ -915,7 +970,7 @@
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Эстетика</h4>
-                        <p>Каталог и карточки товаров</p>
+                        <p>Каталог товаров</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
@@ -923,7 +978,7 @@
                     <div class="card-info">
                         <div class="label">Иллюстрация</div>
                         <h4>Роспись на кроссовках</h4>
-                        <p>Главная страница проекта</p>
+                        <p>Главная страница</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
@@ -939,23 +994,23 @@
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Сайт кафе</h4>
-                        <p>Полноценный сайт для заведения</p>
+                        <p>Для заведения</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="Работа" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
-                        <h4>Страница к 9 мая</h4>
+                        <h4>9 мая</h4>
                         <p>Праздничная страница</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
-                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение" loading="lazy" style="max-height:300px; width:auto; max-width:100%; object-fit:contain; margin:0 auto; background:#f4f6f8;">
+                    <img src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение" loading="lazy" style="max-height:260px; width:auto; max-width:100%; object-fit:contain; margin:0 auto; background:#f4f6f8;">
                     <div class="card-info">
                         <div class="label">UI/UX</div>
                         <h4>Приложение для путешествий</h4>
-                        <p>Дизайн интерфейса в Figma</p>
+                        <p>Дизайн интерфейса</p>
                     </div>
                 </div>
             </div>
@@ -966,9 +1021,7 @@
     <footer class="footer">
         <div class="footer-buttons">
             <button class="primary" id="footerDownloadResume">⬇ Резюме</button>
-            <button id="footerDownloadPortfolio1">🖼 Портфолио стр.1</button>
-            <button id="footerDownloadPortfolio2">🖼 Портфолио стр.2</button>
-            <button id="footerDownloadPortfolioAll">📚 Всё портфолио</button>
+            <button id="footerDownloadPortfolio">🖼 Портфолио</button>
         </div>
 
         <button class="back-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
@@ -993,7 +1046,7 @@
             const tabId = this.dataset.tab;
             tabContents.forEach(c => c.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            downloadLabel.textContent = tabId === 'tabResume' ? 'Скачать Резюме' : 'Скачать Портфолио';
+            downloadLabel.textContent = tabId === 'tabResume' ? 'Скачать резюме' : 'Скачать портфолио';
         });
     });
 
@@ -1062,7 +1115,7 @@
         async function downloadResume() {
             if (typeof html2canvas === 'undefined') { alert('Ошибка загрузки библиотеки.'); return; }
             try {
-                const photoData = await createCircularPhoto(photoImg.src, 130);
+                const photoData = await createCircularPhoto(photoImg.src, 120);
                 const temp = document.createElement('img');
                 temp.src = photoData;
                 temp.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;';
@@ -1088,10 +1141,10 @@
             } catch (e) { alert('Ошибка: ' + e.message); }
         }
 
-        function downloadElement(el, name) {
+        function downloadPortfolio() {
             if (typeof html2canvas === 'undefined') { alert('Ошибка загрузки библиотеки.'); return; }
-            const rect = el.getBoundingClientRect();
-            html2canvas(el, {
+            const rect = portfolioEl.getBoundingClientRect();
+            html2canvas(portfolioEl, {
                 scale: 2.0,
                 useCORS: true,
                 backgroundColor: '#ffffff',
@@ -1100,7 +1153,7 @@
                 height: rect.height,
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = name;
+                link.download = 'портфолио_Анастасия_Дубовицких.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(e => alert('Ошибка: ' + e.message));
@@ -1108,9 +1161,7 @@
 
         function handleDownload(type) {
             if (type === 'resume') downloadResume();
-            else if (type === 'portfolio1') downloadElement(portfolioEl, 'портфолио_стр1.png');
-            else if (type === 'portfolio2') downloadElement(portfolioEl, 'портфолио_стр2.png');
-            else if (type === 'portfolioAll') downloadElement(portfolioEl, 'портфолио_все.png');
+            else if (type === 'portfolio1') downloadPortfolio();
         }
 
         document.querySelectorAll('.download-dropdown button').forEach(btn => {
@@ -1126,9 +1177,7 @@
         });
 
         document.getElementById('footerDownloadResume').onclick = downloadResume;
-        document.getElementById('footerDownloadPortfolio1').onclick = () => downloadElement(portfolioEl, 'портфолио_стр1.png');
-        document.getElementById('footerDownloadPortfolio2').onclick = () => downloadElement(portfolioEl, 'портфолио_стр2.png');
-        document.getElementById('footerDownloadPortfolioAll').onclick = () => downloadElement(portfolioEl, 'портфолио_все.png');
+        document.getElementById('footerDownloadPortfolio').onclick = downloadPortfolio;
     });
 </script>
 
