@@ -3,563 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анастасия Дубовицких — Портфолио</title>
+    <title>Резюме и портфолио — Анастасия Дубовицких</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         html {
             scroll-behavior: smooth;
         }
-        
         body {
             font-family: 'Segoe UI', 'Arial', sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #e6e9ef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 80px;
             min-height: 100vh;
-            padding: 20px;
         }
-        
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 30px 35px 40px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        /* ===== HEADER ===== */
+
+        /* ===== ШАПКА ===== */
         .header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0 40px;
-            border-bottom: 2px solid #1a1a1a;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eef0f5;
+            gap: 12px;
         }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-        .logo span {
-            color: #ff3366;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .nav-links a {
-            color: #888;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            transition: color 0.3s;
-            letter-spacing: 0.5px;
-        }
-        .nav-links a:hover {
-            color: #fff;
-        }
-        .nav-links a.active {
-            color: #fff;
-            border-bottom: 2px solid #ff3366;
-            padding-bottom: 4px;
-        }
-        
-        .nav-links .vitrix-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #1a1a1a;
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: #fff;
-            border: 1px solid #333;
-            transition: all 0.3s;
-        }
-        .nav-links .vitrix-link:hover {
-            border-color: #ff3366;
-            background: #222;
-            transform: translateY(-2px);
-        }
-        .nav-links .vitrix-link img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-        }
-        .nav-links .vitrix-link small {
-            font-weight: 400;
-            opacity: 0.6;
-            font-size: 10px;
-        }
-        
-        /* ===== ВКЛАДКИ ===== */
+
         .tab-switch {
             display: flex;
-            gap: 4px;
-            background: #1a1a1a;
-            padding: 4px;
+            background: #f0f2f8;
             border-radius: 12px;
+            padding: 4px;
+            gap: 4px;
         }
         .tab-switch .tab-btn {
             padding: 10px 28px;
             border: none;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             background: transparent;
-            color: #666;
+            color: #7a7a8a;
         }
         .tab-switch .tab-btn.active {
-            background: #ff3366;
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.3);
+            background: #ffffff;
+            color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         .tab-switch .tab-btn:hover:not(.active) {
-            color: #fff;
+            color: #1a1a2e;
         }
-        
-        .tab-content {
-            display: none;
-            animation: fadeUp 0.5s ease;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* ===== РЕЗЮМЕ (классическое) ===== */
-        #tabResume {
-            background: #ffffff;
-            color: #1a1a1a;
-            border-radius: 16px;
-            padding: 40px 45px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-        }
-        
-        .resume-header {
+
+        .header-actions {
             display: flex;
-            gap: 30px;
-            align-items: center;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #eee;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .resume-photo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid #1a1a1a;
-            flex-shrink: 0;
-        }
-        .resume-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .resume-title h1 {
-            font-size: 32px;
-            color: #1a1a1a;
-        }
-        .resume-title .sub {
-            font-size: 16px;
-            color: #666;
-            margin-top: 4px;
-        }
-        .resume-contacts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px 30px;
-            margin-top: 10px;
-        }
-        .resume-contacts span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            color: #444;
-        }
-        
-        .resume-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.8fr;
-            gap: 40px;
-        }
-        @media (max-width: 768px) {
-            .resume-grid { grid-template-columns: 1fr; }
-        }
-        
-        .resume-section {
-            margin-bottom: 24px;
-        }
-        .resume-section h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
-        }
-        .resume-section p, .resume-section li {
-            font-size: 14px;
-            color: #444;
-            line-height: 1.7;
-        }
-        .resume-section ul {
-            list-style: none;
-            padding: 0;
-        }
-        .resume-section ul li {
-            padding: 3px 0 3px 18px;
-            position: relative;
-        }
-        .resume-section ul li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: #ff3366;
-        }
-        
-        .exp-item {
-            margin-bottom: 16px;
-            padding-left: 12px;
-            border-left: 3px solid #eee;
-        }
-        .exp-item:hover {
-            border-left-color: #ff3366;
-        }
-        .exp-item .head {
-            font-weight: 700;
-            color: #1a1a1a;
-            font-size: 15px;
-        }
-        .exp-item .meta {
-            font-size: 13px;
-            color: #888;
-        }
-        .exp-item .desc {
-            font-size: 13px;
-            color: #555;
-            margin-top: 4px;
-        }
-        
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .skills-tags .tag {
-            background: #f0f0f0;
-            padding: 3px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #333;
-        }
-        
-        .bottom-info {
-            display: flex;
-            gap: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .bottom-info .item .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #999;
-            letter-spacing: 0.5px;
-        }
-        .bottom-info .item .value {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-top: 2px;
-        }
-        
-        /* ===== ПОРТФОЛИО (необычный дизайн) ===== */
-        #tabPortfolio {
-            padding: 0;
-        }
-        
-        .portfolio-hero {
-            padding: 60px 0 40px;
-            border-bottom: 2px solid #1a1a1a;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        .portfolio-hero .big-title {
-            font-size: 80px;
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -3px;
-            background: linear-gradient(135deg, #fff 40%, #ff3366);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .portfolio-hero .big-sub {
-            font-size: 24px;
-            color: #666;
-            margin-top: 10px;
-            letter-spacing: 4px;
-            font-weight: 300;
-        }
-        .portfolio-hero .big-sub span {
-            color: #ff3366;
-            font-weight: 700;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        @media (max-width: 768px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-        }
-        
-        .portfolio-card {
-            background: #111;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s;
-            border: 1px solid #222;
-            position: relative;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            border-color: #ff3366;
-            box-shadow: 0 20px 60px rgba(255, 51, 102, 0.1);
-        }
-        .portfolio-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .portfolio-card .card-info {
-            padding: 16px 20px 20px;
-        }
-        .portfolio-card .card-info .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #666;
-            letter-spacing: 1px;
-        }
-        .portfolio-card .card-info h4 {
-            font-size: 18px;
-            margin: 4px 0 2px;
-            color: #fff;
-        }
-        .portfolio-card .card-info p {
-            font-size: 13px;
-            color: #888;
-        }
-        
-        .portfolio-card.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: #111;
-        }
-        @media (max-width: 768px) {
-            .portfolio-card.featured {
-                grid-template-columns: 1fr;
-            }
-        }
-        .portfolio-card.featured img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .portfolio-card.featured .card-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 30px 40px;
-        }
-        .portfolio-card.featured .card-info .big-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #ff3366;
-            letter-spacing: 2px;
-        }
-        .portfolio-card.featured .card-info h4 {
-            font-size: 32px;
-            margin: 8px 0;
-        }
-        .portfolio-card.featured .card-info p {
-            font-size: 15px;
-            color: #888;
-            max-width: 400px;
-        }
-        
-        /* ===== НЕОБЫЧНЫЕ БЛОКИ ===== */
-        .statement-block {
-            padding: 40px 0;
-            border-top: 2px solid #1a1a1a;
-            border-bottom: 2px solid #1a1a1a;
-            margin: 40px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        @media (max-width: 768px) {
-            .statement-block { grid-template-columns: 1fr; }
-        }
-        .statement-block .big-number {
-            font-size: 120px;
-            font-weight: 900;
-            color: #ff3366;
-            line-height: 0.8;
-            opacity: 0.3;
-        }
-        .statement-block .text h3 {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
-        .statement-block .text p {
-            color: #888;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-        
-        .skills-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 30px 0;
-            border-top: 2px solid #1a1a1a;
-            margin-top: 20px;
-        }
-        .skills-showcase .skill-item {
-            text-align: center;
-            padding: 20px;
-            background: #111;
-            border-radius: 12px;
-            border: 1px solid #222;
-            transition: all 0.3s;
-        }
-        .skills-showcase .skill-item:hover {
-            border-color: #ff3366;
-            transform: scale(1.05);
-        }
-        .skills-showcase .skill-item .icon {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .skills-showcase .skill-item .name {
-            font-size: 13px;
-            color: #888;
-            font-weight: 600;
-        }
-        
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 40px 0 20px;
-            border-top: 2px solid #1a1a1a;
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .footer .footer-btns {
-            display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        .footer .footer-btns button {
-            padding: 8px 20px;
-            border: 1px solid #333;
-            border-radius: 30px;
-            background: transparent;
-            color: #888;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .footer .footer-btns button:hover {
-            border-color: #ff3366;
+
+        /* ===== КНОПКА VITRIX ===== */
+        .vitrix-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
             color: #fff;
-            background: rgba(255, 51, 102, 0.1);
-        }
-        .footer .footer-btns button.primary {
-            background: #ff3366;
-            color: #fff;
-            border-color: #ff3366;
-        }
-        .footer .footer-btns button.primary:hover {
-            background: #ff5588;
-            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.3);
-        }
-        
-        .back-top {
-            padding: 10px 30px;
-            border: 2px solid #333;
-            border-radius: 30px;
-            background: transparent;
-            color: #888;
-            font-size: 14px;
+            padding: 8px 18px 8px 14px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25);
+            border: 2px solid #4ade80;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
         }
-        .back-top:hover {
-            border-color: #ff3366;
-            color: #fff;
-            transform: translateY(-3px);
+        .vitrix-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+            transition: all 0.5s;
+            opacity: 0;
         }
-        
-        .footer .copy {
-            font-size: 12px;
-            color: #444;
-            letter-spacing: 1px;
+        .vitrix-btn:hover::before {
+            opacity: 1;
+            transform: scale(1.2);
         }
-        
+        .vitrix-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.35);
+            border-color: #6ee7a0;
+        }
+        .vitrix-btn .icon-left,
+        .vitrix-btn .icon-right {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .vitrix-btn:hover .icon-left {
+            transform: rotate(-8deg) scale(1.1);
+        }
+        .vitrix-btn:hover .icon-right {
+            transform: rotate(8deg) scale(1.1);
+        }
+        .vitrix-btn .btn-text {
+            line-height: 1.2;
+        }
+        .vitrix-btn .btn-text small {
+            font-weight: 400;
+            opacity: 0.7;
+            font-size: 10px;
+            display: block;
+            margin-top: -2px;
+        }
+
         /* ===== ВЫДВИЖНАЯ КНОПКА ===== */
         .download-wrapper {
             position: relative;
             display: inline-block;
         }
         .download-main-btn {
-            padding: 10px 24px;
+            padding: 10px 22px;
             border: none;
-            border-radius: 30px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            background: #ff3366;
+            background: #2c3e50;
             color: #fff;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
             display: flex;
             align-items: center;
             gap: 8px;
+            min-width: 160px;
+            justify-content: center;
         }
         .download-main-btn:hover {
-            background: #ff5588;
+            background: #1a2a3a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.3);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
         }
         .download-main-btn .arrow {
             transition: transform 0.3s;
@@ -570,17 +178,19 @@
         }
         .download-dropdown {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 6px);
+            left: 0;
             right: 0;
-            background: #1a1a1a;
+            background: #fff;
             border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
             padding: 6px;
             display: none;
             flex-direction: column;
             gap: 3px;
-            min-width: 180px;
-            border: 1px solid #333;
             z-index: 100;
+            min-width: 180px;
+            border: 1px solid #eef0f5;
             animation: slideDown 0.25s ease;
         }
         .download-wrapper:hover .download-dropdown {
@@ -595,7 +205,7 @@
             border: none;
             border-radius: 8px;
             background: transparent;
-            color: #aaa;
+            color: #2c3e50;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -606,29 +216,460 @@
             gap: 10px;
         }
         .download-dropdown button:hover {
-            background: #222;
+            background: #f5f6fa;
+            transform: translateX(4px);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeUp 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== РЕЗЮМЕ (классический стиль) ===== */
+        #resumeOnly { padding: 0; background: transparent; }
+
+        .profile-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eef0f5;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .photo {
+            width: 130px;
+            min-width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #2c3e50;
+            flex-shrink: 0;
+            background: #f0f2f8;
+            transition: transform 0.3s;
+        }
+        .photo:hover { transform: scale(1.04); }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .profile-info { flex: 1; }
+        .profile-info h1 {
+            font-size: 28px;
+            color: #1a2a3a;
+            margin-bottom: 4px;
+        }
+        .profile-info .subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+        }
+        .contacts-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 28px;
+            margin-top: 10px;
+        }
+        .contacts-mini .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #444;
+        }
+        .contacts-mini .item .icon { font-size: 16px; }
+        .contacts-mini .item a { color: #1a5276; text-decoration: none; }
+
+        .two-col {
+            display: flex;
+            gap: 32px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .left-col { flex: 1.1; min-width: 260px; }
+        .right-col { flex: 2; min-width: 280px; }
+
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2c3e50;
+            padding: 4px 0 8px;
+            border-bottom: 2px solid #eef0f5;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .badge {
+            font-size: 12px;
+            background: #f0f2f8;
+            padding: 0 10px;
+            border-radius: 20px;
+            color: #888;
+        }
+        .info-grid { display: flex; flex-direction: column; gap: 3px; }
+        .info-grid .row {
+            display: flex;
+            font-size: 14px;
+            padding: 3px 0;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+        }
+        .info-grid .row .label { font-weight: 600; color: #2c3e50; min-width: 120px; }
+        .info-grid .row .value { color: #444; }
+
+        .exp-item {
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 3px solid #eef0f5;
+            transition: all 0.3s;
+        }
+        .exp-item:hover { border-left-color: #4ade80; }
+        .exp-item .head {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a2a3a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .exp-item .meta { font-size: 13px; color: #777; margin: 2px 0 4px; }
+        .exp-item .desc { font-size: 13px; color: #444; line-height: 1.5; }
+        .exp-item .desc ul { list-style: none; padding-left: 4px; }
+        .exp-item .desc ul li { padding: 2px 0 2px 18px; position: relative; }
+        .exp-item .desc ul li::before { content: "•"; position: absolute; left: 0; color: #4ade80; font-weight: 700; }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .skills-tags .tag {
+            background: #f0f2f8;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #1a2a3a;
+            border: 1px solid #e0e2ea;
+            transition: all 0.25s;
+            cursor: default;
+        }
+        .skills-tags .tag:hover {
+            background: #2c3e50;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+        .comp-list { list-style: none; padding: 0; }
+        .comp-list li {
+            padding: 3px 0 3px 18px;
+            position: relative;
+            font-size: 13px;
+            color: #444;
+            transition: transform 0.2s;
+        }
+        .comp-list li:hover { transform: translateX(4px); }
+        .comp-list li::before { content: "—"; position: absolute; left: 0; color: #4ade80; font-weight: 700; }
+
+        .bottom-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 2px solid #eef0f5;
+        }
+        .bottom-row .item .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .bottom-row .item .value {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-top: 2px;
+        }
+
+        /* ===== ПОРТФОЛИО (зеленый угол) ===== */
+        .portfolio-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-top: 10px;
+        }
+
+        /* Зеленый волнообразный угол */
+        .portfolio-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 280px;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .portfolio-corner svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .portfolio-corner .corner-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: path('M280,0 C280,0 280,280 280,280 C280,280 0,280 0,280 C80,200 60,80 200,0 Z');
+        }
+
+        /* Декоративный разделитель */
+        .divider-wave {
+            width: 100%;
+            height: 40px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+        }
+        .divider-wave img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .portfolio-hero {
+            padding: 30px 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .portfolio-hero .big-title {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: #1a2a3a;
+            position: relative;
+            display: inline-block;
+        }
+        .portfolio-hero .big-title .highlight {
+            color: #4ade80;
+        }
+        .portfolio-hero .big-sub {
+            font-size: 18px;
+            color: #888;
+            margin-top: 4px;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 20px 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-corner { width: 160px; height: 160px; }
+            .portfolio-hero .big-title { font-size: 32px; }
+        }
+
+        .portfolio-card {
+            background: #fafbfc;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid #eef0f5;
+            position: relative;
+            z-index: 2;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: #4ade80;
+            box-shadow: 0 12px 40px rgba(74, 222, 128, 0.1);
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .portfolio-card .card-info {
+            padding: 14px 18px 18px;
+        }
+        .portfolio-card .card-info .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
+        .portfolio-card .card-info h4 {
+            font-size: 17px;
+            color: #1a2a3a;
+            margin: 3px 0 2px;
+        }
+        .portfolio-card .card-info p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .portfolio-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #f8f9fc;
+        }
+        @media (max-width: 768px) {
+            .portfolio-card.featured { grid-template-columns: 1fr; }
+        }
+        .portfolio-card.featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .portfolio-card.featured .card-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 28px 34px;
+        }
+        .portfolio-card.featured .card-info .big-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #4ade80;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .portfolio-card.featured .card-info h4 {
+            font-size: 28px;
+            margin: 6px 0;
+        }
+        .portfolio-card.featured .card-info p {
+            font-size: 14px;
+            color: #888;
+            max-width: 400px;
+        }
+
+        .portfolio-card .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .portfolio-card .tags span {
+            background: #f0f2f8;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* ===== ФУТЕР ===== */
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 2px solid #eef0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .footer .footer-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .footer .footer-buttons button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: #f0f2f8;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer .footer-buttons button:hover {
+            background: #2c3e50;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+        }
+        .footer .footer-buttons button.primary {
+            background: #2c3e50;
             color: #fff;
         }
-        
-        /* ===== АДАПТИВ ===== */
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .header { flex-direction: column; align-items: stretch; gap: 16px; }
-            .nav-links { justify-content: center; }
-            .tab-switch { justify-content: center; }
-            #tabResume { padding: 24px 20px; }
-            .resume-header { flex-direction: column; text-align: center; }
-            .resume-contacts { justify-content: center; }
-            .portfolio-hero .big-title { font-size: 48px; }
-            .portfolio-hero .big-sub { font-size: 18px; }
-            .statement-block .big-number { font-size: 60px; }
-            .portfolio-card.featured .card-info h4 { font-size: 24px; }
+        .footer .footer-buttons button.primary:hover {
+            background: #1a2a3a;
         }
-        @media (max-width: 480px) {
-            .portfolio-hero .big-title { font-size: 32px; }
-            .nav-links { gap: 12px; }
-            .nav-links a { font-size: 13px; }
-            .tab-switch .tab-btn { padding: 8px 16px; font-size: 12px; }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            border: 2px solid #eef0f5;
+            border-radius: 12px;
+            background: transparent;
+            color: #2c3e50;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .back-to-top:hover {
+            border-color: #4ade80;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.15);
+        }
+        .footer .footer-note {
+            font-size: 12px;
+            color: #ccc;
+            text-align: center;
+            padding-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+            .header { flex-direction: column; align-items: stretch; }
+            .tab-switch { justify-content: center; }
+            .tab-switch .tab-btn { padding: 8px 16px; font-size: 13px; }
+            .header-actions { justify-content: center; }
+            .vitrix-btn { font-size: 12px; padding: 6px 12px; }
+            .vitrix-btn .icon-left,
+            .vitrix-btn .icon-right { width: 20px; height: 20px; }
+            .download-main-btn { min-width: 130px; font-size: 12px; padding: 8px 14px; }
+            .profile-row { flex-direction: column; align-items: center; text-align: center; }
+            .contacts-mini { justify-content: center; }
+            .two-col { flex-direction: column; }
+            .portfolio-corner { width: 120px; height: 120px; }
+            .portfolio-hero .big-title { font-size: 28px; }
+            .portfolio-card.featured .card-info h4 { font-size: 22px; }
+            .bottom-row { justify-content: center; text-align: center; }
         }
     </style>
 </head>
@@ -636,273 +677,305 @@
 
 <div class="container" id="top">
 
-    <!-- HEADER -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
-        <div class="logo">A.<span>D.</span></div>
-        
-        <div class="nav-links">
-            <div class="tab-switch">
-                <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
-                <button class="tab-btn" data-tab="tabPortfolio">✦ Портфолио</button>
-            </div>
-            
-            <a href="https://vitrix-qngz.vercel.app/" target="_blank" class="vitrix-link">
-                <img src="https://i.postimg.cc/KvQDYj5j/bolicon.jpg" alt="🌐">
-                VITRIX
-                <small>сайт</small>
+        <div class="tab-switch">
+            <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
+            <button class="tab-btn" data-tab="tabPortfolio">🖼️ Портфолио</button>
+        </div>
+
+        <div class="header-actions">
+            <a href="https://vitrix-qngz.vercel.app/" target="_blank" class="vitrix-btn">
+                <img src="https://i.postimg.cc/KvQDYj5j/bolicon.jpg" alt="🌐" class="icon-left">
+                <span class="btn-text">
+                    VITRIX
+                    <small>сайт</small>
+                </span>
+                <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="👠" class="icon-right">
             </a>
-            
+
             <div class="download-wrapper">
                 <button class="download-main-btn" id="mainDownloadBtn">
-                    <span>⬇</span>
-                    <span id="downloadLabel">Скачать</span>
+                    <span>📥</span>
+                    <span id="downloadLabel">Скачать Резюме</span>
                     <span class="arrow">▾</span>
                 </button>
                 <div class="download-dropdown">
-                    <button data-download="resume">📄 Резюме</button>
-                    <button data-download="portfolio1">🖼️ Портфолио стр.1</button>
-                    <button data-download="portfolio2">🖼️ Портфолио стр.2</button>
-                    <button data-download="portfolioAll">📚 Всё портфолио</button>
+                    <button data-download="resume"><span>📄</span> Резюме (PNG)</button>
+                    <button data-download="portfolio1"><span>🖼️</span> Портфолио — стр. 1</button>
+                    <button data-download="portfolio2"><span>🖼️</span> Портфолио — стр. 2</button>
+                    <button data-download="portfolioAll"><span>📚</span> Всё портфолио</button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ===== РЕЗЮМЕ (классическое) ===== -->
+    <!-- ===== ВКЛАДКА: РЕЗЮМЕ ===== -->
     <div class="tab-content active" id="tabResume">
-        <div class="resume-header">
-            <div class="resume-photo" id="photoContainer">
-                <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото">
-            </div>
-            <div class="resume-title">
-                <h1>Дубовицких Анастасия</h1>
-                <div class="sub">Web-разработка · Дизайн интерфейсов · Техподдержка</div>
-                <div class="resume-contacts">
-                    <span>📞 +7 (950) 182-91-25</span>
-                    <span>✉️ feccey@mail.ru</span>
-                    <span>📍 Москва</span>
+        <div id="resumeOnly">
+            <div class="profile-row">
+                <div class="photo" id="photoContainer">
+                    <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото" loading="lazy">
                 </div>
-            </div>
-        </div>
-        
-        <div class="resume-grid">
-            <div>
-                <div class="resume-section">
-                    <h3>Основная информация</h3>
-                    <p><strong>Гражданство:</strong> РФ</p>
-                    <p><strong>Образование:</strong> СПО, ОКЭИ</p>
-                    <p><strong>Дата рождения:</strong> 19.01.2006</p>
-                    <p><strong>Пол:</strong> Женский</p>
-                </div>
-                
-                <div class="resume-section">
-                    <h3>Навыки</h3>
-                    <ul>
-                        <li>HTML5, CSS3, JavaScript (база)</li>
-                        <li>Figma — макеты интерфейсов</li>
-                        <li>Git — контроль версий</li>
-                        <li>Битрикс24, CRM</li>
-                        <li>React (начальный уровень)</li>
-                        <li>SQL (базовые запросы)</li>
-                        <li>PHP, C# (в рамках обучения)</li>
-                    </ul>
-                </div>
-                
-                <div class="resume-section">
-                    <h3>Языки</h3>
-                    <p><strong>Английский:</strong> Базовый</p>
-                </div>
-            </div>
-            
-            <div>
-                <div class="resume-section">
-                    <h3>Опыт работы</h3>
-                    <div class="exp-item">
-                        <div class="head">💼 Teleperformance (Аэрофлот)</div>
-                        <div class="meta">Июль 2025 — Август 2025</div>
-                        <div class="desc">Специалист контактного центра. Обработка звонков, консультирование, работа с CRM. Более 1000 обращений.</div>
-                    </div>
-                </div>
-                
-                <div class="resume-section">
-                    <h3>Образование</h3>
-                    <div class="exp-item">
-                        <div class="head">🎓 Оренбургский колледж экономики и информатики</div>
-                        <div class="meta">09.02.07 Информационные системы и программирование</div>
-                        <div class="desc">Квалификация: Разработчик веб и мультимедийных приложений. Окончание: 2026</div>
-                    </div>
-                </div>
-                
-                <div class="resume-section">
-                    <h3>Практика</h3>
-                    <div class="exp-item">
-                        <div class="head">📘 ООО «Веб Строитель»</div>
-                        <div class="meta">2024</div>
-                    </div>
-                    <div class="exp-item">
-                        <div class="head">📘 Министерство цифрового развития Оренбургской области</div>
-                        <div class="meta">2024–2025</div>
-                    </div>
-                    <div class="exp-item">
-                        <div class="head">📘 Центр «Мой Бизнес»</div>
-                        <div class="meta">2025–2026</div>
-                    </div>
-                </div>
-                
-                <div class="resume-section">
-                    <h3>Ключевые компетенции</h3>
-                    <div class="skills-tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Figma</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Битрикс24</span>
-                        <span class="tag">Работа с клиентами</span>
+                <div class="profile-info">
+                    <h1>Дубовицких Анастасия Алексеевна</h1>
+                    <div class="subtitle">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
+                    <div class="contacts-mini">
+                        <span class="item"><span class="icon">📞</span> +7 (950) 182-91-25</span>
+                        <span class="item"><span class="icon">✉️</span> <a href="mailto:feccey@mail.ru">feccey@mail.ru</a></span>
+                        <span class="item"><span class="icon">📍</span> г. Москва</span>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="bottom-info">
-            <div class="item"><span class="label">Желаемая зарплата</span><div class="value">По договорённости</div></div>
-            <div class="item"><span class="label">Занятость</span><div class="value">Полная, гибкий график</div></div>
+
+            <div class="two-col">
+                <div class="left-col">
+                    <div class="section">
+                        <div class="section-title">Основная информация <span class="badge">личное</span></div>
+                        <div class="info-grid">
+                            <div class="row"><span class="label">Гражданство:</span><span class="value">Российская Федерация</span></div>
+                            <div class="row"><span class="label">Образование:</span><span class="value">Среднее профессиональное (СПО)</span></div>
+                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19 января 2006 г.</span></div>
+                            <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
+                            <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Знание языков</div>
+                        <div style="font-size:14px; color:#444;"><strong>Английский:</strong> Базовый</div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Компьютерные навыки</div>
+                        <ul class="comp-list">
+                            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                            <li>Figma (разработка макетов интерфейсов)</li>
+                            <li>Git (система контроля версий)</li>
+                            <li>Битрикс24, CRM-системы</li>
+                            <li>1С: Предприятие (базовые навыки)</li>
+                            <li>HTML5, CSS3, JavaScript (база)</li>
+                            <li>React (базовый уровень)</li>
+                            <li>SQL (базовые запросы)</li>
+                            <li>PHP, C# (в рамках колледжа)</li>
+                            <li>Начальный уровень разработки десктопных приложений</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Дополнительная информация</div>
+                        <div style="font-size:14px; color:#444; line-height:1.7;">
+                            <p><strong>Личные качества:</strong> Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</p>
+                            <p style="margin-top:4px;"><strong>Профессиональные навыки:</strong> Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</p>
+                            <p style="margin-top:4px;"><strong>О себе:</strong> Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    <div class="section">
+                        <div class="section-title">Опыт работы</div>
+                        <div class="exp-item">
+                            <div class="head">💼 Teleperformance (проект ПАО «Аэрофлот»)</div>
+                            <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
+                            <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
+                                    <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
+                                    <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
+                                    <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
+                                    <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Образование</div>
+                        <div class="exp-item">
+                            <div class="head">🎓 Оренбургский колледж экономики и информатики (ОКЭИ)</div>
+                            <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
+                            <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
+                            <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
+                            <div class="meta"><strong>Форма обучения:</strong> Очная</div>
+                            <div class="desc" style="margin-top:6px;">
+                                <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
+                                <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Курсы и тренинги</div>
+                        <div class="exp-item">
+                            <div class="head">📘 Производственная практика — ООО «Веб Строитель»</div>
+                            <div class="meta"><strong>Период:</strong> 2024 г.</div>
+                            <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="head">📘 Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
+                            <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
+                            <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="head">📘 Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
+                            <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
+                            <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Ключевые компетенции</div>
+                        <div class="skills-tags">
+                            <span class="tag">HTML / CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React (база)</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">Битрикс24</span>
+                            <span class="tag">1С</span>
+                            <span class="tag">Десктопные приложения (база)</span>
+                            <span class="tag">Работа с клиентами</span>
+                            <span class="tag">Стрессоустойчивость</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="item"><span class="label">Желаемая зарплата</span><span class="value">По договорённости</span></div>
+                <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
+            </div>
         </div>
     </div>
 
-    <!-- ===== ПОРТФОЛИО (необычный дизайн) ===== -->
+    <!-- ===== ВКЛАДКА: ПОРТФОЛИО ===== -->
     <div class="tab-content" id="tabPortfolio">
-        <div class="portfolio-hero">
-            <div class="big-title">ПОРТФОЛИО</div>
-            <div class="big-sub">WEB · DESIGN · <span>2026</span></div>
-        </div>
-        
-        <!-- Избранная работа (как в примерах с крупным изображением) -->
-        <div class="portfolio-card featured">
-            <img src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
-            <div class="card-info">
-                <div class="big-label">✦ ГЛАВНЫЙ ПРОЕКТ</div>
-                <h4>VITRIX</h4>
-                <p>Магазин женской обуви. Полный цикл разработки: дизайн в Figma, верстка, адаптивность.</p>
-                <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                    <span style="background:#222; padding:2px 12px; border-radius:20px; font-size:12px; color:#888;">Figma</span>
-                    <span style="background:#222; padding:2px 12px; border-radius:20px; font-size:12px; color:#888;">HTML/CSS</span>
-                    <span style="background:#222; padding:2px 12px; border-radius:20px; font-size:12px; color:#888;">React</span>
-                </div>
+        <div class="portfolio-wrapper">
+            <!-- Зеленый волнообразный угол -->
+            <div class="portfolio-corner">
+                <svg viewBox="0 0 280 280" preserveAspectRatio="xMaxYMin meet">
+                    <defs>
+                        <clipPath id="cornerClip">
+                            <path d="M280,0 C280,0 280,280 280,280 C280,280 0,280 0,280 C80,200 60,80 200,0 Z"/>
+                        </clipPath>
+                    </defs>
+                    <image 
+                        href="https://i.postimg.cc/kGYL3mfF/tumblr-ad28ec1a5f9d0ad0f443519f36097c54-561ead2b-540.webp" 
+                        x="0" y="0" 
+                        width="100%" height="100%" 
+                        preserveAspectRatio="xMidYMid slice"
+                        clip-path="url(#cornerClip)"
+                    />
+                </svg>
             </div>
-        </div>
-        
-        <!-- Сетка работ -->
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Работа" loading="lazy">
+
+            <!-- Разделитель волнами -->
+            <div class="divider-wave">
+                <img src="https://i.postimg.cc/T2NsPTJX/tumblr-50ba0e6d6116cf384632fbe8d3d5c8b7-21847823-1280.png" alt="разделитель" loading="lazy">
+            </div>
+
+            <div class="portfolio-hero">
+                <div class="big-title">
+                    МОИ <span class="highlight">РАБОТЫ</span>
+                </div>
+                <div class="big-sub">WEB · DESIGN · 2026</div>
+            </div>
+
+            <!-- Избранная работа -->
+            <div class="portfolio-card featured">
+                <img src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
                 <div class="card-info">
-                    <div class="label">Веб-дизайн</div>
-                    <h4>Эстетика</h4>
-                    <p>Магазин обуви — главная страница</p>
+                    <div class="big-label">✦ ГЛАВНЫЙ ПРОЕКТ</div>
+                    <h4>VITRIX</h4>
+                    <p>Магазин женской обуви. Полный цикл разработки: дизайн в Figma, верстка, адаптивность.</p>
+                    <div class="tags">
+                        <span>Figma</span>
+                        <span>HTML/CSS</span>
+                        <span>React</span>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Работа" loading="lazy">
-                <div class="card-info">
-                    <div class="label">Веб-дизайн</div>
-                    <h4>Эстетика</h4>
-                    <p>Каталог и карточки товаров</p>
+
+            <!-- Сетка работ -->
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Веб-дизайн</div>
+                        <h4>Эстетика</h4>
+                        <p>Магазин обуви — главная страница</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Работа" loading="lazy">
-                <div class="card-info">
-                    <div class="label">Иллюстрация</div>
-                    <h4>Роспись на кроссовках</h4>
-                    <p>Главная страница проекта</p>
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Веб-дизайн</div>
+                        <h4>Эстетика</h4>
+                        <p>Каталог и карточки товаров</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Работа" loading="lazy">
-                <div class="card-info">
-                    <div class="label">Веб-разработка</div>
-                    <h4>Игровой фестиваль</h4>
-                    <p>Сайт мероприятия</p>
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Иллюстрация</div>
+                        <h4>Роспись на кроссовках</h4>
+                        <p>Главная страница проекта</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Работа" loading="lazy">
-                <div class="card-info">
-                    <div class="label">Веб-дизайн</div>
-                    <h4>Сайт кафе</h4>
-                    <p>Полноценный сайт для заведения</p>
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Веб-разработка</div>
+                        <h4>Игровой фестиваль</h4>
+                        <p>Сайт мероприятия</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-card">
-                <img src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Работа" loading="lazy">
-                <div class="card-info">
-                    <div class="label">UI/UX</div>
-                    <h4>Приложение для путешествий</h4>
-                    <p>Дизайн интерфейса в Figma</p>
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Веб-дизайн</div>
+                        <h4>Сайт кафе</h4>
+                        <p>Полноценный сайт для заведения</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Блок-утверждение (как в примерах с крупным текстом) -->
-        <div class="statement-block">
-            <div>
-                <div class="big-number">10+</div>
-                <div style="color:#666; font-size:14px; letter-spacing:1px;">ЗАВЕРШЕННЫХ ПРОЕКТОВ</div>
-            </div>
-            <div class="text">
-                <h3>КАЖДЫЙ ПРОЕКТ — <span style="color:#ff3366;">ЭТО ИСТОРИЯ</span></h3>
-                <p>Я верю, что дизайн — это не просто внешний вид. Это структура, функциональность и эмоция. Моя задача — превратить сложные задачи в понятные и красивые визуальные решения.</p>
-                <div style="margin-top:16px; display:flex; gap:20px; flex-wrap:wrap;">
-                    <div><span style="color:#ff3366; font-weight:700;">✦</span> Дизайн в Figma</div>
-                    <div><span style="color:#ff3366; font-weight:700;">✦</span> Верстка HTML/CSS</div>
-                    <div><span style="color:#ff3366; font-weight:700;">✦</span> Работа с клиентами</div>
+                <div class="portfolio-card">
+                    <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="Работа" loading="lazy">
+                    <div class="card-info">
+                        <div class="label">Веб-дизайн</div>
+                        <h4>Страница к 9 мая</h4>
+                        <p>Праздничная страница</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Скиллы (как в примерах с иконками) -->
-        <div class="skills-showcase">
-            <div class="skill-item">
-                <span class="icon">🎨</span>
-                <span class="name">Figma</span>
-            </div>
-            <div class="skill-item">
-                <span class="icon">💻</span>
-                <span class="name">HTML/CSS</span>
-            </div>
-            <div class="skill-item">
-                <span class="icon">⚡</span>
-                <span class="name">JavaScript</span>
-            </div>
-            <div class="skill-item">
-                <span class="icon">📱</span>
-                <span class="name">Адаптивность</span>
-            </div>
-            <div class="skill-item">
-                <span class="icon">🎯</span>
-                <span class="name">UI/UX</span>
-            </div>
-            <div class="skill-item">
-                <span class="icon">🔧</span>
-                <span class="name">Git</span>
+                <div class="portfolio-card">
+                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение" loading="lazy" style="max-height:300px; width:auto; max-width:100%; object-fit:contain; margin:0 auto; background:#f4f6f8;">
+                    <div class="card-info">
+                        <div class="label">UI/UX</div>
+                        <h4>Приложение для путешествий</h4>
+                        <p>Дизайн интерфейса в Figma</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="footer-btns">
+        <div class="footer-buttons">
             <button class="primary" id="footerDownloadResume">⬇ Резюме</button>
             <button id="footerDownloadPortfolio1">🖼 Портфолио стр.1</button>
             <button id="footerDownloadPortfolio2">🖼 Портфолио стр.2</button>
             <button id="footerDownloadPortfolioAll">📚 Всё портфолио</button>
         </div>
-        
-        <button class="back-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+
+        <button class="back-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
             ⬆ Наверх
         </button>
-        
-        <div class="copy">Анастасия Дубовицких · 2026</div>
+
+        <div class="footer-note">Анастасия Дубовицких · 2026</div>
     </footer>
 
 </div>
@@ -920,7 +993,7 @@
             const tabId = this.dataset.tab;
             tabContents.forEach(c => c.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            downloadLabel.textContent = tabId === 'tabResume' ? 'Скачать резюме' : 'Скачать портфолио';
+            downloadLabel.textContent = tabId === 'tabResume' ? 'Скачать Резюме' : 'Скачать Портфолио';
         });
     });
 
@@ -958,7 +1031,7 @@
                 ctx.drawImage(img, ox, oy, dw, dh);
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2 - 1.5, 0, Math.PI * 2);
-                ctx.strokeStyle = '#1a1a1a';
+                ctx.strokeStyle = '#2c3e50';
                 ctx.lineWidth = 3;
                 ctx.stroke();
                 resolve(canvas.toDataURL('image/png'));
@@ -972,7 +1045,7 @@
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.strokeStyle = '#1a1a1a';
+                ctx.strokeStyle = '#2c3e50';
                 ctx.lineWidth = 3;
                 ctx.stroke();
                 resolve(canvas.toDataURL('image/png'));
@@ -983,7 +1056,7 @@
 
     loadHtml2Canvas(function() {
         const resumeEl = document.getElementById('tabResume');
-        const page1 = document.getElementById('tabPortfolio');
+        const portfolioEl = document.getElementById('tabPortfolio');
         const photoImg = document.getElementById('profilePhoto');
 
         async function downloadResume() {
@@ -1021,7 +1094,7 @@
             html2canvas(el, {
                 scale: 2.0,
                 useCORS: true,
-                backgroundColor: el.id === 'tabPortfolio' ? '#0a0a0a' : '#ffffff',
+                backgroundColor: '#ffffff',
                 logging: false,
                 width: rect.width,
                 height: rect.height,
@@ -1035,14 +1108,9 @@
 
         function handleDownload(type) {
             if (type === 'resume') downloadResume();
-            else if (type === 'portfolio1') downloadElement(page1, 'портфолио_стр1.png');
-            else if (type === 'portfolio2') {
-                // Для портфолио стр.2 — показываем ту же страницу, но можно сделать отдельный блок
-                downloadElement(page1, 'портфолио_стр2.png');
-            }
-            else if (type === 'portfolioAll') {
-                downloadElement(page1, 'портфолио_все.png');
-            }
+            else if (type === 'portfolio1') downloadElement(portfolioEl, 'портфолио_стр1.png');
+            else if (type === 'portfolio2') downloadElement(portfolioEl, 'портфолио_стр2.png');
+            else if (type === 'portfolioAll') downloadElement(portfolioEl, 'портфолио_все.png');
         }
 
         document.querySelectorAll('.download-dropdown button').forEach(btn => {
@@ -1058,9 +1126,9 @@
         });
 
         document.getElementById('footerDownloadResume').onclick = downloadResume;
-        document.getElementById('footerDownloadPortfolio1').onclick = () => downloadElement(page1, 'портфолио_стр1.png');
-        document.getElementById('footerDownloadPortfolio2').onclick = () => downloadElement(page1, 'портфолио_стр2.png');
-        document.getElementById('footerDownloadPortfolioAll').onclick = () => downloadElement(page1, 'портфолио_все.png');
+        document.getElementById('footerDownloadPortfolio1').onclick = () => downloadElement(portfolioEl, 'портфолио_стр1.png');
+        document.getElementById('footerDownloadPortfolio2').onclick = () => downloadElement(portfolioEl, 'портфолио_стр2.png');
+        document.getElementById('footerDownloadPortfolioAll').onclick = () => downloadElement(portfolioEl, 'портфолио_все.png');
     });
 </script>
 
