@@ -518,26 +518,26 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== КОМПЕТЕНЦИИ (красивый блок) ===== */
+        /* ===== КОМПЕТЕНЦИИ (ГОЛУБОЙ БЛОК) ===== */
         .competencies {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px 30px;
             margin: 10px 0 18px;
             padding: 18px 24px;
-            background: linear-gradient(135deg, #fff5f7, #ffeef2);
+            background: #f0f5fa;
             border-radius: 14px;
-            border: 1px solid #ffd9e3;
+            border: 1px solid #d5e0ea;
             position: relative;
             z-index: 2;
-            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.06);
+            box-shadow: 0 4px 20px rgba(74, 144, 217, 0.06);
         }
         @media (max-width: 600px) {
             .competencies { grid-template-columns: 1fr; padding: 14px 18px; }
         }
         .competencies .comp-item {
             font-size: 14px;
-            color: #4a2a30;
+            color: #2c3e50;
             padding: 4px 0;
             display: flex;
             align-items: center;
@@ -551,20 +551,12 @@
             transform: translateX(6px);
         }
         .competencies .comp-item .marker {
-            color: #ff6b9d;
+            color: #4a90d9;
             font-weight: 700;
             font-size: 14px;
-            background: rgba(255, 107, 157, 0.1);
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
         }
 
-        /* ===== СЕТКА ПРОЕКТОВ ===== */
+        /* ===== ПРОЕКТЫ ===== */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -639,7 +631,7 @@
             font-weight: 600;
         }
 
-        /* ===== ИЗБРАННЫЙ ПРОЕКТ (розовый) ===== */
+        /* ===== ИЗБРАННЫЙ ПРОЕКТ ===== */
         .project-card.featured {
             grid-column: 1 / -1;
             display: grid;
@@ -1016,7 +1008,7 @@
                 </div>
             </div>
 
-            <!-- КОМПЕТЕНЦИИ -->
+            <!-- КОМПЕТЕНЦИИ (ГОЛУБОЙ) -->
             <div class="competencies">
                 <div class="comp-item"><span class="marker">✦</span> Веб-разработка (HTML/CSS/JS)</div>
                 <div class="comp-item"><span class="marker">✦</span> UI/UX дизайн и прототипирование</div>
