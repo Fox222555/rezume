@@ -518,7 +518,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== КОМПЕТЕНЦИИ (красивый блок) ===== */
+        /* ===== КОМПЕТЕНЦИИ ===== */
         .competencies {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -564,7 +564,7 @@
             flex-shrink: 0;
         }
 
-        /* ===== СЕТКА ПРОЕКТОВ (первоначальный вид) ===== */
+        /* ===== СЕТКА ПРОЕКТОВ (как в первом коде — БЕЗ РАМОК У КАРТИНОК) ===== */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -578,34 +578,25 @@
         }
 
         .project-card {
-            background: #fafbfc;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #eef0f5;
-            transition: all 0.4s;
+            background: transparent;
+            border-radius: 0;
+            overflow: visible;
+            border: none;
+            transition: all 0.3s;
             position: relative;
         }
         .project-card:hover {
             transform: translateY(-4px);
-            border-color: #ff6b9d;
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.08);
         }
-        .project-card .img-wrap {
-            padding: 12px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 80px;
-        }
-        .project-card .img-wrap img {
+        .project-card img {
             width: 100%;
-            max-height: 160px;
-            object-fit: contain;
+            height: auto;
+            display: block;
             border-radius: 0;
+            background: transparent;
         }
         .project-card .card-info {
-            padding: 10px 14px 14px;
+            padding: 10px 0 14px;
         }
         .project-card .card-info .label {
             font-size: 10px;
@@ -639,31 +630,31 @@
             font-weight: 600;
         }
 
-        /* ===== ИЗБРАННЫЙ ПРОЕКТ (розовый) ===== */
+        /* ===== ИЗБРАННЫЙ ПРОЕКТ (без рамок у картинки) ===== */
         .project-card.featured {
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             background: #fff5f7;
-            border-color: #ffd9e3;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid #ffd9e3;
         }
         @media (max-width: 768px) {
             .project-card.featured { grid-template-columns: 1fr; }
         }
-        .project-card.featured .img-wrap {
-            padding: 16px;
-            background: transparent;
-            min-height: 120px;
-        }
-        .project-card.featured .img-wrap img {
+        .project-card.featured img {
+            width: 100%;
             max-height: 200px;
+            object-fit: contain;
             border-radius: 0;
+            background: transparent;
         }
         .project-card.featured .card-info {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 18px 22px 18px 14px;
+            padding: 0 0 0 20px;
         }
         .project-card.featured .card-info .big-label {
             font-size: 11px;
@@ -776,6 +767,8 @@
             .competencies { padding: 12px 14px; }
             .skills-icons { justify-content: center; }
             .skills-icons .skill-icon img { width: 28px; height: 28px; }
+            .project-card.featured { padding: 12px; }
+            .project-card.featured .card-info { padding: 10px 0 0 0; }
         }
     </style>
 </head>
@@ -1017,7 +1010,7 @@
                 </div>
             </div>
 
-            <!-- КОМПЕТЕНЦИИ (красивый блок) -->
+            <!-- КОМПЕТЕНЦИИ -->
             <div class="competencies">
                 <div class="comp-item"><span class="marker">✦</span> Веб-разработка (HTML/CSS/JS)</div>
                 <div class="comp-item"><span class="marker">✦</span> UI/UX дизайн и прототипирование</div>
@@ -1027,13 +1020,11 @@
                 <div class="comp-item"><span class="marker">✦</span> Клиентский сервис и коммуникация</div>
             </div>
 
-            <!-- ПРОЕКТЫ -->
+            <!-- ПРОЕКТЫ (КАК В ПЕРВОМ КОДЕ — БОЛЬШИЕ КАРТИНКИ БЕЗ РАМОК) -->
             <div class="projects-grid">
                 <!-- ИЗБРАННЫЙ ПРОЕКТ -->
                 <div class="project-card featured">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="VITRIX" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="VITRIX" loading="lazy">
                     <div class="card-info">
                         <div class="big-label">✦ ГЛАВНЫЙ ПРОЕКТ</div>
                         <h4>VITRIX</h4>
@@ -1049,9 +1040,7 @@
 
                 <!-- СТРАНИЦА 1 -->
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Эстетика" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Эстетика" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Эстетика</h4>
@@ -1061,9 +1050,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика каталог" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика каталог" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Эстетика</h4>
@@ -1073,9 +1060,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись" loading="lazy">
                     <div class="card-info">
                         <div class="label">Иллюстрация</div>
                         <h4>Роспись на кроссовках</h4>
@@ -1085,9 +1070,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-разработка</div>
                         <h4>Игровой фестиваль</h4>
@@ -1097,9 +1080,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Сайт кафе</h4>
@@ -1109,9 +1090,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая" loading="lazy">
                     <div class="card-info">
                         <div class="label">Веб-дизайн</div>
                         <h4>Страница к 9 мая</h4>
@@ -1121,9 +1100,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="img-wrap">
-                        <img src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение" loading="lazy">
-                    </div>
+                    <img src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение" loading="lazy">
                     <div class="card-info">
                         <div class="label">UI/UX</div>
                         <h4>Приложение для путешествий</h4>
