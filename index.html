@@ -16,408 +16,92 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px 80px;
-            min-height: 100vh;
+            padding: 40px 20px;
         }
         .container {
             max-width: 1100px;
             width: 100%;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             padding: 30px 35px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* ===== ШАПКА ===== */
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 16px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eef0f5;
-            gap: 12px;
-        }
-
-        .tab-switch {
-            display: flex;
-            background: #f0f2f8;
-            border-radius: 12px;
-            padding: 4px;
-            gap: 4px;
-        }
-        .tab-switch .tab-btn {
-            padding: 10px 28px;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: transparent;
-            color: #7a7a8a;
-        }
-        .tab-switch .tab-btn.active {
-            background: #ffffff;
-            color: #1a1a2e;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-        .tab-switch .tab-btn:hover:not(.active) {
-            color: #1a1a2e;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* ===== КНОПКА VITRIX ===== */
-        .vitrix-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
-            color: #fff;
-            padding: 8px 18px 8px 14px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25);
-            border: 2px solid #ff6b9d;
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-        .vitrix-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 107, 157, 0.15) 0%, transparent 70%);
-            transition: all 0.5s;
-            opacity: 0;
-        }
-        .vitrix-btn:hover::before {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-        .vitrix-btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.35);
-            border-color: #ff8fb3;
-        }
-        .vitrix-btn .icon-left,
-        .vitrix-btn .icon-right {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-            transition: transform 0.3s;
-        }
-        .vitrix-btn:hover .icon-left {
-            transform: rotate(-8deg) scale(1.1);
-        }
-        .vitrix-btn:hover .icon-right {
-            transform: rotate(8deg) scale(1.1);
-        }
-        .vitrix-btn .btn-text {
-            line-height: 1.2;
-        }
-        .vitrix-btn .btn-text small {
-            font-weight: 400;
-            opacity: 0.7;
-            font-size: 10px;
-            display: block;
-            margin-top: -2px;
-        }
-
-        /* ===== ВЫДВИЖНАЯ КНОПКА ===== */
-        .download-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        .download-main-btn {
-            padding: 10px 22px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: #2c3e50;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 160px;
-            justify-content: center;
-        }
-        .download-main-btn:hover {
-            background: #1a2a3a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
-        }
-        .download-main-btn .arrow {
-            transition: transform 0.3s;
-            font-size: 12px;
-        }
-        .download-wrapper:hover .download-main-btn .arrow {
-            transform: rotate(180deg);
-        }
-        .download-dropdown {
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            padding: 6px;
-            display: none;
-            flex-direction: column;
-            gap: 3px;
-            z-index: 100;
-            min-width: 180px;
-            border: 1px solid #eef0f5;
-            animation: slideDown 0.25s ease;
-        }
-        .download-wrapper:hover .download-dropdown {
-            display: flex;
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .download-dropdown button {
-            padding: 8px 14px;
-            border: none;
-            border-radius: 8px;
-            background: transparent;
-            color: #2c3e50;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .download-dropdown button:hover {
-            background: #f5f6fa;
-            transform: translateX(4px);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeUp 0.5s ease;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+            margin-bottom: 30px;
         }
 
         /* ===== РЕЗЮМЕ ===== */
-        #resumeOnly { padding: 0; background: transparent; }
-
-        .profile-row {
+        .top-row {
             display: flex;
-            gap: 24px;
-            margin-bottom: 24px;
+            gap: 25px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #2c3e50;
             padding-bottom: 20px;
-            border-bottom: 2px solid #eef0f5;
             flex-wrap: wrap;
-            align-items: center;
         }
         .photo {
-            width: 130px;
-            min-width: 130px;
-            height: 130px;
+            width: 150px;
+            min-width: 150px;
+            height: 150px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid #2c3e50;
             flex-shrink: 0;
-            background: #f0f2f8;
-            transition: transform 0.3s;
+            position: relative;
+            background: #f0f2f5;
         }
-        .photo:hover { transform: scale(1.04); }
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        .profile-info { flex: 1; }
-        .profile-info h1 {
-            font-size: 28px;
-            color: #1a2a3a;
-            margin-bottom: 4px;
-        }
-        .profile-info .subtitle {
-            font-size: 16px;
-            color: #666;
-            font-weight: 400;
-        }
-        .contacts-mini {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px 28px;
-            margin-top: 10px;
-        }
-        .contacts-mini .item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: #444;
-        }
-        .contacts-mini .item .icon { font-size: 16px; }
-        .contacts-mini .item a { color: #1a5276; text-decoration: none; }
-
-        .two-col {
-            display: flex;
-            gap: 32px;
-            margin-top: 6px;
-            flex-wrap: wrap;
-        }
-        .left-col { flex: 1.1; min-width: 260px; }
-        .right-col { flex: 2; min-width: 280px; }
-
-        .section {
-            margin-bottom: 20px;
-        }
+        .contacts { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+        .contacts .title { font-size: 22px; font-weight: 700; color: #2c3e50; }
+        .contact-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: #333; padding: 4px 0; }
+        .contact-item .icon { font-size: 18px; width: 28px; text-align: center; }
+        .contact-item a { color: #1a5276; text-decoration: none; }
+        .header-name { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #2c3e50; }
+        .header-name h1 { font-size: 32px; font-weight: 700; color: #1a2a3a; }
+        .header-name .sub { font-size: 18px; color: #555; font-weight: 400; margin-top: 4px; }
+        .two-col { display: flex; gap: 35px; margin-top: 10px; flex-wrap: wrap; }
+        .left-col { flex: 1.1; min-width: 280px; }
+        .right-col { flex: 2; min-width: 300px; }
+        .section { margin-bottom: 22px; }
         .section-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #2c3e50;
-            padding: 4px 0 8px;
-            border-bottom: 2px solid #eef0f5;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 18px; font-weight: 700; color: #fff;
+            background: #2c3e50; padding: 6px 16px; border-radius: 4px;
+            margin-bottom: 12px; display: inline-block;
         }
-        .section-title .badge {
-            font-size: 12px;
-            background: #f0f2f8;
-            padding: 0 10px;
-            border-radius: 20px;
-            color: #888;
-        }
-        .info-grid { display: flex; flex-direction: column; gap: 3px; }
-        .info-grid .row {
-            display: flex;
-            font-size: 14px;
-            padding: 3px 0;
-            flex-wrap: wrap;
-            gap: 4px 8px;
-        }
-        .info-grid .row .label { font-weight: 600; color: #2c3e50; min-width: 120px; }
-        .info-grid .row .value { color: #444; }
-
-        .exp-item {
-            margin-bottom: 14px;
-            padding-left: 12px;
-            border-left: 3px solid #eef0f5;
-            transition: all 0.3s;
-        }
-        .exp-item:hover { border-left-color: #ff6b9d; }
-        .exp-item .head {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a2a3a;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .exp-item .meta { font-size: 13px; color: #777; margin: 2px 0 4px; }
-        .exp-item .desc { font-size: 13px; color: #444; line-height: 1.5; }
-        .exp-item .desc ul { list-style: none; padding-left: 4px; }
-        .exp-item .desc ul li { padding: 2px 0 2px 18px; position: relative; }
-        .exp-item .desc ul li::before { content: "•"; position: absolute; left: 0; color: #ff6b9d; font-weight: 700; }
-
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 4px;
-        }
+        .info-grid { display: flex; flex-direction: column; gap: 4px; padding-left: 4px; }
+        .info-grid .row { display: flex; font-size: 15px; line-height: 1.6; padding: 2px 0; flex-wrap: wrap; }
+        .info-grid .row .label { font-weight: 600; min-width: 140px; color: #2c3e50; }
+        .info-grid .row .value { color: #222; }
+        .exp-item { margin-bottom: 18px; border-left: 3px solid #2c3e50; padding-left: 14px; }
+        .exp-item .head { font-size: 16px; font-weight: 700; color: #1a2a3a; display: flex; align-items: center; gap: 8px; }
+        .exp-item .meta { font-size: 14px; color: #555; margin: 2px 0 4px 0; }
+        .exp-item .desc { font-size: 14px; color: #333; line-height: 1.5; margin-top: 4px; }
+        .exp-item .desc ul { list-style: none; padding-left: 6px; }
+        .exp-item .desc ul li { padding: 2px 0 2px 20px; position: relative; }
+        .exp-item .desc ul li::before { content: "•"; position: absolute; left: 2px; color: #2c3e50; font-weight: 700; }
+        .skills-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
         .skills-tags .tag {
-            background: #f0f2f8;
-            padding: 3px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #1a2a3a;
-            border: 1px solid #e0e2ea;
-            transition: all 0.25s;
-            cursor: default;
-        }
-        .skills-tags .tag:hover {
-            background: #2c3e50;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+            background: #ecf0f1; padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; color: #1a2a3a; border: 1px solid #d5dbe0;
         }
         .comp-list { list-style: none; padding: 0; }
-        .comp-list li {
-            padding: 3px 0 3px 18px;
-            position: relative;
-            font-size: 13px;
-            color: #444;
-            transition: transform 0.2s;
-        }
-        .comp-list li:hover { transform: translateX(4px); }
-        .comp-list li::before { content: "—"; position: absolute; left: 0; color: #ff6b9d; font-weight: 700; }
-
+        .comp-list li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; color: #222; }
+        .comp-list li::before { content: "—"; position: absolute; left: 2px; color: #2c3e50; font-weight: 700; }
         .bottom-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 2px solid #eef0f5;
+            display: flex; flex-wrap: wrap; gap: 40px;
+            margin-top: 25px; padding-top: 18px; border-top: 2px solid #2c3e50;
         }
-        .bottom-row .item .label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .bottom-row .item .value {
-            font-size: 17px;
-            font-weight: 700;
-            color: #1a2a3a;
-            margin-top: 2px;
-        }
+        .bottom-row .item { display: flex; flex-direction: column; }
+        .bottom-row .item .label { font-size: 14px; font-weight: 600; color: #2c3e50; text-transform: uppercase; }
+        .bottom-row .item .value { font-size: 18px; font-weight: 700; color: #1a2a3a; margin-top: 2px; }
+        .lang-item { font-size: 15px; padding: 3px 0; color: #222; }
+        .lang-item .lbl { font-weight: 600; color: #2c3e50; }
 
-        /* ============================================================ */
-        /* ===== ПОРТФОЛИО (как в первом коде) ===== */
-        /* ============================================================ */
-
-        .portfolio-section { margin-top: 10px; padding-top: 10px; }
-        .portfolio-section .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            background: #2c3e50;
-            padding: 6px 16px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
+        /* ===== ПОРТФОЛИО ===== */
+        .portfolio-section { margin-top: 40px; padding-top: 30px; border-top: 3px solid #2c3e50; }
 
         .site-link {
             text-align: center;
@@ -427,9 +111,9 @@
             display: inline-block;
             background: linear-gradient(135deg, #2c3e50, #1a2a3a);
             color: #ffffff;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
-            padding: 12px 34px;
+            padding: 14px 40px;
             border-radius: 50px;
             text-decoration: none;
             border: 3px solid #2c3e50;
@@ -468,18 +152,12 @@
         .portfolio-item img.vitrix-main {
             max-width: 90%; width: auto; max-height: 500px;
             object-fit: contain; margin: 0 auto;
-            background: #f8f9fc;
-            border-radius: 6px;
+            background: #f8f9fc; border-radius: 6px;
         }
         .portfolio-item .caption {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a2a3a;
-            margin-top: 6px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #2c3e50;
-            display: inline-block;
-            padding-left: 4px;
+            font-size: 14px; font-weight: 600; color: #1a2a3a;
+            margin-top: 6px; padding-bottom: 4px;
+            border-bottom: 2px solid #2c3e50; display: inline-block; padding-left: 4px;
         }
         .portfolio-item .caption small { font-weight: 400; color: #777; font-size: 12px; }
 
@@ -499,433 +177,271 @@
             letter-spacing: 1px;
         }
 
-        /* ===== КОМПЕТЕНЦИИ (серо-голубой) ===== */
-        .competencies {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 30px;
-            margin: 16px 0 24px;
-            padding: 16px 22px;
-            background: #f0f5fa;
-            border-radius: 10px;
-            border: 1px solid #d5e0ea;
-            position: relative;
-            z-index: 2;
+        .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
+        .download-btn {
+            background: #2c3e50; color: white; border: none;
+            padding: 12px 34px; border-radius: 40px; font-size: 15px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 12px rgba(44, 62, 80, 0.25);
         }
-        @media (max-width: 600px) {
-            .competencies { grid-template-columns: 1fr; padding: 12px 16px; }
-        }
-        .competencies .comp-item {
-            font-size: 14px;
-            color: #2c3e50;
-            padding: 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-            cursor: default;
-            font-weight: 500;
-        }
-        .competencies .comp-item:hover {
-            color: #1a2a3a;
-            transform: translateX(6px);
-        }
-        .competencies .comp-item .marker {
-            color: #4a90d9;
-            font-weight: 700;
-            font-size: 14px;
-        }
+        .download-btn:hover { background: #1a2a3a; transform: translateY(-2px); }
+        .download-btn.secondary { background: white; color: #2c3e50; border: 2px solid #2c3e50; }
+        .download-btn.secondary:hover { background: #f0f2f5; }
+        .footer-note { text-align: center; margin-top: 25px; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 18px; }
 
-        /* ===== ФУТЕР ===== */
-        .footer {
-            margin-top: 28px;
-            padding-top: 16px;
-            border-top: 2px solid #eef0f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            z-index: 2;
-        }
-        .footer .footer-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px;
-        }
-        .footer .footer-buttons button {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            background: #f0f2f8;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .footer .footer-buttons button:hover {
-            background: #2c3e50;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
-        }
-        .footer .footer-buttons button.primary {
-            background: #2c3e50;
-            color: #fff;
-        }
-        .footer .footer-buttons button.primary:hover {
-            background: #1a2a3a;
-        }
+        #resumeOnly { padding: 20px 25px; background: #ffffff; }
 
-        .back-to-top {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 28px;
-            border: 2px solid #eef0f5;
-            border-radius: 12px;
-            background: transparent;
-            color: #2c3e50;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .back-to-top:hover {
-            border-color: #ff6b9d;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 16px rgba(255, 107, 157, 0.12);
-        }
-        .footer .footer-note {
-            font-size: 12px;
-            color: #ccc;
-            text-align: center;
-            padding-top: 6px;
-        }
-
-        @media (max-width: 600px) {
-            .container { padding: 16px; }
-            .header { flex-direction: column; align-items: stretch; }
-            .tab-switch { justify-content: center; }
-            .tab-switch .tab-btn { padding: 8px 16px; font-size: 13px; }
-            .header-actions { justify-content: center; }
-            .vitrix-btn { font-size: 12px; padding: 6px 12px; }
-            .vitrix-btn .icon-left,
-            .vitrix-btn .icon-right { width: 20px; height: 20px; }
-            .download-main-btn { min-width: 130px; font-size: 12px; padding: 8px 14px; }
-            .profile-row { flex-direction: column; align-items: center; text-align: center; }
-            .contacts-mini { justify-content: center; }
+        @media (max-width: 800px) {
             .two-col { flex-direction: column; }
+            .top-row { flex-direction: column; align-items: center; text-align: center; }
+            .contacts .contact-item { justify-content: center; }
+            .info-grid .row { flex-direction: column; }
             .two-col-grid { grid-template-columns: 1fr; }
-            .bottom-row { justify-content: center; text-align: center; }
-            .site-link a { font-size: 15px; padding: 10px 20px; }
-            .competencies { padding: 10px 14px; }
+            .container { padding: 20px 15px; }
+            #resumeOnly { padding: 12px 10px; }
+            .portfolio-item img.app-img { max-height: 300px; }
+            .site-link a { font-size: 16px; padding: 12px 24px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container" id="top">
+<div class="container">
 
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-        <div class="tab-switch">
-            <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
-            <button class="tab-btn" data-tab="tabPortfolio">🖼️ Портфолио</button>
+    <!-- ===== РЕЗЮМЕ ===== -->
+    <div id="resumeOnly">
+        <div class="top-row">
+            <div class="photo" id="photoContainer">
+                <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
+            </div>
+            <div class="contacts">
+                <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
+                <div class="contact-item"><span class="icon">📞</span><span>+7 (950) 182-91-25</span></div>
+                <div class="contact-item"><span class="icon">✉️</span><a href="mailto:feccey@mail.ru">feccey@mail.ru</a></div>
+                <div class="contact-item"><span class="icon">📍</span><span>г. Москва</span></div>
+            </div>
         </div>
 
-        <div class="header-actions">
-            <a href="https://vitrix-qngz.vercel.app/" target="_blank" class="vitrix-btn">
-                <img src="https://i.postimg.cc/KvQDYj5j/bolicon.jpg" alt="🌐" class="icon-left">
-                <span class="btn-text">
-                    VITRIX
-                    <small>сайт</small>
-                </span>
-                <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="👠" class="icon-right">
+        <div class="header-name">
+            <h1>Дубовицких Анастасия Алексеевна</h1>
+            <div class="sub">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
+        </div>
+
+        <div class="two-col">
+            <div class="left-col">
+                <div class="section">
+                    <div class="section-title">ОСНОВНАЯ ИНФОРМАЦИЯ</div>
+                    <div class="info-grid">
+                        <div class="row"><span class="label">Гражданство:</span><span class="value">Российская Федерация</span></div>
+                        <div class="row"><span class="label">Образование:</span><span class="value">Среднее профессиональное (СПО)</span></div>
+                        <div class="row"><span class="label">Дата рождения:</span><span class="value">19 января 2006 г.</span></div>
+                        <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
+                        <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-title">ЗНАНИЕ ЯЗЫКОВ</div>
+                    <div class="lang-item"><span class="lbl">Английский:</span> Базовый</div>
+                </div>
+                <div class="section">
+                    <div class="section-title">КОМПЬЮТЕРНЫЕ НАВЫКИ</div>
+                    <ul class="comp-list">
+                        <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                        <li>Figma (разработка макетов интерфейсов)</li>
+                        <li>Git (система контроля версий)</li>
+                        <li>Битрикс24, CRM-системы</li>
+                        <li>1С: Предприятие (базовые навыки)</li>
+                        <li>HTML5, CSS3, JavaScript (база)</li>
+                        <li>React (базовый уровень)</li>
+                        <li>SQL (базовые запросы)</li>
+                        <li>PHP, C# (в рамках колледжа)</li>
+                        <li>Начальный уровень разработки десктопных приложений</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <div class="section-title">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
+                    <div class="info-grid" style="gap:6px;">
+                        <div class="row" style="flex-direction:column; gap:2px;">
+                            <span style="font-weight:600; color:#2c3e50;">Личные качества:</span>
+                            <span style="font-size:14px; color:#222;">Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</span>
+                        </div>
+                        <div class="row" style="flex-direction:column; gap:2px;">
+                            <span style="font-weight:600; color:#2c3e50;">Профессиональные навыки:</span>
+                            <span style="font-size:14px; color:#222;">Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</span>
+                        </div>
+                        <div class="row" style="flex-direction:column; gap:2px;">
+                            <span style="font-weight:600; color:#2c3e50;">О себе:</span>
+                            <span style="font-size:14px; color:#222; line-height:1.5;">Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="section">
+                    <div class="section-title">ЛИЧНАЯ ИНФОРМАЦИЯ</div>
+                    <div class="info-grid">
+                        <div class="row"><span class="label">Гражданство:</span><span class="value">РФ</span></div>
+                        <div class="row"><span class="label">Образование:</span><span class="value">СПО, ОКЭИ</span></div>
+                        <div class="row"><span class="label">Дата рождения:</span><span class="value">19.01.2006</span></div>
+                        <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
+                        <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">ОПЫТ РАБОТЫ</div>
+                    <div class="exp-item">
+                        <div class="head"><span class="icon">💼</span>Teleperformance (проект ПАО «Аэрофлот»)</div>
+                        <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
+                        <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
+                        <div class="desc">
+                            <ul>
+                                <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
+                                <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
+                                <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
+                                <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
+                                <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">ОБРАЗОВАНИЕ</div>
+                    <div class="exp-item">
+                        <div class="head"><span class="icon">🎓</span>Оренбургский колледж экономики и информатики (ОКЭИ)</div>
+                        <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
+                        <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
+                        <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
+                        <div class="meta"><strong>Форма обучения:</strong> Очная</div>
+                        <div class="desc" style="margin-top:6px;">
+                            <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
+                            <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">КУРСЫ И ТРЕНИНГИ</div>
+                    <div class="exp-item">
+                        <div class="head"><span class="icon">📘</span>Производственная практика — ООО «Веб Строитель»</div>
+                        <div class="meta"><strong>Период:</strong> 2024 г.</div>
+                        <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="head"><span class="icon">📘</span>Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
+                        <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
+                        <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="head"><span class="icon">📘</span>Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
+                        <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
+                        <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">КЛЮЧЕВЫЕ КОМПЕТЕНЦИИ</div>
+                    <div class="skills-tags">
+                        <span class="tag">HTML / CSS</span><span class="tag">JavaScript</span>
+                        <span class="tag">React (база)</span><span class="tag">Figma</span>
+                        <span class="tag">Git</span><span class="tag">SQL</span>
+                        <span class="tag">PHP</span><span class="tag">Битрикс24</span>
+                        <span class="tag">1С</span><span class="tag">Десктопные приложения (база)</span>
+                        <span class="tag">Работа с клиентами</span><span class="tag">Стрессоустойчивость</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="item"><span class="label">Желаемая зарплата</span><span class="value">45 000 – 55 000 ₽</span></div>
+            <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
+        </div>
+    </div>
+
+    <!-- ===== ПОРТФОЛИО ===== -->
+    <div class="portfolio-section" id="portfolioSection">
+
+        <div class="section-title">МОИ РАБОТЫ (ПОРТФОЛИО)</div>
+
+        <!-- ВЫДЕЛЕННАЯ ССЫЛКА НА РАБОТАЮЩИЙ САЙТ -->
+        <div class="site-link">
+            <a href="https://vitrix-qngz.vercel.app/" target="_blank">
+                <span class="icon">🌐</span> Посмотреть мой рабочий сайт VITRIX
             </a>
+        </div>
 
-            <div class="download-wrapper">
-                <button class="download-main-btn" id="mainDownloadBtn">
-                    <span>📥</span>
-                    <span id="downloadLabel">Скачать Резюме</span>
-                    <span class="arrow">▾</span>
-                </button>
-                <div class="download-dropdown">
-                    <button data-download="resume"><span>📄</span> Резюме (PNG)</button>
-                    <button data-download="portfolio1"><span>🖼️</span> Портфолио — стр.1</button>
-                    <button data-download="portfolio2"><span>🖼️</span> Портфолио — стр.2</button>
-                    <button data-download="portfolioAll"><span>📚</span> Всё портфолио</button>
+        <!-- ===== СТРАНИЦА 1 ===== -->
+        <div class="portfolio-page" id="portfolioPage1">
+            <div class="page-label">— СТРАНИЦА 1 —</div>
+
+            <div class="full-width-column">
+                <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1">
+                <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2">
+                <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3">
+            </div>
+
+            <div class="two-col-grid">
+                <div class="portfolio-item">
+                    <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика">
+                    <div class="caption">«Эстетика. Магазин обуви» <small>— главная</small></div>
+                </div>
+                <div class="portfolio-item">
+                    <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX">
+                    <div class="caption">VITRIX <small>— главная страница</small></div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись">
+                    <div class="caption">Роспись на кроссовках <small>— главная</small></div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль">
+                    <div class="caption">Сайт игрового фестиваля</div>
                 </div>
             </div>
         </div>
-    </header>
 
-    <!-- ===== ВКЛАДКА: РЕЗЮМЕ ===== -->
-    <div class="tab-content active" id="tabResume">
-        <div id="resumeOnly">
-            <div class="profile-row">
-                <div class="photo" id="photoContainer">
-                    <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото" loading="lazy">
+        <!-- ===== СТРАНИЦА 2 ===== -->
+        <div class="portfolio-page" id="portfolioPage2">
+            <div class="page-label">— СТРАНИЦА 2 —</div>
+
+            <div class="two-col-grid">
+                <div class="portfolio-item">
+                    <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе">
+                    <div class="caption">Сайт кафе</div>
                 </div>
-                <div class="profile-info">
-                    <h1>Дубовицких Анастасия Алексеевна</h1>
-                    <div class="subtitle">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
-                    <div class="contacts-mini">
-                        <span class="item"><span class="icon">📞</span> +7 (950) 182-91-25</span>
-                        <span class="item"><span class="icon">✉️</span> <a href="mailto:feccey@mail.ru">feccey@mail.ru</a></span>
-                        <span class="item"><span class="icon">📍</span> г. Москва</span>
-                    </div>
+                <div class="portfolio-item">
+                    <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая">
+                    <div class="caption">Страница к 9 мая</div>
                 </div>
-            </div>
-
-            <div class="two-col">
-                <div class="left-col">
-                    <div class="section">
-                        <div class="section-title">Основная информация</div>
-                        <div class="info-grid">
-                            <div class="row"><span class="label">Гражданство:</span><span class="value">РФ</span></div>
-                            <div class="row"><span class="label">Образование:</span><span class="value">СПО, ОКЭИ</span></div>
-                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19.01.2006</span></div>
-                            <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
-                            <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Знание языков</div>
-                        <div style="font-size:14px; color:#444;"><strong>Английский:</strong> Базовый</div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Компьютерные навыки</div>
-                        <ul class="comp-list">
-                            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-                            <li>Figma (разработка макетов интерфейсов)</li>
-                            <li>Git (система контроля версий)</li>
-                            <li>Битрикс24, CRM-системы</li>
-                            <li>1С: Предприятие (базовые навыки)</li>
-                            <li>HTML5, CSS3, JavaScript (база)</li>
-                            <li>React (базовый уровень)</li>
-                            <li>SQL (базовые запросы)</li>
-                            <li>PHP, C# (в рамках колледжа)</li>
-                            <li>Начальный уровень разработки десктопных приложений</li>
-                        </ul>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Дополнительная информация</div>
-                        <div style="font-size:14px; color:#444; line-height:1.7;">
-                            <p><strong>Личные качества:</strong> Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</p>
-                            <p style="margin-top:4px;"><strong>Профессиональные навыки:</strong> Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</p>
-                            <p style="margin-top:4px;"><strong>О себе:</strong> Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="right-col">
-                    <div class="section">
-                        <div class="section-title">Опыт работы</div>
-                        <div class="exp-item">
-                            <div class="head">💼 Teleperformance (проект ПАО «Аэрофлот»)</div>
-                            <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
-                            <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
-                            <div class="desc">
-                                <ul>
-                                    <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
-                                    <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
-                                    <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
-                                    <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
-                                    <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Образование</div>
-                        <div class="exp-item">
-                            <div class="head">🎓 Оренбургский колледж экономики и информатики (ОКЭИ)</div>
-                            <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
-                            <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
-                            <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
-                            <div class="meta"><strong>Форма обучения:</strong> Очная</div>
-                            <div class="desc" style="margin-top:6px;">
-                                <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
-                                <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Курсы и тренинги</div>
-                        <div class="exp-item">
-                            <div class="head">📘 Производственная практика — ООО «Веб Строитель»</div>
-                            <div class="meta"><strong>Период:</strong> 2024 г.</div>
-                            <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="head">📘 Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
-                            <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
-                            <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="head">📘 Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
-                            <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
-                            <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">Ключевые компетенции</div>
-                        <div class="skills-tags">
-                            <span class="tag">HTML / CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">React (база)</span>
-                            <span class="tag">Figma</span>
-                            <span class="tag">Git</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">PHP</span>
-                            <span class="tag">Битрикс24</span>
-                            <span class="tag">1С</span>
-                            <span class="tag">Десктопные приложения (база)</span>
-                            <span class="tag">Работа с клиентами</span>
-                            <span class="tag">Стрессоустойчивость</span>
-                        </div>
-                    </div>
+                <div class="portfolio-item">
+                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий">
+                    <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
                 </div>
             </div>
 
-            <div class="bottom-row">
-                <div class="item"><span class="label">Желаемая зарплата</span><span class="value">По договорённости</span></div>
-                <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
-            </div>
+            <div class="footer-note" style="margin-top:25px;">Анастасия Дубовицких • 2026</div>
         </div>
+
     </div>
 
-    <!-- ===== ВКЛАДКА: ПОРТФОЛИО ===== -->
-    <div class="tab-content" id="tabPortfolio">
-        <div class="portfolio-section">
-
-            <div class="section-title">МОИ РАБОТЫ (ПОРТФОЛИО)</div>
-
-            <!-- ССЫЛКА НА РАБОЧИЙ САЙТ -->
-            <div class="site-link">
-                <a href="https://vitrix-qngz.vercel.app/" target="_blank">
-                    <span class="icon">🌐</span> Посмотреть мой рабочий сайт VITRIX
-                </a>
-            </div>
-
-            <!-- ===== КОМПЕТЕНЦИИ (серо-голубой) ===== -->
-            <div class="competencies">
-                <div class="comp-item"><span class="marker">✦</span> Веб-разработка (HTML/CSS/JS)</div>
-                <div class="comp-item"><span class="marker">✦</span> UI/UX дизайн и прототипирование</div>
-                <div class="comp-item"><span class="marker">✦</span> Адаптивная и отзывчивая верстка</div>
-                <div class="comp-item"><span class="marker">✦</span> Git & контроль версий</div>
-                <div class="comp-item"><span class="marker">✦</span> Работа с CMS и CRM (Битрикс24)</div>
-                <div class="comp-item"><span class="marker">✦</span> Клиентский сервис и коммуникация</div>
-            </div>
-
-            <!-- ===== СТРАНИЦА 1 ===== -->
-            <div class="portfolio-page" id="portfolioPage1">
-                <div class="page-label">— СТРАНИЦА 1 —</div>
-
-                <div class="full-width-column">
-                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1" loading="lazy">
-                    <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2" loading="lazy">
-                    <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3" loading="lazy">
-                </div>
-
-                <div class="two-col-grid">
-                    <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика" loading="lazy">
-                        <div class="caption">«Эстетика. Магазин обуви» <small>— главная</small></div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
-                        <div class="caption">VITRIX <small>— главная страница</small></div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись" loading="lazy">
-                        <div class="caption">Роспись на кроссовках <small>— главная</small></div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль" loading="lazy">
-                        <div class="caption">Сайт игрового фестиваля</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== СТРАНИЦА 2 ===== -->
-            <div class="portfolio-page" id="portfolioPage2">
-                <div class="page-label">— СТРАНИЦА 2 —</div>
-
-                <div class="two-col-grid">
-                    <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе" loading="lazy">
-                        <div class="caption">Сайт кафе</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая" loading="lazy">
-                        <div class="caption">Страница к 9 мая</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий" loading="lazy">
-                        <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
-                    </div>
-                </div>
-
-                <div class="footer-note" style="margin-top:25px;">Анастасия Дубовицких • 2026</div>
-            </div>
-
-        </div>
+    <!-- ===== КНОПКИ СКАЧИВАНИЯ ===== -->
+    <div class="download-section">
+        <button class="download-btn" id="downloadResumeBtn">⬇️ Скачать резюме (PNG)</button>
+        <button class="download-btn secondary" id="downloadPortfolioPage1">📄 Скачать портфолио — стр.1</button>
+        <button class="download-btn secondary" id="downloadPortfolioPage2">📄 Скачать портфолио — стр.2</button>
+        <button class="download-btn" id="downloadPortfolioAll">📚 Скачать всё портфолио (2 стр.)</button>
     </div>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="footer-buttons">
-            <button class="primary" id="footerDownloadResume">⬇ Резюме</button>
-            <button id="footerDownloadPortfolio1">🖼 Портфолио стр.1</button>
-            <button id="footerDownloadPortfolio2">🖼 Портфолио стр.2</button>
-            <button id="footerDownloadPortfolioAll">📚 Всё портфолио</button>
-        </div>
-
-        <button class="back-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
-            ⬆ Наверх
-        </button>
-
-        <div class="footer-note">Анастасия Дубовицких · 2026</div>
-    </footer>
 
 </div>
 
 <script>
-    // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
-    const tabBtns = document.querySelectorAll('.tab-switch .tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const downloadLabel = document.getElementById('downloadLabel');
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            const tabId = this.dataset.tab;
-            tabContents.forEach(c => c.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            downloadLabel.textContent = tabId === 'tabResume' ? 'Скачать Резюме' : 'Скачать Портфолио';
-        });
-    });
-
-    // ===== ЗАГРУЗКА HTML2CANVAS =====
     function loadHtml2Canvas(callback) {
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
         script.onload = callback;
-        script.onerror = () => {
+        script.onerror = function() {
             const fallback = document.createElement('script');
             fallback.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
             fallback.onload = callback;
@@ -943,28 +459,47 @@
                 canvas.width = size;
                 canvas.height = size;
                 const ctx = canvas.getContext('2d');
+                
+                // Рисуем круг
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.clip();
-                const aspect = img.width / img.height;
-                let dw, dh, ox, oy;
-                if (aspect > 1) { dh = size; dw = size * aspect; ox = (size - dw) / 2; oy = 0; }
-                else { dw = size; dh = size / aspect; ox = 0; oy = (size - dh) / 2; }
-                ctx.drawImage(img, ox, oy, dw, dh);
+                
+                // Вставляем фото с обрезкой по центру
+                const aspectRatio = img.width / img.height;
+                let drawWidth, drawHeight, offsetX, offsetY;
+                
+                if (aspectRatio > 1) {
+                    drawHeight = size;
+                    drawWidth = size * aspectRatio;
+                    offsetX = (size - drawWidth) / 2;
+                    offsetY = 0;
+                } else {
+                    drawWidth = size;
+                    drawHeight = size / aspectRatio;
+                    offsetX = 0;
+                    offsetY = (size - drawHeight) / 2;
+                }
+                
+                ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+                
+                // Рисуем границу
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2 - 1.5, 0, Math.PI * 2);
                 ctx.strokeStyle = '#2c3e50';
                 ctx.lineWidth = 3;
                 ctx.stroke();
+                
                 resolve(canvas.toDataURL('image/png'));
             };
             img.onerror = function() {
+                // Если фото не загрузилось, создаём заглушку
                 const canvas = document.createElement('canvas');
                 canvas.width = size;
                 canvas.height = size;
                 const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#f0f2f8';
+                ctx.fillStyle = '#f0f2f5';
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
                 ctx.fill();
@@ -978,86 +513,135 @@
     }
 
     loadHtml2Canvas(function() {
-        const resumeEl = document.getElementById('tabResume');
+        const resumeEl = document.getElementById('resumeOnly');
         const page1 = document.getElementById('portfolioPage1');
         const page2 = document.getElementById('portfolioPage2');
         const photoImg = document.getElementById('profilePhoto');
 
         async function downloadResume() {
-            if (typeof html2canvas === 'undefined') { alert('Ошибка загрузки библиотеки.'); return; }
+            if (typeof html2canvas === 'undefined') {
+                alert('Ошибка загрузки библиотеки. Проверьте интернет.');
+                return;
+            }
+
             try {
-                const photoData = await createCircularPhoto(photoImg.src, 130);
-                const temp = document.createElement('img');
-                temp.src = photoData;
-                temp.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;';
+                // Создаём правильную круглую аватарку
+                const photoDataUrl = await createCircularPhoto(photoImg.src, 150);
+                
+                // Создаём временный img с правильной аватаркой
+                const tempImg = document.createElement('img');
+                tempImg.src = photoDataUrl;
+                tempImg.style.width = '100%';
+                tempImg.style.height = '100%';
+                tempImg.style.objectFit = 'cover';
+                tempImg.style.display = 'block';
+                tempImg.style.borderRadius = '50%';
+                
+                // Сохраняем оригинальное фото
                 const parent = photoImg.parentNode;
-                const orig = photoImg.style.display;
+                const originalDisplay = photoImg.style.display;
+                
+                // Заменяем фото на временное
                 photoImg.style.display = 'none';
-                parent.appendChild(temp);
+                parent.appendChild(tempImg);
+                
+                // Получаем реальные размеры элемента
                 const rect = resumeEl.getBoundingClientRect();
+                const width = rect.width;
+                const height = rect.height;
+                
+                // Делаем скриншот с фиксированными размерами
                 const canvas = await html2canvas(resumeEl, {
                     scale: 2.5,
                     useCORS: true,
+                    allowTaint: true,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    width: rect.width,
-                    height: rect.height,
+                    width: width,
+                    height: height,
+                    windowWidth: width,
+                    windowHeight: height,
+                    onclone: function(doc) {
+                        // В клоне фиксируем размеры
+                        const clonedEl = doc.getElementById('resumeOnly');
+                        if (clonedEl) {
+                            clonedEl.style.width = width + 'px';
+                            clonedEl.style.maxWidth = width + 'px';
+                            clonedEl.style.minWidth = width + 'px';
+                        }
+                    }
                 });
-                temp.remove();
-                photoImg.style.display = orig || 'block';
+                
+                // Удаляем временное фото и возвращаем оригинал
+                tempImg.remove();
+                photoImg.style.display = originalDisplay || 'block';
+                
                 const link = document.createElement('a');
                 link.download = 'резюме_Анастасия_Дубовицких.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-            } catch (e) { alert('Ошибка: ' + e.message); }
+                
+            } catch (err) {
+                console.error(err);
+                alert('Ошибка при сохранении: ' + err.message);
+            }
         }
 
         function downloadElement(el, name) {
-            if (typeof html2canvas === 'undefined') { alert('Ошибка загрузки библиотеки.'); return; }
+            if (typeof html2canvas === 'undefined') {
+                alert('Ошибка загрузки библиотеки. Проверьте интернет.');
+                return;
+            }
+            
+            // Получаем реальные размеры элемента
             const rect = el.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            
             html2canvas(el, {
                 scale: 2.0,
                 useCORS: true,
+                allowTaint: true,
                 backgroundColor: '#ffffff',
                 logging: false,
-                width: rect.width,
-                height: rect.height,
+                width: width,
+                height: height,
+                windowWidth: width,
+                windowHeight: height,
+                onclone: function(doc) {
+                    // В клоне фиксируем размеры
+                    const clonedEl = doc.getElementById(el.id);
+                    if (clonedEl) {
+                        clonedEl.style.width = width + 'px';
+                        clonedEl.style.maxWidth = width + 'px';
+                        clonedEl.style.minWidth = width + 'px';
+                    }
+                }
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = name;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-            }).catch(e => alert('Ошибка: ' + e.message));
-        }
-
-        function handleDownload(type) {
-            if (type === 'resume') downloadResume();
-            else if (type === 'portfolio1') downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-            else if (type === 'portfolio2') downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-            else if (type === 'portfolioAll') {
-                downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-                setTimeout(() => downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png'), 800);
-            }
-        }
-
-        document.querySelectorAll('.download-dropdown button').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                handleDownload(this.dataset.download);
+            }).catch(err => {
+                alert('Ошибка: ' + err.message);
             });
-        });
+        }
 
-        document.getElementById('mainDownloadBtn').addEventListener('click', function() {
-            const active = document.querySelector('.tab-content.active');
-            handleDownload(active.id === 'tabResume' ? 'resume' : 'portfolio1');
-        });
+        document.getElementById('downloadResumeBtn').onclick = downloadResume;
 
-        document.getElementById('footerDownloadResume').onclick = downloadResume;
-        document.getElementById('footerDownloadPortfolio1').onclick = () => downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-        document.getElementById('footerDownloadPortfolio2').onclick = () => downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-        document.getElementById('footerDownloadPortfolioAll').onclick = () => {
+        document.getElementById('downloadPortfolioPage1').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-            setTimeout(() => downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png'), 800);
+        };
+
+        document.getElementById('downloadPortfolioPage2').onclick = function() {
+            downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+        };
+
+        document.getElementById('downloadPortfolioAll').onclick = function() {
+            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
+            setTimeout(() => {
+                downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+            }, 1000);
         };
     });
 </script>
