@@ -26,9 +26,10 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             padding: 30px 35px 40px;
             margin-bottom: 30px;
+            transition: all 0.3s ease;
         }
 
-        /* ===== ШАПКА С ВКЛАДКАМИ И КНОПКАМИ ===== */
+        /* ===== ШАПКА С ГЛАВНЫМИ КНОПКАМИ ===== */
         .header-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -41,56 +42,239 @@
         }
         .tab-buttons {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .tab-btn {
-            padding: 10px 28px;
+            padding: 12px 30px;
             border: none;
             border-radius: 30px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: #ecf0f1;
             color: #2c3e50;
+            position: relative;
+            overflow: hidden;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .tab-btn:hover::after {
+            width: 300px;
+            height: 300px;
         }
         .tab-btn.active {
             background: #2c3e50;
             color: #fff;
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            transform: translateY(-2px);
         }
         .tab-btn:hover:not(.active) {
             background: #d5dbe0;
+            transform: translateY(-2px);
         }
-        .header-download-btns {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+
+        /* ===== КНОПКА САЙТА VITRIX (РОЗОВО-ЧЁРНАЯ) ===== */
+        .vitrix-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.3);
+            border: 2px solid #ff6b9d;
+            position: relative;
+            overflow: hidden;
         }
-        .header-download-btns .download-btn {
-            padding: 8px 18px;
-            font-size: 13px;
-            border-radius: 30px;
+        .vitrix-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,157,0.1) 0%, transparent 70%);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        .vitrix-btn:hover::before {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        .vitrix-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            border-color: #ff8fb3;
+        }
+        .vitrix-btn .icon-left,
+        .vitrix-btn .icon-right {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            transition: transform 0.3s;
+        }
+        .vitrix-btn:hover .icon-left {
+            transform: rotate(-10deg) scale(1.1);
+        }
+        .vitrix-btn:hover .icon-right {
+            transform: rotate(10deg) scale(1.1);
+        }
+        .vitrix-btn .btn-text {
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+        .vitrix-btn .btn-text small {
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: 12px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        /* ===== ЗАГОЛОВОК СТРАНИЦЫ ===== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            position: relative;
+        }
+        .page-header .page-title {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #2c3e50, #1a2a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        .page-header .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c3e50, #ff6b9d);
+            border-radius: 2px;
+        }
+        .page-header .page-sub {
+            font-size: 16px;
+            color: #888;
+            margin-top: 12px;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        .page-header .page-sub span {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* ===== КНОПКА СКАЧИВАНИЯ (ВЫДВИЖНАЯ) ===== */
+        .download-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .download-main-btn {
+            padding: 12px 28px;
             border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: #2c3e50;
             color: #fff;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 180px;
+            justify-content: center;
+        }
+        .download-main-btn:hover {
+            background: #1a2a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.35);
+        }
+        .download-main-btn .arrow {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .download-wrapper:hover .download-main-btn .arrow {
+            transform: rotate(180deg);
+        }
+        .download-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 8px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 100;
+            min-width: 200px;
+            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .download-wrapper:hover .download-dropdown {
+            display: flex;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .download-dropdown button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: #2c3e50;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+            transition: all 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .header-download-btns .download-btn:hover {
-            background: #1a2a3a;
-            transform: translateY(-1px);
-        }
-        .header-download-btns .download-btn.secondary {
-            background: #fff;
-            color: #2c3e50;
-            border: 2px solid #2c3e50;
-        }
-        .header-download-btns .download-btn.secondary:hover {
+        .download-dropdown button:hover {
             background: #f0f2f5;
+            transform: translateX(4px);
+        }
+        .download-dropdown button .icon {
+            font-size: 18px;
         }
 
         /* ===== РЕЗЮМЕ ===== */
@@ -101,6 +285,7 @@
             border-bottom: 2px solid #2c3e50;
             padding-bottom: 20px;
             flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease;
         }
         .photo {
             width: 150px;
@@ -112,16 +297,25 @@
             flex-shrink: 0;
             position: relative;
             background: #f0f2f5;
+            transition: transform 0.3s;
+        }
+        .photo:hover {
+            transform: scale(1.05);
         }
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s;
+        }
+        .photo:hover img {
+            transform: scale(1.1);
         }
         .contacts { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
         .contacts .title { font-size: 22px; font-weight: 700; color: #2c3e50; }
-        .contact-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: #333; padding: 4px 0; }
+        .contact-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: #333; padding: 4px 0; transition: transform 0.2s; }
+        .contact-item:hover { transform: translateX(4px); }
         .contact-item .icon { font-size: 18px; width: 28px; text-align: center; }
         .contact-item a { color: #1a5276; text-decoration: none; }
         .header-name { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #2c3e50; }
@@ -130,17 +324,40 @@
         .two-col { display: flex; gap: 35px; margin-top: 10px; flex-wrap: wrap; }
         .left-col { flex: 1.1; min-width: 280px; }
         .right-col { flex: 2; min-width: 300px; }
-        .section { margin-bottom: 22px; }
+        .section {
+            margin-bottom: 22px;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
         .section-title {
             font-size: 18px; font-weight: 700; color: #fff;
             background: #2c3e50; padding: 6px 16px; border-radius: 4px;
             margin-bottom: 12px; display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section-title:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
         }
         .info-grid { display: flex; flex-direction: column; gap: 4px; padding-left: 4px; }
-        .info-grid .row { display: flex; font-size: 15px; line-height: 1.6; padding: 2px 0; flex-wrap: wrap; }
+        .info-grid .row { display: flex; font-size: 15px; line-height: 1.6; padding: 2px 0; flex-wrap: wrap; transition: transform 0.2s; }
+        .info-grid .row:hover { transform: translateX(4px); }
         .info-grid .row .label { font-weight: 600; min-width: 140px; color: #2c3e50; }
         .info-grid .row .value { color: #222; }
-        .exp-item { margin-bottom: 18px; border-left: 3px solid #2c3e50; padding-left: 14px; }
+        .exp-item {
+            margin-bottom: 18px;
+            border-left: 3px solid #2c3e50;
+            padding-left: 14px;
+            transition: all 0.3s;
+        }
+        .exp-item:hover {
+            border-left-color: #ff6b9d;
+            transform: translateX(4px);
+        }
         .exp-item .head { font-size: 16px; font-weight: 700; color: #1a2a3a; display: flex; align-items: center; gap: 8px; }
         .exp-item .meta { font-size: 14px; color: #555; margin: 2px 0 4px 0; }
         .exp-item .desc { font-size: 14px; color: #333; line-height: 1.5; margin-top: 4px; }
@@ -151,68 +368,76 @@
         .skills-tags .tag {
             background: #ecf0f1; padding: 4px 14px; border-radius: 20px;
             font-size: 13px; color: #1a2a3a; border: 1px solid #d5dbe0;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        .skills-tags .tag:hover {
+            background: #2c3e50;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
         }
         .comp-list { list-style: none; padding: 0; }
-        .comp-list li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; color: #222; }
+        .comp-list li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; color: #222; transition: transform 0.2s; }
+        .comp-list li:hover { transform: translateX(4px); }
         .comp-list li::before { content: "—"; position: absolute; left: 2px; color: #2c3e50; font-weight: 700; }
         .bottom-row {
             display: flex; flex-wrap: wrap; gap: 40px;
             margin-top: 25px; padding-top: 18px; border-top: 2px solid #2c3e50;
+            animation: fadeInUp 0.6s ease 0.5s both;
         }
         .bottom-row .item { display: flex; flex-direction: column; }
         .bottom-row .item .label { font-size: 14px; font-weight: 600; color: #2c3e50; text-transform: uppercase; }
         .bottom-row .item .value { font-size: 18px; font-weight: 700; color: #1a2a3a; margin-top: 2px; }
-        .lang-item { font-size: 15px; padding: 3px 0; color: #222; }
+        .lang-item { font-size: 15px; padding: 3px 0; color: #222; transition: transform 0.2s; }
+        .lang-item:hover { transform: translateX(4px); }
         .lang-item .lbl { font-weight: 600; color: #2c3e50; }
 
         /* ===== ПОРТФОЛИО ===== */
         .portfolio-section { margin-top: 10px; padding-top: 10px; }
         .portfolio-section .section-title { margin-bottom: 18px; }
 
-        .site-link {
-            text-align: center;
-            margin: 20px 0 30px 0;
-        }
-        .site-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            background: #f8f9fc;
-            color: #1a2a3a;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 14px 34px;
-            border-radius: 12px;
-            text-decoration: none;
-            border: 2px solid #2c3e50;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(44, 62, 80, 0.12);
-        }
-        .site-link a:hover {
-            background: #2c3e50;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(44, 62, 80, 0.3);
-        }
-        .site-link a .icon {
-            font-size: 28px;
-        }
-        .site-link a .arrow {
-            font-size: 20px;
-            transition: transform 0.25s;
-        }
-        .site-link a:hover .arrow {
-            transform: translateX(4px);
-        }
-
         .full-width-column { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
-        .full-width-column img { width: 100%; height: auto; display: block; padding: 0 8px; }
+        .full-width-column img {
+            width: 100%; height: auto; display: block; padding: 0 8px;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            cursor: pointer;
+        }
+        .full-width-column img:nth-child(1) { animation-delay: 0.1s; }
+        .full-width-column img:nth-child(2) { animation-delay: 0.2s; }
+        .full-width-column img:nth-child(3) { animation-delay: 0.3s; }
+        .full-width-column img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
         .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 25px; }
-        .portfolio-item { display: flex; flex-direction: column; padding: 0 8px; }
+        .portfolio-item {
+            display: flex; flex-direction: column; padding: 0 8px;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+        .portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+        .portfolio-item:hover {
+            transform: translateY(-4px);
+        }
         .portfolio-item img {
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .portfolio-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .portfolio-item img.app-img {
             max-height: 450px;
@@ -232,6 +457,10 @@
             font-size: 14px; font-weight: 600; color: #1a2a3a;
             margin-top: 6px; padding-bottom: 4px;
             border-bottom: 2px solid #2c3e50; display: inline-block; padding-left: 4px;
+            transition: border-color 0.3s;
+        }
+        .portfolio-item:hover .caption {
+            border-color: #ff6b9d;
         }
         .portfolio-item .caption small { font-weight: 400; color: #777; font-size: 12px; }
 
@@ -241,6 +470,11 @@
             margin-bottom: 20px;
             border: 1px dashed #ccc;
             border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .portfolio-page:hover {
+            border-color: #2c3e50;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .portfolio-page .page-label {
             font-size: 14px;
@@ -251,52 +485,22 @@
             letter-spacing: 1px;
         }
 
-        /* ===== КНОПКИ ВНИЗУ ===== */
-        .download-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #2c3e50;
-        }
-        .download-btn {
-            background: #2c3e50;
-            color: white;
-            border: none;
-            padding: 12px 34px;
-            border-radius: 40px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.25);
-        }
-        .download-btn:hover {
-            background: #1a2a3a;
-            transform: translateY(-2px);
-        }
-        .download-btn.secondary {
-            background: white;
-            color: #2c3e50;
-            border: 2px solid #2c3e50;
-        }
-        .download-btn.secondary:hover {
-            background: #f0f2f5;
-        }
-        .footer-note {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 12px;
-            color: #aaa;
-            border-top: 1px solid #eee;
-            padding-top: 18px;
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== СКРЫТИЕ КОНТЕНТА ===== */
         .tab-content {
             display: none;
+            animation: fadeInUp 0.5s ease;
         }
         .tab-content.active {
             display: block;
@@ -304,6 +508,7 @@
 
         #resumeOnly { padding: 20px 25px; background: #ffffff; }
 
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 800px) {
             .two-col { flex-direction: column; }
             .top-row { flex-direction: column; align-items: center; text-align: center; }
@@ -316,7 +521,17 @@
             .header-tabs { flex-direction: column; align-items: stretch; }
             .tab-buttons { justify-content: center; }
             .header-download-btns { justify-content: center; }
-            .site-link a { font-size: 16px; padding: 12px 24px; }
+            .vitrix-btn { font-size: 13px; padding: 8px 16px; }
+            .vitrix-btn .icon-left,
+            .vitrix-btn .icon-right { width: 24px; height: 24px; }
+            .page-header .page-title { font-size: 28px; }
+            .download-main-btn { min-width: 140px; font-size: 13px; padding: 10px 20px; }
+            .download-dropdown { min-width: 160px; }
+        }
+        @media (max-width: 480px) {
+            .tab-btn { padding: 8px 16px; font-size: 14px; }
+            .page-header .page-title { font-size: 22px; letter-spacing: 2px; }
+            .header-name h1 { font-size: 24px; }
         }
     </style>
 </head>
@@ -324,26 +539,57 @@
 
 <div class="container">
 
-    <!-- ===== ШАПКА С ВКЛАДКАМИ И КНОПКАМИ ===== -->
+    <!-- ===== ШАПКА С ГЛАВНЫМИ КНОПКАМИ ===== -->
     <div class="header-tabs">
         <div class="tab-buttons">
             <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
             <button class="tab-btn" data-tab="tabPortfolio">🖼️ Портфолио</button>
         </div>
-        <div class="header-download-btns">
-            <button class="download-btn" id="headerDownloadResume">⬇️ Резюме</button>
-            <button class="download-btn secondary" id="headerDownloadPortfolio1">📄 Стр.1</button>
-            <button class="download-btn secondary" id="headerDownloadPortfolio2">📄 Стр.2</button>
-            <button class="download-btn" id="headerDownloadPortfolioAll">📚 Всё</button>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <!-- КНОПКА VITRIX -->
+            <a href="https://vitrix-qngz.vercel.app/" target="_blank" class="vitrix-btn">
+                <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="👠" class="icon-left">
+                <span class="btn-text">
+                    VITRIX
+                    <small>готовый сайт</small>
+                </span>
+                <img src="https://i.postimg.cc/KvQDYj5j/bolicon.jpg" alt="🌐" class="icon-right">
+            </a>
+            <!-- ВЫДВИЖНАЯ КНОПКА СКАЧИВАНИЯ -->
+            <div class="download-wrapper">
+                <button class="download-main-btn" id="mainDownloadBtn">
+                    <span>📥</span>
+                    <span id="downloadLabel">Скачать Резюме</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="download-dropdown">
+                    <button data-download="resume">
+                        <span class="icon">📄</span> Резюме (PNG)
+                    </button>
+                    <button data-download="portfolio1">
+                        <span class="icon">🖼️</span> Портфолио — стр. 1
+                    </button>
+                    <button data-download="portfolio2">
+                        <span class="icon">🖼️</span> Портфолио — стр. 2
+                    </button>
+                    <button data-download="portfolioAll">
+                        <span class="icon">📚</span> Всё портфолио (2 стр.)
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ ===== -->
     <div class="tab-content active" id="tabResume">
+        <div class="page-header">
+            <div class="page-title">Резюме</div>
+            <div class="page-sub">Анастасия Дубовицких · <span>Начинающий IT-специалист</span></div>
+        </div>
         <div id="resumeOnly">
             <div class="top-row">
                 <div class="photo" id="photoContainer">
-                    <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
+                    <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких" loading="lazy">
                 </div>
                 <div class="contacts">
                     <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
@@ -495,42 +741,37 @@
 
     <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО ===== -->
     <div class="tab-content" id="tabPortfolio">
+        <div class="page-header">
+            <div class="page-title">Портфолио</div>
+            <div class="page-sub">Мои работы · <span>Веб-дизайн и разработка</span></div>
+        </div>
         <div class="portfolio-section">
-
-            <!-- ССЫЛКА НА РАБОЧИЙ САЙТ (НОВЫЙ ДИЗАЙН) -->
-            <div class="site-link">
-                <a href="https://vitrix-qngz.vercel.app/" target="_blank">
-                    <span class="icon">🛍️</span>
-                    <span>Магазин женской обуви <strong>VITRIX</strong></span>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
 
             <!-- ===== СТРАНИЦА 1 ===== -->
             <div class="portfolio-page" id="portfolioPage1">
                 <div class="page-label">— СТРАНИЦА 1 —</div>
 
                 <div class="full-width-column">
-                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1">
-                    <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2">
-                    <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3">
+                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1" loading="lazy">
+                    <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2" loading="lazy">
+                    <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3" loading="lazy">
                 </div>
 
                 <div class="two-col-grid">
                     <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика">
+                        <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика" loading="lazy">
                         <div class="caption">«Эстетика. Магазин обуви» <small>— главная</small></div>
                     </div>
                     <div class="portfolio-item">
-                        <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX">
+                        <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX" loading="lazy">
                         <div class="caption">VITRIX <small>— главная страница</small></div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись">
+                        <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись" loading="lazy">
                         <div class="caption">Роспись на кроссовках <small>— главная</small></div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль">
+                        <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль" loading="lazy">
                         <div class="caption">Сайт игрового фестиваля</div>
                     </div>
                 </div>
@@ -542,46 +783,51 @@
 
                 <div class="two-col-grid">
                     <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе">
+                        <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе" loading="lazy">
                         <div class="caption">Сайт кафе</div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая">
+                        <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая" loading="lazy">
                         <div class="caption">Страница к 9 мая</div>
                     </div>
                     <div class="portfolio-item">
-                        <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий">
+                        <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий" loading="lazy">
                         <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
                     </div>
                 </div>
 
-                <div class="footer-note" style="margin-top:25px;">Анастасия Дубовицких • 2026</div>
+                <div class="footer-note" style="margin-top:25px; text-align:center; font-size:12px; color:#aaa; border-top:1px solid #eee; padding-top:18px;">
+                    Анастасия Дубовицких • 2026
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ ===== -->
-    <div class="download-section">
-        <button class="download-btn" id="downloadResumeBtn">⬇️ Скачать резюме (PNG)</button>
-        <button class="download-btn secondary" id="downloadPortfolioPage1">📄 Скачать портфолио — стр.1</button>
-        <button class="download-btn secondary" id="downloadPortfolioPage2">📄 Скачать портфолио — стр.2</button>
-        <button class="download-btn" id="downloadPortfolioAll">📚 Скачать всё портфолио (2 стр.)</button>
     </div>
 
 </div>
 
 <script>
     // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const downloadLabel = document.getElementById('downloadLabel');
+
+    tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            tabBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
             const tabId = this.dataset.tab;
-            document.querySelectorAll('.tab-content').forEach(content => {
+            tabContents.forEach(content => {
                 content.classList.remove('active');
             });
             document.getElementById(tabId).classList.add('active');
+
+            // Меняем текст на кнопке скачивания
+            if (tabId === 'tabResume') {
+                downloadLabel.textContent = 'Скачать Резюме';
+            } else {
+                downloadLabel.textContent = 'Скачать Портфолио';
+            }
         });
     });
 
@@ -760,35 +1006,37 @@
             });
         }
 
-        // Привязка кнопок внизу
-        document.getElementById('downloadResumeBtn').onclick = downloadResume;
-        document.getElementById('downloadPortfolioPage1').onclick = function() {
-            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-        };
-        document.getElementById('downloadPortfolioPage2').onclick = function() {
-            downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-        };
-        document.getElementById('downloadPortfolioAll').onclick = function() {
-            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-            setTimeout(() => {
-                downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-            }, 1000);
-        };
+        // Функция для скачивания через выпадающее меню
+        function handleDownload(type) {
+            if (type === 'resume') downloadResume();
+            else if (type === 'portfolio1') downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
+            else if (type === 'portfolio2') downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+            else if (type === 'portfolioAll') {
+                downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
+                setTimeout(() => {
+                    downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+                }, 1000);
+            }
+        }
 
-        // Привязка кнопок в шапке
-        document.getElementById('headerDownloadResume').onclick = downloadResume;
-        document.getElementById('headerDownloadPortfolio1').onclick = function() {
-            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-        };
-        document.getElementById('headerDownloadPortfolio2').onclick = function() {
-            downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-        };
-        document.getElementById('headerDownloadPortfolioAll').onclick = function() {
-            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
-            setTimeout(() => {
-                downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
-            }, 1000);
-        };
+        // Привязка кнопок выпадающего меню
+        document.querySelectorAll('.download-dropdown button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const type = this.dataset.download;
+                handleDownload(type);
+            });
+        });
+
+        // Клик по главной кнопке тоже скачивает (по умолчанию резюме или портфолио в зависимости от вкладки)
+        document.getElementById('mainDownloadBtn').addEventListener('click', function() {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab.id === 'tabResume') {
+                handleDownload('resume');
+            } else {
+                handleDownload('portfolio1');
+            }
+        });
     });
 </script>
 
