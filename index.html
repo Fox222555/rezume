@@ -28,6 +28,71 @@
             margin-bottom: 30px;
         }
 
+        /* ===== ШАПКА С ВКЛАДКАМИ И КНОПКАМИ ===== */
+        .header-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c3e50;
+            gap: 12px;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 28px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        .tab-btn.active {
+            background: #2c3e50;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #d5dbe0;
+        }
+        .header-download-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header-download-btns .download-btn {
+            padding: 8px 18px;
+            font-size: 13px;
+            border-radius: 30px;
+            border: none;
+            background: #2c3e50;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+        }
+        .header-download-btns .download-btn:hover {
+            background: #1a2a3a;
+            transform: translateY(-1px);
+        }
+        .header-download-btns .download-btn.secondary {
+            background: #fff;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+        .header-download-btns .download-btn.secondary:hover {
+            background: #f0f2f5;
+        }
+
         /* ===== РЕЗЮМЕ ===== */
         .top-row {
             display: flex;
@@ -101,34 +166,43 @@
         .lang-item .lbl { font-weight: 600; color: #2c3e50; }
 
         /* ===== ПОРТФОЛИО ===== */
-        .portfolio-section { margin-top: 40px; padding-top: 30px; border-top: 3px solid #2c3e50; }
+        .portfolio-section { margin-top: 10px; padding-top: 10px; }
+        .portfolio-section .section-title { margin-bottom: 18px; }
 
         .site-link {
             text-align: center;
-            margin: 15px 0 30px 0;
+            margin: 20px 0 30px 0;
         }
         .site-link a {
-            display: inline-block;
-            background: linear-gradient(135deg, #2c3e50, #1a2a3a);
-            color: #ffffff;
-            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8f9fc;
+            color: #1a2a3a;
+            font-size: 18px;
             font-weight: 700;
-            padding: 14px 40px;
-            border-radius: 50px;
+            padding: 14px 34px;
+            border-radius: 12px;
             text-decoration: none;
-            border: 3px solid #2c3e50;
+            border: 2px solid #2c3e50;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.35);
-            letter-spacing: 0.5px;
+            box-shadow: 0 4px 14px rgba(44, 62, 80, 0.12);
         }
         .site-link a:hover {
-            background: linear-gradient(135deg, #1a2a3a, #0d1a26);
-            transform: scale(1.04);
-            box-shadow: 0 8px 30px rgba(44, 62, 80, 0.5);
+            background: #2c3e50;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(44, 62, 80, 0.3);
         }
         .site-link a .icon {
-            margin-right: 12px;
-            font-size: 22px;
+            font-size: 28px;
+        }
+        .site-link a .arrow {
+            font-size: 20px;
+            transition: transform 0.25s;
+        }
+        .site-link a:hover .arrow {
+            transform: translateX(4px);
         }
 
         .full-width-column { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
@@ -177,16 +251,56 @@
             letter-spacing: 1px;
         }
 
-        .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; }
-        .download-btn {
-            background: #2c3e50; color: white; border: none;
-            padding: 12px 34px; border-radius: 40px; font-size: 15px; font-weight: 600;
-            cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 12px rgba(44, 62, 80, 0.25);
+        /* ===== КНОПКИ ВНИЗУ ===== */
+        .download-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #2c3e50;
         }
-        .download-btn:hover { background: #1a2a3a; transform: translateY(-2px); }
-        .download-btn.secondary { background: white; color: #2c3e50; border: 2px solid #2c3e50; }
-        .download-btn.secondary:hover { background: #f0f2f5; }
-        .footer-note { text-align: center; margin-top: 25px; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 18px; }
+        .download-btn {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 34px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.25);
+        }
+        .download-btn:hover {
+            background: #1a2a3a;
+            transform: translateY(-2px);
+        }
+        .download-btn.secondary {
+            background: white;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+        .download-btn.secondary:hover {
+            background: #f0f2f5;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #aaa;
+            border-top: 1px solid #eee;
+            padding-top: 18px;
+        }
+
+        /* ===== СКРЫТИЕ КОНТЕНТА ===== */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
 
         #resumeOnly { padding: 20px 25px; background: #ffffff; }
 
@@ -199,6 +313,9 @@
             .container { padding: 20px 15px; }
             #resumeOnly { padding: 12px 10px; }
             .portfolio-item img.app-img { max-height: 300px; }
+            .header-tabs { flex-direction: column; align-items: stretch; }
+            .tab-buttons { justify-content: center; }
+            .header-download-btns { justify-content: center; }
             .site-link a { font-size: 16px; padding: 12px 24px; }
         }
     </style>
@@ -207,226 +324,243 @@
 
 <div class="container">
 
-    <!-- ===== РЕЗЮМЕ ===== -->
-    <div id="resumeOnly">
-        <div class="top-row">
-            <div class="photo" id="photoContainer">
-                <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
-            </div>
-            <div class="contacts">
-                <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
-                <div class="contact-item"><span class="icon">📞</span><span>+7 (950) 182-91-25</span></div>
-                <div class="contact-item"><span class="icon">✉️</span><a href="mailto:feccey@mail.ru">feccey@mail.ru</a></div>
-                <div class="contact-item"><span class="icon">📍</span><span>г. Москва</span></div>
-            </div>
+    <!-- ===== ШАПКА С ВКЛАДКАМИ И КНОПКАМИ ===== -->
+    <div class="header-tabs">
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="tabResume">📄 Резюме</button>
+            <button class="tab-btn" data-tab="tabPortfolio">🖼️ Портфолио</button>
         </div>
-
-        <div class="header-name">
-            <h1>Дубовицких Анастасия Алексеевна</h1>
-            <div class="sub">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
-        </div>
-
-        <div class="two-col">
-            <div class="left-col">
-                <div class="section">
-                    <div class="section-title">ОСНОВНАЯ ИНФОРМАЦИЯ</div>
-                    <div class="info-grid">
-                        <div class="row"><span class="label">Гражданство:</span><span class="value">Российская Федерация</span></div>
-                        <div class="row"><span class="label">Образование:</span><span class="value">Среднее профессиональное (СПО)</span></div>
-                        <div class="row"><span class="label">Дата рождения:</span><span class="value">19 января 2006 г.</span></div>
-                        <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
-                        <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="section-title">ЗНАНИЕ ЯЗЫКОВ</div>
-                    <div class="lang-item"><span class="lbl">Английский:</span> Базовый</div>
-                </div>
-                <div class="section">
-                    <div class="section-title">КОМПЬЮТЕРНЫЕ НАВЫКИ</div>
-                    <ul class="comp-list">
-                        <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-                        <li>Figma (разработка макетов интерфейсов)</li>
-                        <li>Git (система контроля версий)</li>
-                        <li>Битрикс24, CRM-системы</li>
-                        <li>1С: Предприятие (базовые навыки)</li>
-                        <li>HTML5, CSS3, JavaScript (база)</li>
-                        <li>React (базовый уровень)</li>
-                        <li>SQL (базовые запросы)</li>
-                        <li>PHP, C# (в рамках колледжа)</li>
-                        <li>Начальный уровень разработки десктопных приложений</li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <div class="section-title">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
-                    <div class="info-grid" style="gap:6px;">
-                        <div class="row" style="flex-direction:column; gap:2px;">
-                            <span style="font-weight:600; color:#2c3e50;">Личные качества:</span>
-                            <span style="font-size:14px; color:#222;">Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</span>
-                        </div>
-                        <div class="row" style="flex-direction:column; gap:2px;">
-                            <span style="font-weight:600; color:#2c3e50;">Профессиональные навыки:</span>
-                            <span style="font-size:14px; color:#222;">Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</span>
-                        </div>
-                        <div class="row" style="flex-direction:column; gap:2px;">
-                            <span style="font-weight:600; color:#2c3e50;">О себе:</span>
-                            <span style="font-size:14px; color:#222; line-height:1.5;">Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="right-col">
-                <div class="section">
-                    <div class="section-title">ЛИЧНАЯ ИНФОРМАЦИЯ</div>
-                    <div class="info-grid">
-                        <div class="row"><span class="label">Гражданство:</span><span class="value">РФ</span></div>
-                        <div class="row"><span class="label">Образование:</span><span class="value">СПО, ОКЭИ</span></div>
-                        <div class="row"><span class="label">Дата рождения:</span><span class="value">19.01.2006</span></div>
-                        <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
-                        <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">ОПЫТ РАБОТЫ</div>
-                    <div class="exp-item">
-                        <div class="head"><span class="icon">💼</span>Teleperformance (проект ПАО «Аэрофлот»)</div>
-                        <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
-                        <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
-                        <div class="desc">
-                            <ul>
-                                <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
-                                <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
-                                <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
-                                <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
-                                <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">ОБРАЗОВАНИЕ</div>
-                    <div class="exp-item">
-                        <div class="head"><span class="icon">🎓</span>Оренбургский колледж экономики и информатики (ОКЭИ)</div>
-                        <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
-                        <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
-                        <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
-                        <div class="meta"><strong>Форма обучения:</strong> Очная</div>
-                        <div class="desc" style="margin-top:6px;">
-                            <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
-                            <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">КУРСЫ И ТРЕНИНГИ</div>
-                    <div class="exp-item">
-                        <div class="head"><span class="icon">📘</span>Производственная практика — ООО «Веб Строитель»</div>
-                        <div class="meta"><strong>Период:</strong> 2024 г.</div>
-                        <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
-                    </div>
-                    <div class="exp-item">
-                        <div class="head"><span class="icon">📘</span>Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
-                        <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
-                        <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
-                    </div>
-                    <div class="exp-item">
-                        <div class="head"><span class="icon">📘</span>Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
-                        <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
-                        <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">КЛЮЧЕВЫЕ КОМПЕТЕНЦИИ</div>
-                    <div class="skills-tags">
-                        <span class="tag">HTML / CSS</span><span class="tag">JavaScript</span>
-                        <span class="tag">React (база)</span><span class="tag">Figma</span>
-                        <span class="tag">Git</span><span class="tag">SQL</span>
-                        <span class="tag">PHP</span><span class="tag">Битрикс24</span>
-                        <span class="tag">1С</span><span class="tag">Десктопные приложения (база)</span>
-                        <span class="tag">Работа с клиентами</span><span class="tag">Стрессоустойчивость</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bottom-row">
-            <div class="item"><span class="label">Желаемая зарплата</span><span class="value">45 000 – 55 000 ₽</span></div>
-            <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
+        <div class="header-download-btns">
+            <button class="download-btn" id="headerDownloadResume">⬇️ Резюме</button>
+            <button class="download-btn secondary" id="headerDownloadPortfolio1">📄 Стр.1</button>
+            <button class="download-btn secondary" id="headerDownloadPortfolio2">📄 Стр.2</button>
+            <button class="download-btn" id="headerDownloadPortfolioAll">📚 Всё</button>
         </div>
     </div>
 
-    <!-- ===== ПОРТФОЛИО ===== -->
-    <div class="portfolio-section" id="portfolioSection">
-
-        <div class="section-title">МОИ РАБОТЫ (ПОРТФОЛИО)</div>
-
-        <!-- ВЫДЕЛЕННАЯ ССЫЛКА НА РАБОТАЮЩИЙ САЙТ -->
-        <div class="site-link">
-            <a href="https://vitrix-qngz.vercel.app/" target="_blank">
-                <span class="icon">🌐</span> Посмотреть мой рабочий сайт VITRIX
-            </a>
-        </div>
-
-        <!-- ===== СТРАНИЦА 1 ===== -->
-        <div class="portfolio-page" id="portfolioPage1">
-            <div class="page-label">— СТРАНИЦА 1 —</div>
-
-            <div class="full-width-column">
-                <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1">
-                <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2">
-                <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3">
-            </div>
-
-            <div class="two-col-grid">
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика">
-                    <div class="caption">«Эстетика. Магазин обуви» <small>— главная</small></div>
+    <!-- ===== ВКЛАДКА 1: РЕЗЮМЕ ===== -->
+    <div class="tab-content active" id="tabResume">
+        <div id="resumeOnly">
+            <div class="top-row">
+                <div class="photo" id="photoContainer">
+                    <img id="profilePhoto" src="https://i.postimg.cc/nz7Wzrs1/1783vmv537360.png" alt="Фото Анастасии Дубовицких">
                 </div>
-                <div class="portfolio-item">
-                    <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX">
-                    <div class="caption">VITRIX <small>— главная страница</small></div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись">
-                    <div class="caption">Роспись на кроссовках <small>— главная</small></div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль">
-                    <div class="caption">Сайт игрового фестиваля</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== СТРАНИЦА 2 ===== -->
-        <div class="portfolio-page" id="portfolioPage2">
-            <div class="page-label">— СТРАНИЦА 2 —</div>
-
-            <div class="two-col-grid">
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе">
-                    <div class="caption">Сайт кафе</div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая">
-                    <div class="caption">Страница к 9 мая</div>
-                </div>
-                <div class="portfolio-item">
-                    <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий">
-                    <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
+                <div class="contacts">
+                    <div class="title">КОНТАКТНЫЕ ДАННЫЕ</div>
+                    <div class="contact-item"><span class="icon">📞</span><span>+7 (950) 182-91-25</span></div>
+                    <div class="contact-item"><span class="icon">✉️</span><a href="mailto:feccey@mail.ru">feccey@mail.ru</a></div>
+                    <div class="contact-item"><span class="icon">📍</span><span>г. Москва</span></div>
                 </div>
             </div>
 
-            <div class="footer-note" style="margin-top:25px;">Анастасия Дубовицких • 2026</div>
-        </div>
+            <div class="header-name">
+                <h1>Дубовицких Анастасия Алексеевна</h1>
+                <div class="sub">Начинающий специалист в сфере IT / Web-разработки, техническая поддержка, менеджер по работе с клиентами</div>
+            </div>
 
+            <div class="two-col">
+                <div class="left-col">
+                    <div class="section">
+                        <div class="section-title">ОСНОВНАЯ ИНФОРМАЦИЯ</div>
+                        <div class="info-grid">
+                            <div class="row"><span class="label">Гражданство:</span><span class="value">Российская Федерация</span></div>
+                            <div class="row"><span class="label">Образование:</span><span class="value">Среднее профессиональное (СПО)</span></div>
+                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19 января 2006 г.</span></div>
+                            <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
+                            <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">ЗНАНИЕ ЯЗЫКОВ</div>
+                        <div class="lang-item"><span class="lbl">Английский:</span> Базовый</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">КОМПЬЮТЕРНЫЕ НАВЫКИ</div>
+                        <ul class="comp-list">
+                            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                            <li>Figma (разработка макетов интерфейсов)</li>
+                            <li>Git (система контроля версий)</li>
+                            <li>Битрикс24, CRM-системы</li>
+                            <li>1С: Предприятие (базовые навыки)</li>
+                            <li>HTML5, CSS3, JavaScript (база)</li>
+                            <li>React (базовый уровень)</li>
+                            <li>SQL (базовые запросы)</li>
+                            <li>PHP, C# (в рамках колледжа)</li>
+                            <li>Начальный уровень разработки десктопных приложений</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
+                        <div class="info-grid" style="gap:6px;">
+                            <div class="row" style="flex-direction:column; gap:2px;">
+                                <span style="font-weight:600; color:#2c3e50;">Личные качества:</span>
+                                <span style="font-size:14px; color:#222;">Ответственность, быстрая обучаемость, стрессоустойчивость, коммуникабельность</span>
+                            </div>
+                            <div class="row" style="flex-direction:column; gap:2px;">
+                                <span style="font-weight:600; color:#2c3e50;">Профессиональные навыки:</span>
+                                <span style="font-size:14px; color:#222;">Понимание жизненного цикла ПО, работа в команде, навыки клиентского сервиса</span>
+                            </div>
+                            <div class="row" style="flex-direction:column; gap:2px;">
+                                <span style="font-weight:600; color:#2c3e50;">О себе:</span>
+                                <span style="font-size:14px; color:#222; line-height:1.5;">Молодой специалист, увлечённый веб-разработкой и IT. Работая в системе Аэрофлота, получила опыт общения с клиентами, что помогает понимать потребности пользователей. Готова к интенсивному обучению и развитию в компании. Рассматриваю стартовые позиции в IT-сфере: техподдержка, стажёр-разработчик, менеджер проектов.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    <div class="section">
+                        <div class="section-title">ЛИЧНАЯ ИНФОРМАЦИЯ</div>
+                        <div class="info-grid">
+                            <div class="row"><span class="label">Гражданство:</span><span class="value">РФ</span></div>
+                            <div class="row"><span class="label">Образование:</span><span class="value">СПО, ОКЭИ</span></div>
+                            <div class="row"><span class="label">Дата рождения:</span><span class="value">19.01.2006</span></div>
+                            <div class="row"><span class="label">Пол:</span><span class="value">Женский</span></div>
+                            <div class="row"><span class="label">Семейное положение:</span><span class="value">Не замужем</span></div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">ОПЫТ РАБОТЫ</div>
+                        <div class="exp-item">
+                            <div class="head"><span class="icon">💼</span>Teleperformance (проект ПАО «Аэрофлот»)</div>
+                            <div class="meta"><strong>Период работы:</strong> июль 2025 — август 2025 (срочный договор)</div>
+                            <div class="meta"><strong>Должность:</strong> Специалист по обслуживанию клиентов контактного центра</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>Приём и обработка входящих звонков от клиентов авиакомпании (горячая линия).</li>
+                                    <li>Консультирование по правилам перевозки, багажу, условиям тарифов.</li>
+                                    <li>Внесение изменений в бронирования: добавление услуг, переоформление билетов.</li>
+                                    <li>Работа с CRM (Битрикс24) и внутренней консолью бронирования.</li>
+                                    <li>Обработано более 1000 обращений, успешно разрешала конфликтные ситуации.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">ОБРАЗОВАНИЕ</div>
+                        <div class="exp-item">
+                            <div class="head"><span class="icon">🎓</span>Оренбургский колледж экономики и информатики (ОКЭИ)</div>
+                            <div class="meta"><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</div>
+                            <div class="meta"><strong>Квалификация:</strong> Разработчик веб и мультимедийных приложений</div>
+                            <div class="meta"><strong>Дата окончания:</strong> 2026 год</div>
+                            <div class="meta"><strong>Форма обучения:</strong> Очная</div>
+                            <div class="desc" style="margin-top:6px;">
+                                <p><strong>Тема ВКР:</strong> «Разработка веб-сайта по продаже женской обуви для магазина «VITRIX» ИП Баландина М.А.»</p>
+                                <p style="font-size:13px; color:#555;">На защите продемонстрированы навыки проектирования интерфейсов, верстки и работы с БД.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">КУРСЫ И ТРЕНИНГИ</div>
+                        <div class="exp-item">
+                            <div class="head"><span class="icon">📘</span>Производственная практика — ООО «Веб Строитель»</div>
+                            <div class="meta"><strong>Период:</strong> 2024 г.</div>
+                            <div class="desc">Знакомство с реальными проектами, основы администрирования сайтов.</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="head"><span class="icon">📘</span>Производственная практика — Министерство цифрового развития и связи Оренбургской области</div>
+                            <div class="meta"><strong>Период:</strong> 2024–2025 г.</div>
+                            <div class="desc">Работа с документооборотом и внутренними системами ведомства.</div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="head"><span class="icon">📘</span>Преддипломная практика — Центр «Мой Бизнес» (БЦ Мармелад, г. Оренбург)</div>
+                            <div class="meta"><strong>Период:</strong> 2025–2026 г.</div>
+                            <div class="desc">Поддержка IT-инфраструктуры, взаимодействие с предпринимателями по вопросам цифровых сервисов.</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">КЛЮЧЕВЫЕ КОМПЕТЕНЦИИ</div>
+                        <div class="skills-tags">
+                            <span class="tag">HTML / CSS</span><span class="tag">JavaScript</span>
+                            <span class="tag">React (база)</span><span class="tag">Figma</span>
+                            <span class="tag">Git</span><span class="tag">SQL</span>
+                            <span class="tag">PHP</span><span class="tag">Битрикс24</span>
+                            <span class="tag">1С</span><span class="tag">Десктопные приложения (база)</span>
+                            <span class="tag">Работа с клиентами</span><span class="tag">Стрессоустойчивость</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="item"><span class="label">Желаемая зарплата</span><span class="value">По договорённости</span></div>
+                <div class="item"><span class="label">Занятость</span><span class="value">Полная, гибкий график</span></div>
+            </div>
+        </div>
     </div>
 
-    <!-- ===== КНОПКИ СКАЧИВАНИЯ ===== -->
+    <!-- ===== ВКЛАДКА 2: ПОРТФОЛИО ===== -->
+    <div class="tab-content" id="tabPortfolio">
+        <div class="portfolio-section">
+
+            <!-- ССЫЛКА НА РАБОЧИЙ САЙТ (НОВЫЙ ДИЗАЙН) -->
+            <div class="site-link">
+                <a href="https://vitrix-qngz.vercel.app/" target="_blank">
+                    <span class="icon">🛍️</span>
+                    <span>Магазин женской обуви <strong>VITRIX</strong></span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- ===== СТРАНИЦА 1 ===== -->
+            <div class="portfolio-page" id="portfolioPage1">
+                <div class="page-label">— СТРАНИЦА 1 —</div>
+
+                <div class="full-width-column">
+                    <img src="https://i.postimg.cc/63JfC5px/photo-2025-03-07-02-17-51.jpg" alt="Портфолио страница 1">
+                    <img src="https://i.postimg.cc/3rZFDh5Q/photo-2025-03-07-02-17-52.jpg" alt="Портфолио страница 2">
+                    <img src="https://i.postimg.cc/sD6PwJ23/photo-2025-03-07-02-17-52-(2).jpg" alt="Портфолио страница 3">
+                </div>
+
+                <div class="two-col-grid">
+                    <div class="portfolio-item">
+                        <img src="https://i.postimg.cc/pdBRNC1y/photo-2025-03-07-02-18-33.jpg" alt="Эстетика">
+                        <div class="caption">«Эстетика. Магазин обуви» <small>— главная</small></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img class="vitrix-main" src="https://i.postimg.cc/R0wQv6cL/D-zagruzkii-Nastya-zashita-kross-au-Nastya.png" alt="VITRIX">
+                        <div class="caption">VITRIX <small>— главная страница</small></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://i.postimg.cc/c4WhCcD6/Frame-276.png" alt="Роспись">
+                        <div class="caption">Роспись на кроссовках <small>— главная</small></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://i.postimg.cc/MTqjWcGV/photo-2025-04-08-13-40-40.jpg" alt="Фестиваль">
+                        <div class="caption">Сайт игрового фестиваля</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== СТРАНИЦА 2 ===== -->
+            <div class="portfolio-page" id="portfolioPage2">
+                <div class="page-label">— СТРАНИЦА 2 —</div>
+
+                <div class="two-col-grid">
+                    <div class="portfolio-item">
+                        <img src="https://i.postimg.cc/MKNMn3Gg/photo-2025-04-24-18-54-04.jpg" alt="Кафе">
+                        <div class="caption">Сайт кафе</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://i.postimg.cc/13Dtf92D/photo-2025-04-24-18-54-07.jpg" alt="9 мая">
+                        <div class="caption">Страница к 9 мая</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img class="app-img" src="https://i.postimg.cc/Cxb5rjCB/Snimok-ekrana-2026-0vmvm7-05-032359.png" alt="Приложение для путешествий">
+                        <div class="caption">Приложение для путешествий <small>— дизайн интерфейса</small></div>
+                    </div>
+                </div>
+
+                <div class="footer-note" style="margin-top:25px;">Анастасия Дубовицких • 2026</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== КНОПКИ СКАЧИВАНИЯ ВНИЗУ ===== -->
     <div class="download-section">
         <button class="download-btn" id="downloadResumeBtn">⬇️ Скачать резюме (PNG)</button>
         <button class="download-btn secondary" id="downloadPortfolioPage1">📄 Скачать портфолио — стр.1</button>
@@ -437,6 +571,21 @@
 </div>
 
 <script>
+    // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const tabId = this.dataset.tab;
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // ===== ЗАГРУЗКА HTML2CANVAS =====
     function loadHtml2Canvas(callback) {
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
@@ -460,13 +609,11 @@
                 canvas.height = size;
                 const ctx = canvas.getContext('2d');
                 
-                // Рисуем круг
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.clip();
                 
-                // Вставляем фото с обрезкой по центру
                 const aspectRatio = img.width / img.height;
                 let drawWidth, drawHeight, offsetX, offsetY;
                 
@@ -484,7 +631,6 @@
                 
                 ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
                 
-                // Рисуем границу
                 ctx.beginPath();
                 ctx.arc(size/2, size/2, size/2 - 1.5, 0, Math.PI * 2);
                 ctx.strokeStyle = '#2c3e50';
@@ -494,7 +640,6 @@
                 resolve(canvas.toDataURL('image/png'));
             };
             img.onerror = function() {
-                // Если фото не загрузилось, создаём заглушку
                 const canvas = document.createElement('canvas');
                 canvas.width = size;
                 canvas.height = size;
@@ -525,10 +670,7 @@
             }
 
             try {
-                // Создаём правильную круглую аватарку
                 const photoDataUrl = await createCircularPhoto(photoImg.src, 150);
-                
-                // Создаём временный img с правильной аватаркой
                 const tempImg = document.createElement('img');
                 tempImg.src = photoDataUrl;
                 tempImg.style.width = '100%';
@@ -537,20 +679,15 @@
                 tempImg.style.display = 'block';
                 tempImg.style.borderRadius = '50%';
                 
-                // Сохраняем оригинальное фото
                 const parent = photoImg.parentNode;
                 const originalDisplay = photoImg.style.display;
-                
-                // Заменяем фото на временное
                 photoImg.style.display = 'none';
                 parent.appendChild(tempImg);
                 
-                // Получаем реальные размеры элемента
                 const rect = resumeEl.getBoundingClientRect();
                 const width = rect.width;
                 const height = rect.height;
                 
-                // Делаем скриншот с фиксированными размерами
                 const canvas = await html2canvas(resumeEl, {
                     scale: 2.5,
                     useCORS: true,
@@ -562,7 +699,6 @@
                     windowWidth: width,
                     windowHeight: height,
                     onclone: function(doc) {
-                        // В клоне фиксируем размеры
                         const clonedEl = doc.getElementById('resumeOnly');
                         if (clonedEl) {
                             clonedEl.style.width = width + 'px';
@@ -572,7 +708,6 @@
                     }
                 });
                 
-                // Удаляем временное фото и возвращаем оригинал
                 tempImg.remove();
                 photoImg.style.display = originalDisplay || 'block';
                 
@@ -593,7 +728,6 @@
                 return;
             }
             
-            // Получаем реальные размеры элемента
             const rect = el.getBoundingClientRect();
             const width = rect.width;
             const height = rect.height;
@@ -609,7 +743,6 @@
                 windowWidth: width,
                 windowHeight: height,
                 onclone: function(doc) {
-                    // В клоне фиксируем размеры
                     const clonedEl = doc.getElementById(el.id);
                     if (clonedEl) {
                         clonedEl.style.width = width + 'px';
@@ -627,17 +760,30 @@
             });
         }
 
+        // Привязка кнопок внизу
         document.getElementById('downloadResumeBtn').onclick = downloadResume;
-
         document.getElementById('downloadPortfolioPage1').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
         };
-
         document.getElementById('downloadPortfolioPage2').onclick = function() {
             downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
         };
-
         document.getElementById('downloadPortfolioAll').onclick = function() {
+            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
+            setTimeout(() => {
+                downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+            }, 1000);
+        };
+
+        // Привязка кнопок в шапке
+        document.getElementById('headerDownloadResume').onclick = downloadResume;
+        document.getElementById('headerDownloadPortfolio1').onclick = function() {
+            downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
+        };
+        document.getElementById('headerDownloadPortfolio2').onclick = function() {
+            downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
+        };
+        document.getElementById('headerDownloadPortfolioAll').onclick = function() {
             downloadElement(page1, 'портфолио_Анастасия_Дубовицких_стр1.png');
             setTimeout(() => {
                 downloadElement(page2, 'портфолио_Анастасия_Дубовицких_стр2.png');
