@@ -75,7 +75,6 @@
             flex-wrap: wrap;
         }
 
-        /* ===== КНОПКА VITRIX ===== */
         .vitrix-btn {
             display: inline-flex;
             align-items: center;
@@ -167,7 +166,7 @@
             animation: starBurst 1.2s ease forwards;
         }
 
-        /* ===== ВЫДВИЖНАЯ КНОПКА (ТОЛЬКО ДЛЯ ПОРТФОЛИО) ===== */
+        /* ===== ВЫДВИЖНАЯ КНОПКА ===== */
         .download-wrapper {
             position: relative;
             display: inline-block;
@@ -216,13 +215,11 @@
         }
         .download-wrapper .download-dropdown.open {
             display: flex;
+            animation: slideDown 0.25s ease;
         }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-8px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        .download-wrapper .download-dropdown.open {
-            animation: slideDown 0.25s ease;
         }
         .download-wrapper .download-dropdown button {
             padding: 8px 14px;
@@ -243,11 +240,7 @@
             background: #f5f6fa;
             transform: translateX(4px);
         }
-        .download-wrapper .download-dropdown button.hidden {
-            display: none !important;
-        }
 
-        /* ===== КНОПКА СКАЧИВАНИЯ РЕЗЮМЕ (ОБЫЧНАЯ) ===== */
         .download-resume-simple {
             padding: 10px 22px;
             border: none;
@@ -756,11 +749,7 @@
                 transform: translateX(-50%);
                 min-width: 200px;
             }
-            .download-wrapper .download-dropdown.open {
-                animation: slideDown 0.25s ease;
-            }
         }
-
         @media (max-width: 480px) {
             .download-wrapper .download-main-btn {
                 min-width: 130px;
@@ -807,12 +796,10 @@
                 <img src="https://i.postimg.cc/qqTxNCYM/detali.png" alt="👠" class="icon-right">
             </a>
 
-            <!-- КНОПКА ДЛЯ РЕЗЮМЕ (ОБЫЧНАЯ) -->
             <button class="download-resume-simple" id="downloadResumeSimple">
                 <span>📥</span> Скачать Резюме
             </button>
 
-            <!-- ВЫДВИЖНАЯ КНОПКА ДЛЯ ПОРТФОЛИО -->
             <div class="download-wrapper" id="downloadWrapper">
                 <button class="download-main-btn" id="mainDownloadBtn">
                     <span>📥</span>
@@ -1162,16 +1149,13 @@
         const isResume = activeTab === 'tabResume';
         const isPortfolio = activeTab === 'tabPortfolio';
 
-        // Показываем/скрываем кнопки в шапке
         downloadResumeSimple.style.display = isResume ? 'flex' : 'none';
         downloadWrapper.style.display = isPortfolio ? 'inline-block' : 'none';
 
-        // Показываем/скрываем кнопки внизу
         downloadResumeBtn.style.display = isResume ? 'inline-block' : 'none';
         downloadPortfolioBtn1.style.display = isPortfolio ? 'inline-block' : 'none';
         downloadPortfolioBtn2.style.display = isPortfolio ? 'inline-block' : 'none';
 
-        // Обновляем текст на кнопке портфолио
         if (isPortfolio) {
             downloadLabel.textContent = 'Скачать Портфолио';
         }
@@ -1185,31 +1169,26 @@
             tabContents.forEach(c => c.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             updateButtons(tabId);
-
-            // Закрываем выпадающее меню при переключении вкладки
             downloadDropdown.classList.remove('open');
         });
     });
 
-    // Инициализация
     updateButtons('tabResume');
 
     // ============================================================
-    // ===== ОБРАБОТКА ВЫПАДАЮЩЕГО МЕНЮ (КЛИК ДЛЯ ОТКРЫТИЯ/ЗАКРЫТИЯ) =====
+    // ===== ОБРАБОТКА ВЫПАДАЮЩЕГО МЕНЮ =====
     // ============================================================
     mainDownloadBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         downloadDropdown.classList.toggle('open');
     });
 
-    // Закрытие при клике вне меню
     document.addEventListener('click', function(e) {
         if (!downloadWrapper.contains(e.target)) {
             downloadDropdown.classList.remove('open');
         }
     });
 
-    // Закрытие при выборе пункта
     downloadDropdown.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', function() {
             downloadDropdown.classList.remove('open');
@@ -1217,7 +1196,7 @@
     });
 
     // ============================================================
-    // ===== АНИМАЦИЯ VITRIX (ДВА РАЗА ПОДРЯД) =====
+    // ===== АНИМАЦИЯ VITRIX =====
     // ============================================================
     const featuredVitrix = document.getElementById('featuredVitrix');
     const vitrixHeaderBtn = document.getElementById('vitrixHeaderBtn');
@@ -1336,11 +1315,12 @@
     }
 
     loadHtml2Canvas(function() {
-        const resumeEl = document.getElementById('tabResume');
         const portfolioEl = document.getElementById('portfolioToDownload');
         const photoImg = document.getElementById('profilePhoto');
 
-        // ===== СКАЧИВАНИЕ РЕЗЮМЕ =====
+        // ============================================================
+        // ===== СКАЧИВАНИЕ РЕЗЮМЕ (ПРЯМОЕ СОХРАНЕНИЕ БЕЗ КЛОНА) =====
+        // ============================================================
         async function downloadResume() {
             if (typeof html2canvas === 'undefined') {
                 alert('Ошибка загрузки библиотеки. Проверьте интернет.');
@@ -1348,6 +1328,7 @@
             }
 
             try {
+                // Создаем круглую аватарку
                 const photoDataUrl = await createCircularPhoto(photoImg.src, 150);
                 const tempImg = document.createElement('img');
                 tempImg.src = photoDataUrl;
@@ -1358,32 +1339,34 @@
                 photoImg.style.display = 'none';
                 parent.appendChild(tempImg);
 
-                await new Promise(r => requestAnimationFrame(r));
-                await new Promise(r => setTimeout(r, 100));
+                // Даем время на рендеринг
+                await new Promise(r => setTimeout(r, 300));
 
-                const rect = resumeEl.getBoundingClientRect();
-
-                const clone = resumeEl.cloneNode(true);
-                clone.style.position = 'absolute';
-                clone.style.top = '-9999px';
-                clone.style.left = '-9999px';
-                clone.style.width = rect.width + 'px';
-                clone.style.height = 'auto';
-                clone.style.background = '#ffffff';
-                clone.style.padding = '20px 25px';
-                document.body.appendChild(clone);
-
-                const canvas = await html2canvas(clone, {
+                // Получаем элемент для сохранения
+                const element = document.getElementById('resumeOnly');
+                
+                // Делаем скриншот напрямую с видимого элемента
+                const canvas = await html2canvas(element, {
                     scale: 2.5,
                     useCORS: true,
                     allowTaint: true,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    width: rect.width,
-                    height: clone.scrollHeight,
+                    width: element.scrollWidth,
+                    height: element.scrollHeight,
+                    windowWidth: element.scrollWidth,
+                    windowHeight: element.scrollHeight,
+                    onclone: function(doc) {
+                        // Принудительно устанавливаем белый фон
+                        const el = doc.getElementById('resumeOnly');
+                        if (el) {
+                            el.style.background = '#ffffff';
+                            el.style.backgroundColor = '#ffffff';
+                        }
+                    }
                 });
 
-                document.body.removeChild(clone);
+                // Удаляем временное фото
                 tempImg.remove();
                 photoImg.style.display = originalDisplay || 'block';
 
@@ -1401,7 +1384,9 @@
             }
         }
 
+        // ============================================================
         // ===== СКАЧИВАНИЕ СТРАНИЦЫ ПОРТФОЛИО =====
+        // ============================================================
         function downloadPortfolioPage(selector, filename) {
             if (typeof html2canvas === 'undefined') {
                 alert('Ошибка загрузки библиотеки. Проверьте интернет.');
